@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.clsaa.tiad</groupId>
+    <artifactId>tiad</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0.0-SNAPSHOT</version>
+    <modules>
+        <module>tiad-common</module>
+        <module>tiad-pmd</module>
+        <module>tiad-event-bus</module>
+        <module>tiad-example</module>
+        <module>tiad-building-block</module>
+    </modules>
+
+
+</project>
