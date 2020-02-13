@@ -15,6 +15,7 @@ import java.lang.annotation.*;
 @Documented
 @Target(value = {ElementType.TYPE, ElementType.PACKAGE, ElementType.METHOD})
 @Retention(RetentionPolicy.RUNTIME)
+@Repeatable(ContextMappings.class)
 public @interface ContextMapping {
 
     /**
