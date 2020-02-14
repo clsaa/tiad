@@ -57,5 +57,10 @@ public enum ContextMappingType {
     /**
      * BIG_BALL_OF_MUD
      */
-    BIG_BALL_OF_MUD
+    BIG_BALL_OF_MUD,
+
+    /**
+     * OTHER
+     */
+    OTHER
 }

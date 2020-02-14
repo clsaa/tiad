@@ -1,7 +1,5 @@
 package com.clsaa.tiad.buidlingblock.annotation;
 
-import com.clsaa.tiad.buidlingblock.constance.BuildingBlockDefaultCodes;
-import com.clsaa.tiad.buidlingblock.constance.BuildingBlockDefaultNames;
 import com.clsaa.tiad.buidlingblock.enums.ContextMappingRole;
 import com.clsaa.tiad.buidlingblock.enums.ContextMappingType;
 
@@ -19,9 +17,9 @@ import java.lang.annotation.*;
 public @interface ContextMapping {
 
     /**
-     * @return type of subdomain
+     * @return type of context mapping
      */
-    ContextMappingType[] type();
+    ContextMappingType type();
 
     /**
      * @return role of current
@@ -29,19 +27,19 @@ public @interface ContextMapping {
     ContextMappingRole role();
 
     /**
-     * if use default code, it will be replaced by class/package name of be annotated class/package
+     * if use default code, it will be replaced by name of be annotated class/package
      *
-     * @return unique code of subdomain
+     * @return unique code of context mapping
      */
-    String code() default BuildingBlockDefaultCodes.SUBDOMAIN_CONTEXT_DEFAULT_CODE;
+    String code() default "";
 
     /**
-     * @return name of subdomain
+     * @return name of context mapping
      */
-    String name() default BuildingBlockDefaultNames.SUBDOMAIN_CONTEXT_DEFAULT_NAME;
+    String name() default "";
 
     /**
-     * @return description of subdomain
+     * @return description of context mapping
      */
     String description() default "";
 }

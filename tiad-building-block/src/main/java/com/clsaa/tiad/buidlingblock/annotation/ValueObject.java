@@ -1,31 +1,31 @@
 package com.clsaa.tiad.buidlingblock.annotation;
 
+
 import java.lang.annotation.*;
 
 /**
- * Identifier for entity of DDD
+ * value object of DDD
  *
  * @author clsaa
  */
 @Documented
-@Target(value = ElementType.FIELD)
+@Target(value = ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-@Inherited
-public @interface Identifier {
+public @interface ValueObject {
     /**
      * if use default code, it will be replaced by name of be annotated class
      *
-     * @return unique code of identifier
+     * @return unique code of value object
      */
     String code() default "";
 
     /**
-     * @return name of identifier
+     * @return name of value object
      */
     String name() default "";
 
     /**
-     * @return description of identifier
+     * @return description of value object
      */
     String description() default "";
 }

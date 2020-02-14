@@ -1,7 +1,5 @@
 package com.clsaa.tiad.buidlingblock.annotation;
 
-import com.clsaa.tiad.buidlingblock.constance.BuildingBlockDefaultCodes;
-import com.clsaa.tiad.buidlingblock.constance.BuildingBlockDefaultNames;
 import com.clsaa.tiad.buidlingblock.enums.SubDomainType;
 
 import java.lang.annotation.*;
@@ -14,7 +12,7 @@ import java.lang.annotation.*;
  * @author clsaa
  */
 @Documented
-@Target(value = {ElementType.TYPE, ElementType.PACKAGE})
+@Target(value = ElementType.PACKAGE)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Subdomain {
 
@@ -24,16 +22,16 @@ public @interface Subdomain {
     SubDomainType type();
 
     /**
-     * if use default code, it will be replaced by class/package name of be annotated class/package
+     * if use default code, it will be replaced by name of be annotated class
      *
      * @return unique code of subdomain
      */
-    String code() default BuildingBlockDefaultCodes.SUBDOMAIN_CONTEXT_DEFAULT_CODE;
+    String code() default "";
 
     /**
      * @return name of subdomain
      */
-    String name() default BuildingBlockDefaultNames.SUBDOMAIN_CONTEXT_DEFAULT_NAME;
+    String name() default "";
 
     /**
      * @return description of subdomain

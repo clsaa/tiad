@@ -1,8 +1,5 @@
 package com.clsaa.tiad.buidlingblock.annotation;
 
-import com.clsaa.tiad.buidlingblock.constance.BuildingBlockDefaultCodes;
-import com.clsaa.tiad.buidlingblock.constance.BuildingBlockDefaultNames;
-
 import java.lang.annotation.*;
 
 /**
@@ -16,19 +13,19 @@ import java.lang.annotation.*;
 @Inherited
 public @interface Entity {
     /**
-     * if use default code, it will be replaced by class name of be annotated class
+     * if use default code, it will be replaced by name of be annotated class
      *
-     * @return unique code of subdomain
+     * @return unique code of entity
      */
-    String code() default BuildingBlockDefaultCodes.ENTITY_DEFAULT_CODE;
+    String code() default "";
 
     /**
-     * @return name of subdomain
+     * @return name of entity
      */
-    String name() default BuildingBlockDefaultNames.ENTITY_DEFAULT_NAME;
+    String name() default "";
 
     /**
-     * @return description of subdomain
+     * @return description of entity
      */
     String description() default "";
 }

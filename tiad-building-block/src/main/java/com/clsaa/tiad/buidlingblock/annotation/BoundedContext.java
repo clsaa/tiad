@@ -1,8 +1,5 @@
 package com.clsaa.tiad.buidlingblock.annotation;
 
-import com.clsaa.tiad.buidlingblock.constance.BuildingBlockDefaultCodes;
-import com.clsaa.tiad.buidlingblock.constance.BuildingBlockDefaultNames;
-
 import java.lang.annotation.*;
 
 /**
@@ -16,18 +13,17 @@ import java.lang.annotation.*;
 @Target(value = {ElementType.TYPE, ElementType.PACKAGE})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface BoundedContext {
-
     /**
-     * if use default code, it will be replaced by class/package name of be annotated class/package
+     * if use default code, it will be replaced by name of be annotated class/package
      *
      * @return unique code of bounded context
      */
-    String code() default BuildingBlockDefaultCodes.BOUNDED_CONTEXT_DEFAULT_CODE;
+    String code() default "";
 
     /**
      * @return name of bounded context
      */
-    String name() default BuildingBlockDefaultNames.BOUNDED_CONTEXT_DEFAULT_NAME;
+    String name() default "";
 
     /**
      * @return description of bounded context

@@ -7,18 +7,17 @@ package com.clsaa.tiad.buidlingblock.enums;
 
 public enum ContextMappingRole {
     /**
-     * PRODUCER
+     * UPSTREAM
      */
-    PRODUCER,
+    UPSTREAM,
 
     /**
      * CONSUMER
      */
-    CONSUMER,
+    DOWNSTREAM,
 
     /**
      * PARTNER
      */
     PARTNER,
-
 }

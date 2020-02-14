@@ -3,29 +3,28 @@ package com.clsaa.tiad.buidlingblock.annotation;
 import java.lang.annotation.*;
 
 /**
- * Identifier for entity of DDD
+ * aggregate of DDD
  *
  * @author clsaa
  */
 @Documented
-@Target(value = ElementType.FIELD)
+@Target(value = ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-@Inherited
-public @interface Identifier {
+public @interface AggregateRoot {
     /**
-     * if use default code, it will be replaced by name of be annotated class
+     * if use default code, it will be replaced by class name of be annotated class
      *
-     * @return unique code of identifier
+     * @return unique code of aggregate root
      */
     String code() default "";
 
     /**
-     * @return name of identifier
+     * @return name of aggregate root
      */
     String name() default "";
 
     /**
-     * @return description of identifier
+     * @return description of aggregate root
      */
     String description() default "";
 }

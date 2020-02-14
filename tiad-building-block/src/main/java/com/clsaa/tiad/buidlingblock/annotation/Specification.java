@@ -3,29 +3,29 @@ package com.clsaa.tiad.buidlingblock.annotation;
 import java.lang.annotation.*;
 
 /**
- * Identifier for entity of DDD
+ * entity of DDD
  *
  * @author clsaa
  */
 @Documented
-@Target(value = ElementType.FIELD)
+@Target(value = ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Inherited
-public @interface Identifier {
+public @interface Specification {
     /**
      * if use default code, it will be replaced by name of be annotated class
      *
-     * @return unique code of identifier
+     * @return unique code of specification
      */
     String code() default "";
 
     /**
-     * @return name of identifier
+     * @return name of specification
      */
     String name() default "";
 
     /**
-     * @return description of identifier
+     * @return description of specification
      */
     String description() default "";
 }
