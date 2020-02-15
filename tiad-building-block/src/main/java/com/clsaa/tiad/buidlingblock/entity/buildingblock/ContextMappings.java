@@ -1,4 +1,4 @@
-package com.clsaa.tiad.buidlingblock.entity;
+package com.clsaa.tiad.buidlingblock.entity.buildingblock;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -11,5 +11,5 @@ import java.util.List;
 @Getter
 @Setter
 public class ContextMappings extends AbstractBuildingBlock {
-    List<ContextMapping> contextMappings;
+    private List<ContextMapping> contextMappings;
 }

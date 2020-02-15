@@ -1,4 +1,4 @@
-package com.clsaa.tiad.buidlingblock.entity;
+package com.clsaa.tiad.buidlingblock.entity.buildingblock;
 
 import lombok.Getter;
 import lombok.Setter;
