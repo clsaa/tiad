@@ -1,11 +1,11 @@
 <idea-plugin>
     <id>com.clsaa.tiad.tiad-idea-plugin</id>
-    <name>Plugin display name here</name>
-    <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
+    <name>tiad</name>
+    <vendor email="812022339@qq.com" url="http://clsaa.github.com">clsaa</vendor>
 
     <description><![CDATA[
-    Enter short description for your plugin here.<br>
-    <em>most HTML tags may be used</em>
+    Tiad is a DDD framework. <br>
+    This plugin can be used with the Tiad framework to complete certain features required for development<br>
     ]]></description>
 
     <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
@@ -18,5 +18,10 @@
 
     <actions>
         <!-- Add your actions here -->
+        <group id="MyPlugin.SampleMenu" text="Sample Menu" description="Sample menu">
+            <add-to-group group-id="MainMenu" anchor="last"/>
+            <action id="MyPlugin.TextBoxes" class="com.clsaa.tiad.idea.action.TextBox" text="Text Boxes"
+                    description="A test menu item"/>
+        </group>
     </actions>
 </idea-plugin>

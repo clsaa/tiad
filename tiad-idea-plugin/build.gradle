@@ -10,11 +10,14 @@ version '1.0.0-SNAPSHOT'
 sourceCompatibility = 1.8
 
 repositories {
+    mavenLocal()
     mavenCentral()
 }
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+    compile group: 'com.clsaa.tiad', name: 'tiad-pmd', version: '1.0.0-SNAPSHOT'
+    compile group: 'org.javassist', name: 'javassist', version: '3.21.0-GA'
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
 
