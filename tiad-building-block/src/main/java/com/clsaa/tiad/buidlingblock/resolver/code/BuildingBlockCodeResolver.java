@@ -1,14 +1,14 @@
 package com.clsaa.tiad.buidlingblock.resolver.code;
 
-import com.clsaa.tiad.buidlingblock.entity.buildingblock.AbstractBuildingBlock;
+import com.clsaa.tiad.buidlingblock.entity.buildingblock.BuildingBlock;
 
 public interface BuildingBlockCodeResolver {
 
     /**
      * interface of return code for different building block
      *
-     * @param buildingBlock {@link AbstractBuildingBlock}
+     * @param buildingBlock {@link BuildingBlock}
      * @return code of building block
      */
-    String resolver(AbstractBuildingBlock buildingBlock);
+    String resolver(BuildingBlock buildingBlock);
 }
