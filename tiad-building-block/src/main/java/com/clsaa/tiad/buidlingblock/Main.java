@@ -1,6 +1,9 @@
 package com.clsaa.tiad.buidlingblock;
 
-import com.clsaa.tiad.buidlingblock.annotation.BoundedContext;
+import lombok.NonNull;
 
 public class Main {
+    public static void main(String[] args) {
+        @NonNull String x = null;
+    }
 }

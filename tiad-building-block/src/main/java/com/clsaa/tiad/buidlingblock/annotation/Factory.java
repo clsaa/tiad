@@ -11,7 +11,7 @@ import java.lang.annotation.*;
 @Target(value = ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Inherited
-public @interface DomainFactory {
+public @interface Factory {
 
     /**
      * if use default code, it will be replaced by name of be annotated class

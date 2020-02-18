@@ -1,8 +1,9 @@
-package com.clsaa.tiad.idea.buildingblock.builder;
+package com.clsaa.tiad.idea.buildingblock.context;
 
 import com.clsaa.tiad.buidlingblock.entity.buildingblock.BuildingBlock;
 import com.clsaa.tiad.common.data.DataHolder;
 import com.clsaa.tiad.common.data.MapDataContext;
+import com.clsaa.tiad.idea.buildingblock.builder.Builder;
 import com.intellij.psi.PsiFile;
 import lombok.Getter;
 
@@ -32,8 +33,8 @@ public class BuilderContext {
         return builder;
     }
 
-    public void addResult(BuildingBlock buildingBlock) {
-        result.add(buildingBlock);
+    public void addResult(List<BuildingBlock> buildingBlocks) {
+        result.addAll(buildingBlocks);
     }
 
     public List<BuildingBlock> getResult() {

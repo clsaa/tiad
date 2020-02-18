@@ -1,21 +1,28 @@
 package com.clsaa.tiad.idea.buildingblock.builder;
 
 import com.clsaa.tiad.buidlingblock.entity.buildingblock.BuildingBlock;
+import com.clsaa.tiad.idea.buildingblock.context.BuilderChain;
+import com.clsaa.tiad.idea.buildingblock.context.BuilderContext;
+
+import java.util.List;
 
 /**
  * @author clsaa
  */
-public interface Builder {
-    BuildingBlock doBuild(BuilderContext context, BuilderChain chain);
+public abstract class Builder {
 
-    default void build(BuilderContext context, BuilderChain chain) {
-        BuildingBlock buildingBlock = this.doBuild(context, chain);
-        if (buildingBlock != null) {
-            context.addResult(buildingBlock);
+    abstract List<BuildingBlock> doBuild(BuilderContext context, BuilderChain chain);
+
+
+    public void build(BuilderContext context, BuilderChain chain) {
+        List<BuildingBlock> buildingBlocks = this.doBuild(context, chain);
+        if (buildingBlocks != null) {
+            context.addResult(buildingBlocks);
         }
     }
 
-    default Integer getOrder() {
+
+    public Integer getOrder() {
         return Integer.MAX_VALUE;
     }
 }

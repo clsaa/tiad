@@ -23,7 +23,15 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
     compile group: 'com.clsaa.tiad', name: 'tiad-pmd', version: '1.0.0-SNAPSHOT'
     compile group: 'org.javassist', name: 'javassist', version: '3.21.0-GA'
+    compile group: 'org.reflections', name: 'reflections', version: '0.9.12'
+    compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.7'
+    compile group: 'ch.qos.logback', name: 'logback-core', version: '1.1.7'
+    compile group: 'ch.qos.logback', name: 'logback-classic', version: '1.1.7'
     testCompile group: 'junit', name: 'junit', version: '4.12'
+    compileOnly 'org.projectlombok:lombok:1.18.12'
+    annotationProcessor 'org.projectlombok:lombok:1.18.12'
+    testCompileOnly 'org.projectlombok:lombok:1.18.12'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.12'
 }
 
 def myPlugins = []

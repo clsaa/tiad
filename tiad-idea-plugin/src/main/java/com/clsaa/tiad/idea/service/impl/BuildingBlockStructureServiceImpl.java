@@ -1,15 +1,17 @@
 package com.clsaa.tiad.idea.service.impl;
 
+import com.clsaa.tiad.buidlingblock.entity.buildingblock.BuildingBlock;
 import com.clsaa.tiad.buidlingblock.entity.structure.BuildingBlockStructure;
+import com.clsaa.tiad.idea.buildingblock.processor.PsiFileProcessor;
 import com.clsaa.tiad.idea.service.BuildingBlockStructureService;
 import com.intellij.openapi.fileTypes.FileType;
 import com.intellij.openapi.fileTypes.StdFileTypes;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.roots.ProjectFileIndex;
-import com.intellij.psi.PsiClass;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiManager;
-import com.intellij.psi.util.PsiTreeUtil;
+
+import java.util.List;
 
 /**
  * @author clsaa
@@ -24,20 +26,27 @@ public class BuildingBlockStructureServiceImpl implements BuildingBlockStructure
 
     @Override
     public void refresh() {
-        BuildingBlockStructure buildingBlockStructure = new BuildingBlockStructure();
+        final BuildingBlockStructure buildingBlockStructure = new BuildingBlockStructure();
         ProjectFileIndex.SERVICE.getInstance(project).iterateContent(fileOrDir -> {
-            System.out.println(fileOrDir.getName());
             PsiFile file = PsiManager.getInstance(project).findFile(fileOrDir);
-            PsiClass childOfAnyType = PsiTreeUtil.findChildOfAnyType(file, PsiClass.class);
+            if (file != null) {
+                PsiFileProcessor psiFileProcessor = new PsiFileProcessor();
+                List<BuildingBlock> buildingBlocks = psiFileProcessor.process(file);
+                buildingBlockStructure.put(buildingBlocks);
+            }
             return true;
         }, file -> {
             FileType fileType = file.getFileType();
             return fileType == StdFileTypes.JAVA;
         });
+        this.buildingBlockStructure = buildingBlockStructure;
     }
 
     @Override
     public BuildingBlockStructure get() {
-        return null;
+        if (this.buildingBlockStructure == null) {
+            this.refresh();
+        }
+        return this.buildingBlockStructure;
     }
 }

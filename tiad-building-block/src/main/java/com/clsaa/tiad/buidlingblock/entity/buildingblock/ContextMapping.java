@@ -7,7 +7,6 @@ import com.clsaa.tiad.common.data.DataContext;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
-import lombok.experimental.NonFinal;
 
 /**
  * @author clsaa
@@ -22,11 +21,9 @@ public class ContextMapping extends BuildingBlock {
      * @param dataContext params to build building block
      * @see BuildingBlockDataKeys.RequiredToBuild
      */
-    public ContextMapping(@NonNull DataContext dataContext,
-                          @NonFinal ContextMappingType contextMappingType,
-                          @NonNull ContextMappingRole contextMappingRole) {
+    public ContextMapping(@NonNull DataContext dataContext) {
         super(dataContext);
-        this.contextMappingType = contextMappingType;
-        this.contextMappingRole = contextMappingRole;
+        this.contextMappingRole = dataContext.getData(BuildingBlockDataKeys.CONTEXT_MAPPING_ROLE_DATA_KEY);
+        this.contextMappingType = dataContext.getData(BuildingBlockDataKeys.CONTEXT_MAPPING_TYPE_DATA_KEY);
     }
 }

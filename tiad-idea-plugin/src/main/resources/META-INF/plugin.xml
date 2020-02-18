@@ -19,8 +19,8 @@
                         serviceImplementation="com.clsaa.tiad.idea.service.impl.TestServiceImpl"/>
         <projectService serviceInterface="com.clsaa.tiad.idea.service.BuildingBlockStructureService"
                         serviceImplementation="com.clsaa.tiad.idea.service.impl.BuildingBlockStructureServiceImpl"/>
+        <postStartupActivity implementation="com.clsaa.tiad.idea.activity.StartUpActivity"/>
     </extensions>
-
     <actions>
         <!-- Add your actions here -->
         <group id="MyPlugin.SampleMenu" text="Sample Menu" description="Sample menu">

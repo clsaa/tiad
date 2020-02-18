@@ -6,7 +6,7 @@ import com.clsaa.tiad.common.data.DataContext;
 
 import java.lang.annotation.Annotation;
 
-public class EntityBuilder extends AbstractAnnotationBuilder {
+public class IdentifierBuilder extends AbstractAnnotationBuilder {
     @Override
     Class<? extends Annotation> getAnnotationClass() {
         return com.clsaa.tiad.buidlingblock.annotation.Entity.class;

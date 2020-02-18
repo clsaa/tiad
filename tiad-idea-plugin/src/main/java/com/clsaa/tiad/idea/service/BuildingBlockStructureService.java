@@ -9,6 +9,7 @@ import org.jetbrains.annotations.NotNull;
  * @author clsaa
  */
 public interface BuildingBlockStructureService {
+
     static BuildingBlockStructureService getInstance(@NotNull Project project) {
         return ServiceManager.getService(project, BuildingBlockStructureService.class);
     }

@@ -16,6 +16,12 @@ public class BuildingBlockStructure {
      */
     private Map<String, Map<String, BuildingBlocks>> buildingBlockMap = new ConcurrentHashMap<>(64);
 
+    public void put(List<BuildingBlock> buildingBlocks) {
+        for (BuildingBlock buildingBlock : buildingBlocks) {
+            this.put(buildingBlock);
+        }
+    }
+
     public void put(BuildingBlock buildingBlock) {
         String className = buildingBlock.getClass().getName();
         Map<String, BuildingBlocks> fileIdIndexMap = buildingBlockMap.get(className);

@@ -1,6 +1,7 @@
 package com.clsaa.tiad.buidlingblock.entity.descriptor;
 
 import com.clsaa.tiad.buidlingblock.constance.DefaultStrings;
+import lombok.Builder;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -9,6 +10,7 @@ import java.io.Serializable;
  * @author clsaa
  */
 @Data
+@Builder
 public class Location implements Serializable {
     protected String packageName;
     protected String className;

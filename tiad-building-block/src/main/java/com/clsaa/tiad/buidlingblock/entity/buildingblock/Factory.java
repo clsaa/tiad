@@ -6,22 +6,17 @@ import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
 
-import java.util.List;
-
 /**
  * @author clsaa
  */
 @Getter
 @Setter
-public class ContextMappings extends BuildingBlock {
-    private List<ContextMapping> contextMappings;
-
+public class Factory extends BuildingBlock {
     /**
      * @param dataContext params to build building block
      * @see BuildingBlockDataKeys.RequiredToBuild
      */
-    public ContextMappings(@NonNull DataContext dataContext, List<ContextMapping> contextMappings) {
+    public Factory(@NonNull DataContext dataContext) {
         super(dataContext);
-        this.contextMappings = contextMappings;
     }
 }
