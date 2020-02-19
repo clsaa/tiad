@@ -10,13 +10,14 @@ import com.intellij.openapi.fileTypes.StdFileTypes;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.roots.ProjectFileIndex;
 import com.intellij.openapi.ui.Messages;
-import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.openapi.vfs.VirtualFileEvent;
-import com.intellij.openapi.vfs.VirtualFileListener;
-import com.intellij.openapi.vfs.VirtualFileSystem;
+import com.intellij.openapi.vfs.*;
+import com.intellij.openapi.vfs.newvfs.BulkFileListener;
+import com.intellij.openapi.vfs.newvfs.events.VFileEvent;
 import com.intellij.psi.*;
 import com.intellij.psi.util.PsiTreeUtil;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
 
 public class TextBox extends AnAction {
     @Override
@@ -26,12 +27,14 @@ public class TextBox extends AnAction {
         BuildingBlockStructureService projectService = BuildingBlockStructureService.getInstance(project);
         projectService.refresh();
         System.out.println("======");
-        ProjectFileIndex.SERVICE.getInstance(project).iterateContent(fileOrDir -> {
+        final ProjectFileIndex projectFileIndex = ProjectFileIndex.SERVICE.getInstance(project);
+        projectFileIndex.iterateContent(fileOrDir -> {
             System.out.println(fileOrDir.getName());
             PsiFile file = PsiManager.getInstance(project).findFile(fileOrDir);
             PsiClass childOfAnyType = PsiTreeUtil.findChildOfAnyType(file, PsiClass.class);
             if (childOfAnyType == null) {
                 System.out.println("is null " + fileOrDir.getName());
+                projectFileIndex.isInContent(fileOrDir);
                 file.accept(new JavaRecursiveElementVisitor() {
                     @Override
                     public void visitElement(PsiElement element) {
@@ -44,6 +47,18 @@ public class TextBox extends AnAction {
         }, file -> {
             FileType fileType = file.getFileType();
             return fileType == StdFileTypes.JAVA;
+        });
+
+        project.getMessageBus().connect().subscribe(VirtualFileManager.VFS_CHANGES, new BulkFileListener() {
+            @Override
+            public void after(@NotNull List<? extends VFileEvent> events) {
+                for (VFileEvent event : events) {
+                    final VirtualFile file = event.getFile();
+                    final boolean inSource = projectFileIndex.isInSource(file);
+                    final boolean inContent = projectFileIndex.isInContent(file);
+                    System.out.println("getMessageBus: " + file.getName());
+                }
+            }
         });
         System.out.println("======");
         PsiFile file = e.getData(CommonDataKeys.PSI_FILE);

@@ -1,11 +1,13 @@
+package com.clsaa.tiad.idea.config
+
 import com.intellij.openapi.components.PersistentStateComponent
 import com.intellij.openapi.components.State
 import com.intellij.openapi.components.Storage
 import com.intellij.util.xmlb.XmlSerializerUtil
 import java.util.*
 
-@State(name = "TiadConfig", storages = [Storage(file = "smartfox/tiad.xml")])
-class P3cConfig : PersistentStateComponent<P3cConfig> {
+@State(name = "com.clsaa.tiad.idea.config.TiadConfig", storages = [Storage(file = "smartfox/tiad.xml")])
+class TiadConfig : PersistentStateComponent<TiadConfig> {
     var astCacheTime = 1000L
     var astCacheEnable = true
 
@@ -30,11 +32,11 @@ class P3cConfig : PersistentStateComponent<P3cConfig> {
         locale = if (localeEn == locale) localeZh else localeEn
     }
 
-    override fun getState(): P3cConfig {
+    override fun getState(): TiadConfig {
         return this
     }
 
-    override fun loadState(state: P3cConfig) {
+    override fun loadState(state: TiadConfig) {
         XmlSerializerUtil.copyBean(state, this)
     }
 

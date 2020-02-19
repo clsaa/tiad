@@ -49,8 +49,10 @@ public class BuildingBlockStructure {
     }
 
     public void removeByFileId(String fileId) {
-        for (Map<String, BuildingBlocks> idBuildingBlockMap : buildingBlockMap.values()) {
-            idBuildingBlockMap.remove(fileId);
+        synchronized (fileId) {
+            for (Map<String, BuildingBlocks> idBuildingBlockMap : buildingBlockMap.values()) {
+                idBuildingBlockMap.remove(fileId);
+            }
         }
     }
 

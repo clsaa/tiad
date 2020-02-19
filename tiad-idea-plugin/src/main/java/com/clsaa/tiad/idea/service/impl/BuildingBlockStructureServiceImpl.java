@@ -8,6 +8,7 @@ import com.intellij.openapi.fileTypes.FileType;
 import com.intellij.openapi.fileTypes.StdFileTypes;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.roots.ProjectFileIndex;
+import com.intellij.openapi.vfs.newvfs.impl.VirtualFileImpl;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiManager;
 
@@ -40,6 +41,22 @@ public class BuildingBlockStructureServiceImpl implements BuildingBlockStructure
             return fileType == StdFileTypes.JAVA;
         });
         this.buildingBlockStructure = buildingBlockStructure;
+    }
+
+
+    @Override
+    public void update(PsiFile psiFile) {
+        PsiFileProcessor psiFileProcessor = new PsiFileProcessor();
+        List<BuildingBlock> buildingBlocks = psiFileProcessor.process(psiFile);
+        final VirtualFileImpl virtualFile = (VirtualFileImpl) psiFile.getVirtualFile();
+        if (buildingBlocks.isEmpty()) {
+            this.buildingBlockStructure.removeByFileId(String.valueOf(virtualFile.getId()));
+        } else {
+            synchronized (psiFile) {
+                this.buildingBlockStructure.removeByFileId(String.valueOf(virtualFile.getId()));
+                this.buildingBlockStructure.put(buildingBlocks);
+            }
+        }
     }
 
     @Override

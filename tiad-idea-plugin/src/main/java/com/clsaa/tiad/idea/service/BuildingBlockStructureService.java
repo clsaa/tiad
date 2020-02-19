@@ -3,6 +3,7 @@ package com.clsaa.tiad.idea.service;
 import com.clsaa.tiad.buidlingblock.entity.structure.BuildingBlockStructure;
 import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.project.Project;
+import com.intellij.psi.PsiFile;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -15,6 +16,8 @@ public interface BuildingBlockStructureService {
     }
 
     void refresh();
+
+    void update(PsiFile psiFile);
 
     BuildingBlockStructure get();
 }

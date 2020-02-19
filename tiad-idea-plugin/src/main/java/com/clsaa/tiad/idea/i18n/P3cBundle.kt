@@ -1,10 +1,11 @@
+import com.clsaa.tiad.idea.config.TiadConfig
 import com.clsaa.tiad.idea.util.getService
 import com.clsaa.tiad.pmd.I18nResources
 import com.intellij.CommonBundle
 import java.util.*
 
 object P3cBundle {
-    private val p3cConfig = P3cConfig::class.java.getService()
+    private val p3cConfig = TiadConfig::class.java.getService()
     private val resourceBundle = ResourceBundle.getBundle("messages.P3cBundle",
             Locale(p3cConfig.locale), I18nResources.XmlControl())
 

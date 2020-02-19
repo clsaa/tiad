@@ -11,9 +11,14 @@ public class DataKey<T> {
         this.name = name;
     }
 
+
     public static <T> DataKey<T> create(String key) {
         //noinspection unchecked
         return new DataKey<>(key);
+    }
+
+    public static <T> T cast(Object o) {
+        return (T) o;
     }
 
     public String getName() {
