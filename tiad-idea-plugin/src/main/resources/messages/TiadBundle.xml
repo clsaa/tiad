@@ -1,4 +1,24 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
+    <entry key="java.entity.EntityMustHaveOneIdentifierRule.rule.msg">
+        <![CDATA[
+    实体必须有一个唯一标识
+]]>
+    </entry>
+    <entry key="java.entity.EntityMustHaveOneIdentifierRule.rule.desc">
+        <![CDATA[
+说明：实体要通过唯一标识索引
+]]>
+    </entry>
+    <entry key="java.entity.AvoidDoubleOrFloatEqualCompareRule.rule.msg">
+        <![CDATA[
+    避免直接比较double和float
+]]>
+    </entry>
+    <entry key="java.entity.AvoidDoubleOrFloatEqualCompareRule.rule.desc">
+        <![CDATA[
+Instruction：避免直接比较double和float
+]]>
+    </entry>
 </properties>

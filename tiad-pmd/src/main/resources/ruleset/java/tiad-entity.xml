@@ -3,11 +3,11 @@
 <ruleset name="TiadEntityRuleSet" xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 http://pmd.sourceforge.net/ruleset_2_0_0.xsd">
-    <description>TiadEntityRuleSet</description>
+    <description>TiadEntity</description>
 
-    <rule name="EntityMustHaveOneIdentifierRule" message="java.entity.EntityMustHaveOneIdentifier.rule.msg"
+    <rule name="EntityMustHaveOneIdentifierRule" message="java.entity.EntityMustHaveOneIdentifierRule.rule.msg"
           class="com.clsaa.tiad.pmd.lang.java.rule.entity.EntityMustHaveOneIdentifierRule">
-        <description>java.entity.EntityMustHaveOneIdentifier.rule.msg</description>
+        <description>java.entity.EntityMustHaveOneIdentifierRule.rule.desc</description>
         <priority>3</priority>
 
         <example>
@@ -19,7 +19,7 @@ example
 
     <rule name="AvoidDoubleOrFloatEqualCompareRule" message="java.entity.AvoidDoubleOrFloatEqualCompareRule.rule.msg"
           class="com.clsaa.tiad.pmd.lang.java.rule.entity.AvoidDoubleOrFloatEqualCompareRule">
-        <description>java.entity.EntityMustHaveOneIdentifier.rule.msg</description>
+        <description>java.entity.AvoidDoubleOrFloatEqualCompareRule.rule.desc</description>
         <priority>3</priority>
 
         <example>

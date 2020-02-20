@@ -1,13 +1,13 @@
 package com.clsaa.tiad.pmd.lang.java.rule.entity;
 
+import com.clsaa.tiad.pmd.lang.java.rule.AbstractTiadRule;
 import com.clsaa.tiad.pmd.lang.java.util.ViolationUtils;
 import net.sourceforge.pmd.lang.java.ast.ASTEqualityExpression;
 import net.sourceforge.pmd.lang.java.ast.ASTPrimaryExpression;
-import net.sourceforge.pmd.lang.java.rule.AbstractJavaRule;
 
 import java.util.List;
 
-public class AvoidDoubleOrFloatEqualCompareRule extends AbstractJavaRule {
+public class AvoidDoubleOrFloatEqualCompareRule extends AbstractTiadRule {
 
     private static final String FLOAT = "float";
     private static final String DOUBLE = "double";
