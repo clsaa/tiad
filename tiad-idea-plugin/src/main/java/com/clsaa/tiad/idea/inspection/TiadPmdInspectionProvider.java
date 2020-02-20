@@ -61,11 +61,7 @@ public class TiadPmdInspectionProvider implements InspectionToolProvider {
             for (RuleSpecification ruleSpecification : ruleNameIndex.values()) {
                 final CtClass cc = classPool.get(DelegateTiadPmdInspection.class.getName());
                 cc.setName(ruleSpecification.getRule().getName() + "Inspection");
-//                CtField ctField = cc.getField("ruleName");
-//                cc.removeField(ctField);
                 String value = "\"" + ruleSpecification.getRule().getName() + "\"";
-//                CtField newField = CtField.make("private String ruleName = " + value + ";", cc);
-//                cc.addField(newField, value);
                 final CtConstructor[] constructors = cc.getConstructors();
                 for (CtConstructor constructor : constructors) {
                     cc.removeConstructor(constructor);

@@ -47,4 +47,16 @@ public class RulePriorityHighlightLevelMappings {
         }
     }
 
+    private RulePriorityHighlightLevelMappings() {
+    }
+
+    public static RulePriorityHighlightLevelMappings getInstance() {
+        return Holder.instance;
+    }
+
+    private static class Holder {
+        private static RulePriorityHighlightLevelMappings instance = new RulePriorityHighlightLevelMappings();
+    }
+
+
 }

@@ -5,16 +5,13 @@ import com.clsaa.tiad.idea.quickfix.TiadQuickFix;
 import com.clsaa.tiad.idea.util.DocumentUtil;
 import com.clsaa.tiad.idea.util.ProblemsUtils;
 import com.intellij.codeInspection.InspectionManager;
-import com.intellij.codeInspection.LocalQuickFix;
 import com.intellij.codeInspection.ProblemDescriptor;
 import com.intellij.openapi.editor.Document;
 import com.intellij.openapi.fileEditor.FileDocumentManager;
 import com.intellij.openapi.vfs.LocalFileSystem;
 import com.intellij.openapi.vfs.VirtualFile;
-import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiManager;
-import kotlin.jvm.functions.Function1;
 import net.sourceforge.pmd.RuleViolation;
 
 import java.util.ArrayList;
@@ -61,13 +58,9 @@ public class TiadPmdViolationParser {
             } else {
                 errorMsg = violation.getDescription() + " (line " + violation.getBeginLine() + ")";
             }
-            ProblemDescriptor problemDescriptor = ProblemsUtils.INSTANCE.createProblemDescriptorForPmdRule(psiFile, manager,
-                    isOnTheFly, ruleName, errorMsg, offsets.getStart(), offsets.getEnd(), violation.getBeginLine(), new Function1<PsiElement, LocalQuickFix>() {
-                        @Override
-                        public LocalQuickFix invoke(PsiElement psiElement) {
-                            return TiadQuickFix.getQuickFix(ruleName, isOnTheFly);
-                        }
-                    });
+            ProblemDescriptor problemDescriptor = ProblemsUtils.INSTANCE.createProblemDescriptorForPmdRule(
+                    psiFile, manager, isOnTheFly, ruleName, errorMsg, offsets.getStart(), offsets.getEnd(),
+                    psiElement -> TiadQuickFix.getQuickFix(ruleName, isOnTheFly));
             problemDescriptors.add(problemDescriptor);
         }
         return problemDescriptors.toArray(new ProblemDescriptor[0]);

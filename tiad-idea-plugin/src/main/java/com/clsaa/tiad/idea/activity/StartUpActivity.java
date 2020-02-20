@@ -19,40 +19,5 @@ public class StartUpActivity implements StartupActivity {
         //init BuildingBlockStructure
         ReadAction.nonBlocking(() -> BuildingBlockStructureService.getInstance(project).refresh())
                 .inSmartMode(project).submit(TiadReadExecutor.getInstance());
-
-//        final PsiManagerImpl psiManager = (PsiManagerImpl) PsiManager.getInstance(project);
-//        psiManager.addTreeChangePreprocessor(new PsiTreeChangePreprocessor() {
-//            @Override
-//            public void treeChanged(@NotNull PsiTreeChangeEventImpl event) {
-//                final PsiFile file = event.getFile();
-//                if (file == null) {
-//                    return;
-//                }
-//                System.out.println("addTreeChangePreprocessor:" + file.getName());
-//                if (file.getFileType().equals(StdFileTypes.JAVA)) {
-//                    ReadAction.nonBlocking(() -> BuildingBlockStructureService.getInstance(project).update(file))
-//                            .inSmartMode(project).submit(TiadReadExecutor.getInstance());
-//                }
-//            }
-//        });
-
-//        final ProjectFileIndex projectFileIndex = ProjectFileIndex.SERVICE.getInstance(project);
-//        project.getMessageBus().connect().subscribe(VirtualFileManager.VFS_CHANGES, new BulkFileListener() {
-//            @Override
-//            public void after(@NotNull List<? extends VFileEvent> events) {
-//                for (VFileEvent event : events) {
-//                    final VirtualFile fileOrDir = event.getFile();
-//                    final boolean isJavaFile = Objects.requireNonNull(fileOrDir).getFileType().equals(StdFileTypes.JAVA);
-//                    final boolean inContent = projectFileIndex.isInContent(fileOrDir);
-//                    if (isJavaFile && inContent) {
-//                        log.info("VirtualFileManager.VFS_CHANGES: " + fileOrDir.getName());
-//                        PsiFile file = PsiManager.getInstance(project).findFile(fileOrDir);
-//                        ReadAction.nonBlocking(() -> BuildingBlockStructureService.getInstance(project).update(file))
-//                                .inSmartMode(project).submit(TiadReadExecutor.getInstance());
-//                    }
-//                }
-//            }
-//        });
-
     }
 }

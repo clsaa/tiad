@@ -15,14 +15,9 @@ object ProblemsUtils {
 
     fun createProblemDescriptorForPmdRule(psiFile: PsiFile, manager: InspectionManager, isOnTheFly: Boolean,
                                           ruleName: String, desc: String, start: Int, end: Int,
-                                          checkLine: Int = 0,
                                           quickFix: (PsiElement) -> LocalQuickFix? = {
                                               TiadQuickFix.getQuickFix(ruleName, isOnTheFly)
                                           }): ProblemDescriptor? {
-
-        if (psiFile.virtualFile.canonicalPath!!.endsWith(".vm")) {
-            return createTextRangeProblem(manager, TextRange(start, end), isOnTheFly, psiFile, ruleName, desc)
-        }
         var psiElement = psiFile.findElementAt(start) ?: return null
 
         psiElement = transform(psiElement) ?: return null
