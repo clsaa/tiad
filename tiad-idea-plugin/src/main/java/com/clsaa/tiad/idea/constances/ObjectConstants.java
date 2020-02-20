@@ -1,4 +1,4 @@
-package com.clsaa.tiad.idea.constances
+package com.clsaa.tiad.idea.constances;
 
 
 public interface ObjectConstants {

@@ -1,13 +1,15 @@
+package com.clsaa.tiad.idea.i18n
+
 import com.clsaa.tiad.idea.config.TiadConfig
-import com.clsaa.tiad.idea.util.getService
 import com.clsaa.tiad.pmd.I18nResources
 import com.intellij.CommonBundle
+import com.intellij.openapi.components.ServiceManager
 import java.util.*
 
-object P3cBundle {
-    private val p3cConfig = TiadConfig::class.java.getService()
-    private val resourceBundle = ResourceBundle.getBundle("messages.P3cBundle",
-            Locale(p3cConfig.locale), I18nResources.XmlControl())
+object TiadBundle {
+    private val tiadConfig = ServiceManager.getService(TiadConfig::class.java)
+    private val resourceBundle = ResourceBundle.getBundle("messages.TiadBundle",
+            Locale(tiadConfig.locale), I18nResources.XmlControl())
 
     fun getMessage(key: String): String {
         return resourceBundle.getString(key).trim()

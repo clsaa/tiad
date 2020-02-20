@@ -1,8 +1,8 @@
 package com.clsaa.tiad.idea.inspection.util
 
 import com.clsaa.tiad.idea.config.TiadConfig
-import com.clsaa.tiad.idea.constances.HighlightDisplayLevels
 import com.clsaa.tiad.idea.constances.NumberConstants
+import com.clsaa.tiad.idea.constances.RulePriorityHighlightLevelMappings
 import com.clsaa.tiad.pmd.I18nResources
 import com.google.common.base.Joiner
 import com.google.common.collect.ImmutableMap
@@ -16,7 +16,6 @@ import com.intellij.util.io.URLUtil
 import freemarker.template.Configuration
 import freemarker.template.TemplateException
 import net.sourceforge.pmd.Rule
-import net.sourceforge.pmd.RulePriority
 import net.sourceforge.pmd.RuleSetFactory
 import net.sourceforge.pmd.RuleSetNotFoundException
 import org.apache.commons.lang3.StringUtils
@@ -32,7 +31,7 @@ import java.util.regex.Pattern
 object RuleInspectionUtils {
 
     private val logger = Logger.getInstance(RuleInspectionUtils::class.java)
-    private val ruleSetFilePattern = Pattern.compile("java/ali-.*?\\.xml")
+    private val ruleSetFilePattern = Pattern.compile("java/tiad-.*?\\.xml")
     private val staticDescriptionTemplate = run {
         val cfg = Configuration(Configuration.VERSION_2_3_25)
         cfg.setClassForTemplateLoading(RuleInspectionUtils::class.java, "/tpl")
@@ -56,7 +55,7 @@ object RuleInspectionUtils {
         for (rule in rules) {
             builder.put(rule.name, parseStaticDescription(rule))
             messageBuilder.put(rule.name, rule.message)
-            displayLevelBuilder.put(rule.name, getHighlightDisplayLevel(rule.priority))
+            displayLevelBuilder.put(rule.name, RulePriorityHighlightLevelMappings.getLevel(rule.priority))
         }
         ruleStaticDescriptions = builder.build()
         ruleMessages = messageBuilder.build()
@@ -71,14 +70,6 @@ object RuleInspectionUtils {
         val level = displayLevelMap[ruleName]
 
         return level ?: HighlightDisplayLevel.WEAK_WARNING
-    }
-
-    fun getHighlightDisplayLevel(rulePriority: RulePriority): HighlightDisplayLevel {
-        return when (rulePriority) {
-            RulePriority.HIGH -> HighlightDisplayLevels.BLOCKER
-            RulePriority.MEDIUM_HIGH -> HighlightDisplayLevels.CRITICAL
-            else -> HighlightDisplayLevels.MAJOR
-        }
     }
 
     fun getRuleMessage(ruleName: String): String {

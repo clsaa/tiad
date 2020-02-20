@@ -8,17 +8,14 @@ import com.intellij.codeInspection.ProblemDescriptor;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiFile;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
 public class DelegateTiadPmdInspection extends LocalInspectionTool implements TiadInspection {
     /**
      * ruleName will be replaced when generate inspection with javassist
      */
-    private String ruleName = "";
     private TiadPmdInspection realInspection;
 
-    public DelegateTiadPmdInspection() {
-        this.realInspection = new TiadPmdInspection(ruleName);
-    }
 
     @Override
     public String getRuleName() {
@@ -26,23 +23,34 @@ public class DelegateTiadPmdInspection extends LocalInspectionTool implements Ti
     }
 
     @Override
-    public String getDisplayName() {
-        return this.realInspection.getDisplayName();
+    public LocalQuickFix manualBuildFix(PsiElement psiElement, Boolean isOnTheFly) {
+        return this.realInspection.manualBuildFix(psiElement, isOnTheFly);
     }
 
+    /**
+     * Override LocalInspectionTool
+     */
     @Override
-    public String getDisplayGroupName() {
-        return this.realInspection.getDisplayGroupName();
+    public boolean runForWholeFile() {
+        return this.realInspection.runForWholeFile();
     }
 
-    @Override
-    public Boolean isDefaultEnable() {
-        return this.realInspection.isDefaultEnable();
-    }
-
+    @Nullable
     @Override
     public ProblemDescriptor[] checkFile(@NotNull PsiFile file, @NotNull InspectionManager manager, boolean isOnTheFly) {
         return this.realInspection.checkFile(file, manager, isOnTheFly);
+    }
+
+    @Nullable
+    @Override
+    public String getStaticDescription() {
+        return this.realInspection.getStaticDescription();
+    }
+
+    @NotNull
+    @Override
+    public String getDisplayName() {
+        return this.realInspection.getDisplayName();
     }
 
     @NotNull
@@ -51,8 +59,25 @@ public class DelegateTiadPmdInspection extends LocalInspectionTool implements Ti
         return this.realInspection.getDefaultLevel();
     }
 
+    @NotNull
     @Override
-    public LocalQuickFix manualBuildFix(PsiElement psiElement, Boolean isOnTheFly) {
-        return this.realInspection.manualBuildFix(psiElement, isOnTheFly);
+    public String getGroupDisplayName() {
+        return this.realInspection.getGroupDisplayName();
+    }
+
+    @Override
+    public boolean isEnabledByDefault() {
+        return this.realInspection.isEnabledByDefault();
+    }
+
+    @Override
+    public boolean isSuppressedFor(@NotNull PsiElement element) {
+        return this.realInspection.isSuppressedFor(element);
+    }
+
+    @NotNull
+    @Override
+    public String getShortName() {
+        return this.realInspection.getShortName();
     }
 }

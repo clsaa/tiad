@@ -14,12 +14,15 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
-        <inspectionToolProvider implementation="com.clsaa.tiad.idea.inspection.TiadPmdInspectionProvider"/>
+        <applicationService serviceImplementation="com.clsaa.tiad.idea.config.TiadConfig"/>
         <projectService serviceInterface="com.clsaa.tiad.idea.service.TestService"
                         serviceImplementation="com.clsaa.tiad.idea.service.impl.TestServiceImpl"/>
         <projectService serviceInterface="com.clsaa.tiad.idea.service.BuildingBlockStructureService"
                         serviceImplementation="com.clsaa.tiad.idea.service.impl.BuildingBlockStructureServiceImpl"/>
+
         <postStartupActivity implementation="com.clsaa.tiad.idea.activity.StartUpActivity"/>
+
+        <inspectionToolProvider implementation="com.clsaa.tiad.idea.inspection.TiadPmdInspectionProvider"/>
     </extensions>
     <actions>
         <!-- Add your actions here -->

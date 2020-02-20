@@ -1,10 +1,10 @@
 package com.clsaa.tiad.idea.inspection;
 
 import com.clsaa.tiad.idea.config.TiadConfig;
-import com.clsaa.tiad.idea.inspection.template.DelegateTiadPmdInspection;
 import com.clsaa.tiad.idea.inspection.rule.BuiltinRuleSetNames;
 import com.clsaa.tiad.idea.inspection.rule.JavaShouldInspectChecker;
 import com.clsaa.tiad.idea.inspection.rule.RuleSpecification;
+import com.clsaa.tiad.idea.inspection.template.DelegateTiadPmdInspection;
 import com.clsaa.tiad.pmd.I18nResources;
 import com.intellij.codeInspection.InspectionToolProvider;
 import com.intellij.codeInspection.LocalInspectionTool;
@@ -12,7 +12,7 @@ import com.intellij.openapi.components.ServiceManager;
 import javassist.ClassClassPath;
 import javassist.ClassPool;
 import javassist.CtClass;
-import javassist.CtField;
+import javassist.CtConstructor;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import net.sourceforge.pmd.Rule;
@@ -61,11 +61,18 @@ public class TiadPmdInspectionProvider implements InspectionToolProvider {
             for (RuleSpecification ruleSpecification : ruleNameIndex.values()) {
                 final CtClass cc = classPool.get(DelegateTiadPmdInspection.class.getName());
                 cc.setName(ruleSpecification.getRule().getName() + "Inspection");
-                CtField ctField = cc.getField("ruleName");
-                cc.removeField(ctField);
+//                CtField ctField = cc.getField("ruleName");
+//                cc.removeField(ctField);
                 String value = "\"" + ruleSpecification.getRule().getName() + "\"";
-                CtField newField = CtField.make("private String ruleName = " + value + ";", cc);
-                cc.addField(newField, value);
+//                CtField newField = CtField.make("private String ruleName = " + value + ";", cc);
+//                cc.addField(newField, value);
+                final CtConstructor[] constructors = cc.getConstructors();
+                for (CtConstructor constructor : constructors) {
+                    cc.removeConstructor(constructor);
+                }
+                CtConstructor cons = new CtConstructor(new CtClass[]{}, cc);
+                cons.setBody("{$0.realInspection = new com.clsaa.tiad.idea.inspection.template.TiadPmdInspection(" + value + ");}");
+                cc.addConstructor(cons);
                 localInspectionTools.add((Class<? extends LocalInspectionTool>) cc.toClass());
             }
         } catch (Exception e) {

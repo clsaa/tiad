@@ -2,11 +2,16 @@ package com.clsaa.tiad.pmd.lang.java.rule.entity;
 
 import com.clsaa.tiad.pmd.lang.java.rule.AbstractTiadRule;
 import com.clsaa.tiad.pmd.lang.java.util.ViolationUtils;
+import lombok.extern.slf4j.Slf4j;
 import net.sourceforge.pmd.lang.java.ast.ASTEqualityExpression;
 import net.sourceforge.pmd.lang.java.ast.ASTPrimaryExpression;
 
 import java.util.List;
 
+/**
+ * @author clsaa
+ */
+@Slf4j
 public class AvoidDoubleOrFloatEqualCompareRule extends AbstractTiadRule {
 
     private static final String FLOAT = "float";
@@ -15,6 +20,7 @@ public class AvoidDoubleOrFloatEqualCompareRule extends AbstractTiadRule {
 
     @Override
     public Object visit(ASTEqualityExpression node, Object data) {
+        log.info("visit node:{}, data:{}", node, data);
         List<ASTPrimaryExpression> list = node.findDescendantsOfType(ASTPrimaryExpression.class);
         if (list.size() != LIST_SIZE) {
             return super.visit(node, data);

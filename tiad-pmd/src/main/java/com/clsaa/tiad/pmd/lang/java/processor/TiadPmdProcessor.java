@@ -21,13 +21,18 @@ public class TiadPmdProcessor {
         final RuleSet ruleSet = ruleSetFactory.createSingleRuleRuleSet(context.getRule());
         final RuleSets ruleSets = new RuleSets(ruleSet);
 
-        Report report = Report.createReport(ruleContext, context.getCurrentFileName());
+        final String currentFileName = context.getCurrentFileName();
+        Report report = Report.createReport(ruleContext, currentFileName);
 
         SourceCodeProcessor processor = new SourceCodeProcessor(configuration);
         try {
             processor.processSourceCode(context.getSourceCode(), ruleSets, ruleContext);
         } catch (PMDException e) {
+            log.debug("Error while processing file: {}", currentFileName, e);
+            report.addError(new Report.ProcessingError(e, currentFileName));
+        } catch (Exception e) {
             log.error("process failed, context:{}, ", context, e);
+            throw new RuntimeException(e);
         }
 
         return report;

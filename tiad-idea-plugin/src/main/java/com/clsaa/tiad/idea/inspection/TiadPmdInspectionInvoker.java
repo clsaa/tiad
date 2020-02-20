@@ -20,13 +20,16 @@ import com.clsaa.tiad.buidlingblock.entity.structure.BuildingBlockStructure;
 import com.clsaa.tiad.idea.service.BuildingBlockStructureService;
 import com.clsaa.tiad.pmd.lang.java.context.TiadRuleContext;
 import com.clsaa.tiad.pmd.lang.java.processor.TiadPmdProcessor;
+import com.google.common.base.Throwables;
 import com.intellij.codeInspection.InspectionManager;
 import com.intellij.codeInspection.ProblemDescriptor;
+import com.intellij.openapi.application.ex.ApplicationUtil;
 import com.intellij.openapi.editor.Document;
 import com.intellij.openapi.fileEditor.FileDocumentManager;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.vfs.VirtualFile;
 import com.intellij.psi.PsiFile;
+import lombok.extern.slf4j.Slf4j;
 import net.sourceforge.pmd.Report;
 import net.sourceforge.pmd.RuleViolation;
 
@@ -37,6 +40,7 @@ import java.util.List;
 /**
  * @author clsaa
  */
+@Slf4j
 public class TiadPmdInspectionInvoker {
 
     private TiadPmdInspectionInvoker() {
@@ -57,13 +61,21 @@ public class TiadPmdInspectionInvoker {
 
         final TiadRuleContext tiadRuleContext = TiadRuleContext.builder().sourceCode(new StringReader(document.getText()))
                 .currentFileName(nickFileName).rule(context.getRule()).buildingBlockStructure(buildingBlockStructure).build();
-        final Report report = new TiadPmdProcessor().process(tiadRuleContext);
 
-        List<RuleViolation> violations = new ArrayList<>();
-        for (RuleViolation violation : report) {
-            violations.add(violation);
+        try {
+            Report report = new TiadPmdProcessor().process(tiadRuleContext);
+            List<RuleViolation> violations = new ArrayList<>();
+            for (RuleViolation violation : report) {
+                violations.add(violation);
+            }
+            context.setViolations(violations);
+        } catch (RuntimeException e) {
+            Throwable root = Throwables.getRootCause(e);
+            if (!(root instanceof ApplicationUtil.CannotRunReadActionException)) {
+                log.error("RuntimeException while processing file: {}", nickFileName, e);
+            }
         }
-        context.setViolations(violations);
+
 
         final ProblemDescriptor[] problemDescriptors = TiadPmdViolationParser.getInstance().parser(context);
         return problemDescriptors;

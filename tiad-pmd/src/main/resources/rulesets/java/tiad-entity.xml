@@ -20,11 +20,24 @@ example
     <rule name="AvoidDoubleOrFloatEqualCompareRule" message="java.entity.AvoidDoubleOrFloatEqualCompareRule.rule.msg"
           class="com.clsaa.tiad.pmd.lang.java.rule.entity.AvoidDoubleOrFloatEqualCompareRule">
         <description>java.entity.AvoidDoubleOrFloatEqualCompareRule.rule.desc</description>
-        <priority>3</priority>
-
+        <priority>1</priority>
         <example>
             <![CDATA[
-example
+Negative example:
+        float g = 0.7f-0.6f;
+        float h = 0.8f-0.7f;
+        if (g == h) {
+            System.out.println("true");
+        }
+ ]]>
+        </example>
+        <example>
+            <![CDATA[
+Positive example:
+        double dis = 1e-6;
+        double d1 = 0.0000001d;
+        double d2 = 0d;
+        System.out.println(Math.abs(d1 - d2) < dis);
 ]]>
         </example>
     </rule>

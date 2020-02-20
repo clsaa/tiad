@@ -1,21 +1,17 @@
 package com.clsaa.tiad.pmd.lang.java.rule.entity;
 
 import com.clsaa.tiad.pmd.lang.java.rule.AbstractTiadRule;
-import net.sourceforge.pmd.lang.ast.Node;
-import net.sourceforge.pmd.lang.java.ast.ASTBlock;
+import lombok.extern.slf4j.Slf4j;
 import net.sourceforge.pmd.lang.java.ast.ASTMarkerAnnotation;
 
+/**
+ * @author clsaa
+ */
+@Slf4j
 public class EntityMustHaveOneIdentifierRule extends AbstractTiadRule {
     @Override
     public Object visit(ASTMarkerAnnotation node, Object data) {
-        Node firstStmt = node.jjtGetChild(1);
-        if (!hasBlockAsFirstChild(firstStmt)) {
-            addViolation(data, node);
-        }
+        log.info("visit node:{}, data:{} ", node, data);
         return super.visit(node, data);
-    }
-
-    private boolean hasBlockAsFirstChild(Node node) {
-        return (node.jjtGetNumChildren() != 0 && (node.jjtGetChild(0) instanceof ASTBlock));
     }
 }
