@@ -8,27 +8,72 @@
     </entry>
     <entry key="java.entity.EntityMustHaveOneIdentifierRule.rule.desc">
         <![CDATA[
-说明：实体都拥有一个唯一的标识符将它的个体性和所有其他类型相同或者不同的实体区分开
+    说明：实体都拥有一个唯一的标识符将它的个体性和所有其他类型相同或者不同的实体区分开
 ]]>
     </entry>
     <entry key="java.entity.EntityMustHaveOneIdentifierRule.rule.reference1">
         <![CDATA[
-@领域驱动设计精粹 @P86
-    一个实体模型就是一个独立的事物。每个实体都拥有一个唯一的标识符，可以将它的个体性和所有其他类型相同
-    或者不同的实体区分开。许多时候，也许应该说绝大多数时候，实体是可变的。也就是说，它的状态会随着时间
-    发生变化。不过，一个实体不一定必须是可变的，它也可能是不可变的。将实体与其他建模 工具区分开的主要因
-    素是它的唯一性一一即它的个体性。
+    @领域驱动设计精粹 @P86
+        一个实体模型就是一个独立的事物。每个实体都拥有一个唯一的标识符，可以将它的个体性和所有其他类型相同
+        或者不同的实体区分开。许多时候，也许应该说绝大多数时候，实体是可变的。也就是说，它的状态会随着时间
+        发生变化。不过，一个实体不一定必须是可变的，它也可能是不可变的。将实体与其他建模 工具区分开的主要因
+        素是它的唯一性一一即它的个体性。
 ]]>
     </entry>
 
-    <entry key="java.entity.AvoidDoubleOrFloatEqualCompareRule.rule.msg">
+
+    <entry key="java.valueobject.ValueObjectEqualsByAttributesRule.rule.msg">
         <![CDATA[
-    避免直接比较double和float
+    值对象需实现hashCode和equals方法
 ]]>
     </entry>
-    <entry key="java.entity.AvoidDoubleOrFloatEqualCompareRule.rule.desc">
+    <entry key="java.valueobject.ValueObjectEqualsByAttributesRule.rule.desc">
         <![CDATA[
-Instruction：避免直接比较double和float
+    说明：值对象需实现hashCode和equals方法, equals需包含所有属性
 ]]>
     </entry>
+    <entry key="java.valueobject.ValueObjectEqualsByAttributesRule.rule.reference1">
+        <![CDATA[
+    @领域驱动设计精粹 @P87
+        和实体不一样，它没有唯一标识符，而是由值类型封装的属性对比来决定相等性。
+]]>
+    </entry>
+
+
+    <entry key="java.valueobject.ValueObjectIsImmutableRule.rule.msg">
+        <![CDATA[
+    值对象需实现hashCode和equals方法
+]]>
+    </entry>
+    <entry key="java.valueobject.ValueObjectIsImmutableRule.rule.desc">
+        <![CDATA[
+    说明：值对象需实现hashCode和equals方法, equals需包含所有属性
+]]>
+    </entry>
+    <entry key="java.valueobject.ValueObjectIsImmutableRule.rule.reference1">
+        <![CDATA[
+    @领域驱动设计精粹 @P87
+        和实体不一样，它没有唯一标识符，而是由值类型封装的属性对比来决定相等性。
+]]>
+    </entry>
+
+
+    <entry key="java.valueobject.ValueObjectNonIdentifierRule.rule.msg">
+        <![CDATA[
+    值对象没有唯一标识符
+]]>
+    </entry>
+    <entry key="java.valueobject.ValueObjectNonIdentifierRule.rule.desc">
+        <![CDATA[
+    说明：值对象没有唯一标识符,不应含有identifier属性和注解, id/uniqueCode等属性
+]]>
+    </entry>
+    <entry key="java.valueobject.ValueObjectNonIdentifierRule.rule.reference1">
+        <![CDATA[
+    @领域驱动设计精粹 @P87
+        和实体不一样，它没有唯一标识符，而是由值类型封装的属性对比来决定相等性。
+]]>
+    </entry>
+
+
 </properties>

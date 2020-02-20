@@ -60,7 +60,8 @@ public interface ASTUtils {
     static List<ASTAnnotation> findDescendantsAnnotations(Annotatable node, Class<? extends Annotation> targetAnnotation) {
         List<ASTAnnotation> result = new ArrayList<>(8);
         for (ASTAnnotation declaredAnnotation : node.findDescendantsOfType(ASTAnnotation.class)) {
-            if (declaredAnnotation.getType().getName().equals(targetAnnotation.getName())) {
+            final Class<?> type = declaredAnnotation.getType();
+            if (type != null && type.getName().equals(targetAnnotation.getName())) {
                 result.add(declaredAnnotation);
             }
         }
