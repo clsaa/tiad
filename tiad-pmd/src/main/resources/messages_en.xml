@@ -11,6 +11,13 @@
 Instruction：entity will be index by the identifier
 ]]>
     </entry>
+    <entry key="java.entity.EntityMustHaveOneIdentifierRule.rule.desc">
+        <![CDATA[
+@领域驱动设计精粹 @P86
+一个实体模型就是一个独立的事物。每个实体都拥有一个唯一的标识符，可以将它的个体性和所有其他类型相同或者不同的实体区分开。许多时候，也许应该说绝大多数时候，实体是可变的。也就是说，它的状态会随着时间发生变化。不过，一个实体不一定必须是可变的，它也可能是不可变的。将实体与其他建模 工具区分开的主要因素是它的唯一性一一即它的个体性。
+
+]]>
+    </entry>
     <entry key="java.entity.AvoidDoubleOrFloatEqualCompareRule.rule.msg">
         <![CDATA[
     avoid double or float equal compare

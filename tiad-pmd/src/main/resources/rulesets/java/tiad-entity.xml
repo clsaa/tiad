@@ -8,13 +8,8 @@
     <rule name="EntityMustHaveOneIdentifierRule" message="java.entity.EntityMustHaveOneIdentifierRule.rule.msg"
           class="com.clsaa.tiad.pmd.lang.java.rule.entity.EntityMustHaveOneIdentifierRule">
         <description>java.entity.EntityMustHaveOneIdentifierRule.rule.desc</description>
-        <priority>3</priority>
-
-        <example>
-            <![CDATA[
-example
-]]>
-        </example>
+        <priority>1</priority>
+        <example>java.entity.EntityMustHaveOneIdentifierRule.rule.reference1</example>
     </rule>
 
     <rule name="AvoidDoubleOrFloatEqualCompareRule" message="java.entity.AvoidDoubleOrFloatEqualCompareRule.rule.msg"

@@ -17,6 +17,11 @@ public abstract class AbstractTiadRule extends AbstractJavaRule {
     }
 
     @Override
+    public void addExample(String example) {
+        super.addExample(I18nResources.getMessageWithExceptionHandled(example));
+    }
+
+    @Override
     public void addViolationWithMessage(Object data, Node node, String message) {
         super.addViolationWithMessage(data, node, I18nResources.getMessageWithExceptionHandled(message));
     }
