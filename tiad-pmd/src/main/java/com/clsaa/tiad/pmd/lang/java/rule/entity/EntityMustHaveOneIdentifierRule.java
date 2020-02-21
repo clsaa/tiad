@@ -18,7 +18,6 @@ import java.util.List;
 public class EntityMustHaveOneIdentifierRule extends AbstractTiadRule {
     @Override
     public Object visit(ASTClassOrInterfaceDeclaration node, Object data) {
-        log.info("visit node:{}, data:{} ", node, data);
         final ASTAnnotation entityAnnotation = ASTUtils.findFirstAnnotation(node, Entity.class);
         if (entityAnnotation == null) {
             return super.visit(node, data);

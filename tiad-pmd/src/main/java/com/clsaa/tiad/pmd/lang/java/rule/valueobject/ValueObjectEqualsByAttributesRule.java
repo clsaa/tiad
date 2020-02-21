@@ -16,9 +16,17 @@
 
 package com.clsaa.tiad.pmd.lang.java.rule.valueobject;
 
+import com.clsaa.tiad.buidlingblock.annotation.ValueObject;
+import com.clsaa.tiad.pmd.lang.java.constances.MethodNames;
 import com.clsaa.tiad.pmd.lang.java.rule.AbstractTiadRule;
+import com.clsaa.tiad.pmd.lang.java.util.ASTUtils;
+import com.clsaa.tiad.pmd.lang.java.util.ViolationUtils;
 import lombok.extern.slf4j.Slf4j;
+import net.sourceforge.pmd.lang.java.ast.ASTAnnotation;
 import net.sourceforge.pmd.lang.java.ast.ASTClassOrInterfaceDeclaration;
+import net.sourceforge.pmd.lang.java.ast.ASTMethodDeclaration;
+
+import java.util.List;
 
 /**
  * @author clsaa
@@ -27,7 +35,26 @@ import net.sourceforge.pmd.lang.java.ast.ASTClassOrInterfaceDeclaration;
 public class ValueObjectEqualsByAttributesRule extends AbstractTiadRule {
     @Override
     public Object visit(ASTClassOrInterfaceDeclaration node, Object data) {
-        log.info("visit node:{}, data:{} ", node, data);
+        final ASTAnnotation valueObjectAnnotation = ASTUtils.findFirstAnnotation(node, ValueObject.class);
+        if (valueObjectAnnotation == null) {
+            return super.visit(node, data);
+        }
+        List<ASTMethodDeclaration> descendantsOfType = node.findDescendantsOfType(ASTMethodDeclaration.class);
+        boolean hasEquals = false;
+        boolean hasHashCode = false;
+        for (ASTMethodDeclaration astMethodDeclaration : descendantsOfType) {
+            final String methodName = astMethodDeclaration.getMethodName();
+            if (MethodNames.EQUALS.equals(methodName) && astMethodDeclaration.isPublic()) {
+                hasEquals = true;
+            }
+            if (MethodNames.HASH_CODE.equals(methodName) && astMethodDeclaration.isPublic()) {
+                hasHashCode = true;
+            }
+        }
+
+        if (!hasHashCode || !hasEquals) {
+            ViolationUtils.addViolationWithPrecisePosition(this, valueObjectAnnotation, data);
+        }
 
         return super.visit(node, data);
     }

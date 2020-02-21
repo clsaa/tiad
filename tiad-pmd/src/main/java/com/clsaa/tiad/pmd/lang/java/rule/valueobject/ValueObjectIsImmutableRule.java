@@ -16,9 +16,14 @@
 
 package com.clsaa.tiad.pmd.lang.java.rule.valueobject;
 
+import com.clsaa.tiad.buidlingblock.annotation.ValueObject;
 import com.clsaa.tiad.pmd.lang.java.rule.AbstractTiadRule;
+import com.clsaa.tiad.pmd.lang.java.util.ASTUtils;
+import com.clsaa.tiad.pmd.lang.java.util.ViolationUtils;
 import lombok.extern.slf4j.Slf4j;
-import net.sourceforge.pmd.lang.java.ast.ASTClassOrInterfaceDeclaration;
+import net.sourceforge.pmd.lang.java.ast.*;
+
+import java.util.List;
 
 /**
  * @author clsaa
@@ -27,8 +32,17 @@ import net.sourceforge.pmd.lang.java.ast.ASTClassOrInterfaceDeclaration;
 public class ValueObjectIsImmutableRule extends AbstractTiadRule {
     @Override
     public Object visit(ASTClassOrInterfaceDeclaration node, Object data) {
-        log.info("visit node:{}, data:{} ", node, data);
-
+        final ASTAnnotation valueObjectAnnotation = ASTUtils.findFirstAnnotation(node, ValueObject.class);
+        if (valueObjectAnnotation == null) {
+            return super.visit(node, data);
+        }
+        final List<ASTFieldDeclaration> astFieldDeclarations = node.findDescendantsOfType(ASTFieldDeclaration.class);
+        for (ASTFieldDeclaration astFieldDeclaration : astFieldDeclarations) {
+            if (!astFieldDeclaration.isFinal()) {
+                ViolationUtils.addViolationWithPrecisePosition(this, valueObjectAnnotation, data);
+                return super.visit(node, data);
+            }
+        }
         return super.visit(node, data);
     }
 }

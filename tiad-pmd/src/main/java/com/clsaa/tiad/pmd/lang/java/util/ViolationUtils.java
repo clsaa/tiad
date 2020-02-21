@@ -7,6 +7,9 @@ import net.sourceforge.pmd.lang.java.ast.ASTMethodDeclarator;
 import net.sourceforge.pmd.lang.java.ast.ASTVariableDeclaratorId;
 import net.sourceforge.pmd.lang.rule.AbstractRule;
 
+/**
+ * @author clsaa
+ */
 public class ViolationUtils {
     public static void addViolationWithPrecisePosition(AbstractRule rule, Node node, Object data) {
         addViolationWithPrecisePosition(rule, node, data, null);
