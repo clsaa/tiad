@@ -17,7 +17,7 @@ public class DataKey<T> {
         return new DataKey<>(key);
     }
 
-    public static <T> T cast(Object o) {
+    public T cast(Object o) {
         return (T) o;
     }
 

@@ -56,13 +56,15 @@ public class BuildingBlockStructure {
         }
     }
 
-    public List<BuildingBlock> getByClass(Class buildingBlockClass) {
-        List<BuildingBlock> result = new ArrayList<>(32);
+    public <T extends BuildingBlock> List<T> getByClass(Class<T> buildingBlockClass) {
+        List<T> result = new ArrayList<>(32);
         Map<String, BuildingBlocks> fileIdIndexMap = buildingBlockMap.get(buildingBlockClass.getName());
         if (fileIdIndexMap != null) {
             Collection<BuildingBlocks> values = fileIdIndexMap.values();
             for (BuildingBlocks value : values) {
-                result.addAll(value.getBuildingBlocks());
+                for (BuildingBlock buildingBlock : value.getBuildingBlocks()) {
+                    result.add(buildingBlockClass.cast(buildingBlock));
+                }
             }
         }
         return result;

@@ -12,4 +12,17 @@
         <example>java.entity.EntityMustHaveOneIdentifierRule.rule.reference1</example>
     </rule>
 
+    <rule name="EntityPackageNameRule" message="java.entity.EntityPackageNameRule.rule.msg"
+          class="com.clsaa.tiad.pmd.lang.java.rule.entity.EntityPackageNameRule">
+        <description>java.entity.EntityPackageNameRule.rule.desc</description>
+        <priority>5</priority>
+        <example>java.entity.EntityPackageNameRule.rule.reference1</example>
+    </rule>
+
+    <rule name="EntityShouldInAggregateRule" message="java.entity.EntityShouldInAggregateRule.rule.msg"
+          class="com.clsaa.tiad.pmd.lang.java.rule.entity.EntityShouldInAggregateRule">
+        <description>java.entity.EntityShouldInAggregateRule.rule.desc</description>
+        <priority>1</priority>
+        <example>java.entity.EntityShouldInAggregateRule.rule.reference1</example>
+    </rule>
 </ruleset>

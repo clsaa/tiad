@@ -46,7 +46,7 @@ public abstract class AbstractPmdTest {
         this.configuration = new PMDConfiguration();
         this.ruleSetFactory = new RuleSetFactory();
         this.ruleSet = ruleSetFactory.createRuleSet(getRuleSetName().replace("/", "-"));
-        this.ctx = new RuleContext();
+        this.ctx = getRuleContext();
         this.sourceCodeProcessor = new SourceCodeProcessor(configuration);
         this.report = Report.createReport(ctx, getCheckFilePath());
 
@@ -58,6 +58,11 @@ public abstract class AbstractPmdTest {
                 sourceCodeProcessor.processSourceCode(read, this.ruleSets, ctx);
             }
         }
+    }
+
+    public RuleContext getRuleContext() {
+        RuleContext ruleContext = new RuleContext();
+        return ruleContext;
     }
 
     public List<RuleViolation> getRuleViolations() {
