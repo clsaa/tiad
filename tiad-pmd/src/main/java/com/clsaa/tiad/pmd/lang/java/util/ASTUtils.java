@@ -30,7 +30,8 @@ public interface ASTUtils {
 
     static ASTAnnotation findFirstAnnotation(Annotatable node, Class<? extends Annotation> targetAnnotation) {
         for (ASTAnnotation declaredAnnotation : node.getDeclaredAnnotations()) {
-            if (declaredAnnotation.getType().getName().equals(targetAnnotation.getName())) {
+            final Class<?> type = declaredAnnotation.getType();
+            if (type != null && type.getName().equals(targetAnnotation.getName())) {
                 return declaredAnnotation;
             }
         }
@@ -40,7 +41,8 @@ public interface ASTUtils {
     static List<ASTAnnotation> findAnnotations(Annotatable node, Class<? extends Annotation> targetAnnotation) {
         List<ASTAnnotation> result = new ArrayList<>(8);
         for (ASTAnnotation declaredAnnotation : node.getDeclaredAnnotations()) {
-            if (declaredAnnotation.getType().getName().equals(targetAnnotation.getName())) {
+            final Class<?> type = declaredAnnotation.getType();
+            if (type != null && type.getName().equals(targetAnnotation.getName())) {
                 result.add(declaredAnnotation);
             }
         }
@@ -50,7 +52,8 @@ public interface ASTUtils {
 
     static boolean existAnnotation(Annotatable node, Class<? extends Annotation> targetAnnotation) {
         for (ASTAnnotation declaredAnnotation : node.getDeclaredAnnotations()) {
-            if (declaredAnnotation.getType().getName().equals(targetAnnotation.getName())) {
+            final Class<?> type = declaredAnnotation.getType();
+            if (type != null && type.getName().equals(targetAnnotation.getName())) {
                 return true;
             }
         }

@@ -52,12 +52,16 @@ public class ValueObjectNonIdentifierRule extends AbstractTiadRule {
             return super.visit(node, data);
         }
         final List<ASTFieldDeclaration> fieldDeclarations = node.findDescendantsOfType(ASTFieldDeclaration.class);
+        boolean hasIdentifier = false;
         for (ASTFieldDeclaration fieldDeclaration : fieldDeclarations) {
             final String filedName = fieldDeclaration.getFirstDescendantOfType(ASTVariableDeclaratorId.class).getVariableName();
             if (IDENTIFIER_MEANS_FILED_NAME.contains(filedName)) {
-                ViolationUtils.addViolationWithPrecisePosition(this, valueObjectAnnotation, data);
-                return super.visit(node, data);
+                hasIdentifier = true;
+                ViolationUtils.addViolationWithPrecisePosition(this, fieldDeclaration, data);
             }
+        }
+        if (hasIdentifier) {
+            ViolationUtils.addViolationWithPrecisePosition(this, valueObjectAnnotation, data);
         }
         return super.visit(node, data);
     }

@@ -37,11 +37,15 @@ public class ValueObjectIsImmutableRule extends AbstractTiadRule {
             return super.visit(node, data);
         }
         final List<ASTFieldDeclaration> astFieldDeclarations = node.findDescendantsOfType(ASTFieldDeclaration.class);
+        boolean allFiledIsFinal = true;
         for (ASTFieldDeclaration astFieldDeclaration : astFieldDeclarations) {
             if (!astFieldDeclaration.isFinal()) {
-                ViolationUtils.addViolationWithPrecisePosition(this, valueObjectAnnotation, data);
-                return super.visit(node, data);
+                allFiledIsFinal = false;
+                ViolationUtils.addViolationWithPrecisePosition(this, astFieldDeclaration, data);
             }
+        }
+        if (!allFiledIsFinal){
+            ViolationUtils.addViolationWithPrecisePosition(this, valueObjectAnnotation, data);
         }
         return super.visit(node, data);
     }

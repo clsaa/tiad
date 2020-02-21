@@ -47,33 +47,32 @@ Instruction：avoid double or float equal compare
 ]]>
     </entry>
 
-
     <entry key="java.valueobject.ValueObjectIsImmutableRule.rule.msg">
         <![CDATA[
-    值对象需实现hashCode和equals方法
+    值对象不可变, 属性应由final修饰
 ]]>
     </entry>
     <entry key="java.valueobject.ValueObjectIsImmutableRule.rule.desc">
         <![CDATA[
-    说明：值对象需实现hashCode和equals方法, equals需包含所有属性
+    说明：值对象不可变,属性应由final修饰
 ]]>
     </entry>
     <entry key="java.valueobject.ValueObjectIsImmutableRule.rule.reference1">
         <![CDATA[
     @领域驱动设计精粹 @P87
-        和实体不一样，它没有唯一标识符，而是由值类型封装的属性对比来决定相等性。
+        一个值对象，或者更简单地说，值（value），是对一个不变的概念整体所建立的模型。在这个模型中，值就真的只有一个值。
 ]]>
     </entry>
 
 
     <entry key="java.valueobject.ValueObjectNonIdentifierRule.rule.msg">
         <![CDATA[
-    值对象没有唯一标识符
+    值对象不应有唯一标识符
 ]]>
     </entry>
     <entry key="java.valueobject.ValueObjectNonIdentifierRule.rule.desc">
         <![CDATA[
-    说明：值对象没有唯一标识符,不应含有identifier属性和注解, id/uniqueCode等属性
+    说明：值对象不应有唯一标识符,不应含有identifier属性和注解, id/uniqueCode等属性
 ]]>
     </entry>
     <entry key="java.valueobject.ValueObjectNonIdentifierRule.rule.reference1">
@@ -82,6 +81,5 @@ Instruction：avoid double or float equal compare
         和实体不一样，它没有唯一标识符，而是由值类型封装的属性对比来决定相等性。
 ]]>
     </entry>
-
 
 </properties>
