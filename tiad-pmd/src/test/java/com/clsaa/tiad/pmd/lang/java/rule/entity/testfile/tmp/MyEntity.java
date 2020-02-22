@@ -14,12 +14,10 @@
  *    limitations under the License.
  */
 
-package com.clsaa.tiad.pmd.lang.java.constances;
+package com.clsaa.tiad.pmd.lang.java.rule.entity.testfile.tmp;
 
-/**
- * @author clsaa
- */
-public interface DefaultStrings {
-    String DOT = ".";
-    String PACKAGE_IMPORT_ALL_SUFFIX = "*;";
+import com.clsaa.tiad.buidlingblock.annotation.Entity;
+
+@Entity
+public class MyEntity {
 }

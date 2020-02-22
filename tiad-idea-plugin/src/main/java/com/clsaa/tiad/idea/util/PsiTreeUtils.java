@@ -1,5 +1,6 @@
 package com.clsaa.tiad.idea.util;
 
+import com.clsaa.tiad.buidlingblock.constance.DefaultStrings;
 import com.clsaa.tiad.buidlingblock.entity.descriptor.Location;
 import com.clsaa.tiad.buidlingblock.entity.descriptor.UserSpecification;
 import com.intellij.psi.*;
@@ -53,7 +54,10 @@ public interface PsiTreeUtils {
             final PsiClass psiClass = (PsiClass) psiModifierListOwner;
             final PsiJavaFile psiJavaFile = (PsiJavaFile) psiClass.getContainingFile();
             final Location location = Location.builder()
-                    .packageName(psiJavaFile.getPackageName()).className(psiClass.getName()).build();
+                    .packageName(psiJavaFile.getPackageName())
+                    .simpleClassName(psiClass.getName())
+                    .fullClassName(psiJavaFile.getPackageName() + DefaultStrings.DOT + psiClass.getName())
+                    .build();
             return location;
         }
         if (psiModifierListOwner instanceof PsiMethod) {
@@ -62,7 +66,8 @@ public interface PsiTreeUtils {
             final PsiJavaFile psiJavaFile = (PsiJavaFile) Objects.requireNonNull(psiClass).getContainingFile();
             final Location location = Location.builder()
                     .packageName(psiJavaFile.getPackageName())
-                    .className(psiClass.getName())
+                    .simpleClassName(psiClass.getName())
+                    .fullClassName(psiJavaFile.getPackageName() + DefaultStrings.DOT + psiClass.getName())
                     .methodName(getSignature(psiMethod))
                     .build();
             return location;

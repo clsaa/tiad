@@ -25,4 +25,11 @@
         <priority>1</priority>
         <example>java.entity.EntityShouldInAggregateRule.rule.reference1</example>
     </rule>
+
+    <rule name="EntityOnlyUseInAggregateExceptForRootRule" message="java.entity.EntityOnlyUseInAggregateExceptForRootRule.rule.msg"
+          class="com.clsaa.tiad.pmd.lang.java.rule.entity.EntityOnlyUseInAggregateExceptForRootRule">
+        <description>java.entity.EntityOnlyUseInAggregateExceptForRootRule.rule.desc</description>
+        <priority>1</priority>
+        <example>java.entity.EntityOnlyUseInAggregateExceptForRootRule.rule.reference1</example>
+    </rule>
 </ruleset>

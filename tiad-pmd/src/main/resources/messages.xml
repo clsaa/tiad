@@ -24,17 +24,17 @@
     </entry>
 
 
-    <entry key="java.valueobject.EntityPackageNameRule.rule.msg">
+    <entry key="java.entity.EntityPackageNameRule.rule.msg">
         <![CDATA[
     实体所在包建议命名为entity
 ]]>
     </entry>
-    <entry key="java.valueobject.EntityPackageNameRule.rule.desc">
+    <entry key="java.entity.EntityPackageNameRule.rule.desc">
         <![CDATA[
     说明：实体所在包建议命名为entity
 ]]>
     </entry>
-    <entry key="java.valueobject.EntityPackageNameRule.rule.reference1">
+    <entry key="java.entity.EntityPackageNameRule.rule.reference1">
         <![CDATA[
         package com.clsaa.tiad.entity;//the package name should be entity
         @Entity
@@ -44,17 +44,17 @@
     </entry>
 
 
-    <entry key="java.valueobject.ValueObjectNonIdentifierRule.rule.msg">
+    <entry key="java.entity.EntityShouldInAggregateRule.rule.msg">
         <![CDATA[
     实体应该在聚合范围内
 ]]>
     </entry>
-    <entry key="java.valueobject.ValueObjectNonIdentifierRule.rule.desc">
+    <entry key="java.entity.EntityShouldInAggregateRule.rule.desc">
         <![CDATA[
     说明：实体应该在聚合范围内, 即实体应在聚合所在包的子包中
 ]]>
     </entry>
-    <entry key="java.valueobject.ValueObjectNonIdentifierRule.rule.reference1">
+    <entry key="java.entity.EntityShouldInAggregateRule.rule.reference1">
         <![CDATA[
     @领域驱动设计：软件核心复杂性应对之道,@P82
         AGGREGATE就是一组相关对象的集合，我们把它作为数据修改的单元。每个AGGREGATE都有一个根（root）
@@ -62,6 +62,24 @@
         ENTITY。对AGGREGATE 而言，外部对象只可以引用根，而边界内部的对象之间则可以互相引用。除根以外的
         其他 ENTITY 都有本地标识，但这些标识只在AGGREGATE内部才需要加以区别，因为外部对象除了根ENTITY
         之外看不到其他对象。
+]]>
+    </entry>
+
+    <entry key="java.entity.EntityOnlyUseInAggregateExceptForRootRule.rule.msg">
+        <![CDATA[
+    非聚合根实体只能在聚合边界内部相互访问
+]]>
+    </entry>
+    <entry key="java.entity.EntityOnlyUseInAggregateExceptForRootRule.rule.desc">
+        <![CDATA[
+    说明：非聚合根实体只能在聚合边界内部相互访问
+]]>
+    </entry>
+    <entry key="java.entity.EntityOnlyUseInAggregateExceptForRootRule.rule.reference1">
+        <![CDATA[
+    @领域驱动设计：软件核心复杂性应对之道,@P82
+        对AGGREGATE 而言，外部对象只可以引用根，而边界内部的对象之间则可以互相引用。除根以外的其他 ENTITY
+        都有本地标识，但这些标识只在AGGREGATE内部才需要加以区别，因为外部对象除了根ENTITY之 外看不到其他对象。
 ]]>
     </entry>
 

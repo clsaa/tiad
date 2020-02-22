@@ -13,7 +13,8 @@ import java.io.Serializable;
 @Builder
 public class Location implements Serializable {
     protected String packageName;
-    protected String className;
+    protected String simpleClassName;
+    protected String fullClassName;
     protected String fieldName;
     protected String methodName;
 
@@ -22,9 +23,9 @@ public class Location implements Serializable {
         if (this.getPackageName() != null) {
             builder.append(this.getPackageName());
         }
-        if (this.getClassName() != null) {
+        if (this.getSimpleClassName() != null) {
             builder.append(DefaultStrings.DOT);
-            builder.append(this.getClassName());
+            builder.append(this.getSimpleClassName());
         }
         if (this.getFieldName() != null) {
             builder.append(DefaultStrings.SEPARATOR);

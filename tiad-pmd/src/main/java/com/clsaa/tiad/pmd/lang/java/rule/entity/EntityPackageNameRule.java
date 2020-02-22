@@ -9,7 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import net.sourceforge.pmd.lang.java.ast.ASTAnnotation;
 import net.sourceforge.pmd.lang.java.ast.ASTClassOrInterfaceDeclaration;
 
-import java.util.List;
+import java.util.*;
 
 /**
  * @author clsaa

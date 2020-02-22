@@ -39,5 +39,4 @@ public class EntityPackageNameRuleTest extends AbstractEntityPmdTest {
         final List<RuleViolation> ruleViolations = getRuleViolations();
         TestCase.assertEquals(1, ruleViolations.size());
     }
-
 }
