@@ -14,29 +14,29 @@
  *    limitations under the License.
  */
 
-package com.clsaa.tiad.pmd.lang.java.rule.entity;
+package com.clsaa.tiad.pmd.lang.java.rule.aggregateroot;
 
-import com.clsaa.tiad.pmd.lang.java.rule.entity.testfile.EntityShouldInAggregateRuleTestTarget;
+import com.clsaa.tiad.pmd.lang.java.rule.aggregateroot.testfile.AggregateRootIsAnEntityRuleTestTarget;
 import junit.framework.TestCase;
 import net.sourceforge.pmd.RuleViolation;
 import org.junit.Test;
 
 import java.util.List;
 
-public class EntityShouldInAggregateRuleTestPass extends AbstractEntityPmdTest {
+public class AggregateRootIsAnEntityRuleTest extends AbstractAggregateRootPmdTest {
     @Override
     public String getCheckFilePath() {
-        return testfilePath + EntityShouldInAggregateRuleTestTarget.class.getSimpleName() + ".java";
+        return testfilePath + AggregateRootIsAnEntityRuleTestTarget.class.getSimpleName() + ".java";
     }
 
     @Override
     public String getRuleName() {
-        return EntityShouldInAggregateRule.class.getSimpleName();
+        return AggregateRootIsAnEntityRule.class.getSimpleName();
     }
 
     @Test
     public void test() {
         final List<RuleViolation> ruleViolations = getRuleViolations();
-        TestCase.assertEquals(0, ruleViolations.size());
+        TestCase.assertEquals(1, ruleViolations.size());
     }
 }

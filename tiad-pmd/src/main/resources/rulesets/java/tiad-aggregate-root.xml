@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+
+<ruleset name="TiadEntityRuleSet" xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 http://pmd.sourceforge.net/ruleset_2_0_0.xsd">
+    <description>TiadValueObject</description>
+
+    <rule name="AggregateRootIsAnEntityRule" message="java.aggregaterooot.AggregateRootIsAnEntityRule.rule.msg"
+          class="com.clsaa.tiad.pmd.lang.java.rule.aggregateroot.AggregateRootIsAnEntityRule">
+        <description>java.aggregateroot.AggregateRootIsAnEntityRule.rule.desc</description>
+        <priority>1</priority>
+        <example>java.aggregateroot.AggregateRootIsAnEntityRule.rule.reference1</example>
+    </rule>
+
+</ruleset>

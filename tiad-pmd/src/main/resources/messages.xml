@@ -139,5 +139,22 @@
 ]]>
     </entry>
 
-
+    <!--AggregateRootMessage-->
+    <entry key="java.aggregateroot.AggregateRootIsAnEntityRule.rule.msg">
+        <![CDATA[
+    聚合根是一个实体
+]]>
+    </entry>
+    <entry key="java.aggregateroot.AggregateRootIsAnEntityRule.rule.desc">
+        <![CDATA[
+    说明：聚合根是一个实体
+]]>
+    </entry>
+    <entry key="java.aggregateroot.AggregateRootIsAnEntityRule.rule.reference1">
+        <![CDATA[
+    @领域驱动设计：软件核心复杂性应对之道,@P82
+    AGGREGATE就是一组相关对象的集合，我 们把它作为数据修改的单元。每个AGGREGATE都有一个根（root）
+    和一个边界（boundary）。边界 定义了AGGREGATE的内部都有什么。根则是AGGREGATE所包含的一个特定ENTITY。
+]]>
+    </entry>
 </properties>
