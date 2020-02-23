@@ -142,12 +142,12 @@
     <!--AggregateRootMessage-->
     <entry key="java.aggregateroot.AggregateRootIsAnEntityRule.rule.msg">
         <![CDATA[
-    聚合根是一个实体
+    聚合根必须是一个实体
 ]]>
     </entry>
     <entry key="java.aggregateroot.AggregateRootIsAnEntityRule.rule.desc">
         <![CDATA[
-    说明：聚合根是一个实体
+    说明：聚合根必须是一个实体, 使用@AggregateRoot前先使用@Entity
 ]]>
     </entry>
     <entry key="java.aggregateroot.AggregateRootIsAnEntityRule.rule.reference1">
