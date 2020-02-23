@@ -10,7 +10,7 @@ import java.lang.annotation.*;
  * @author clsaa
  */
 @Documented
-@Target(value = {ElementType.TYPE, ElementType.PACKAGE})
+@Target(value = {ElementType.PACKAGE})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface BoundedContext {
     /**

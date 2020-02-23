@@ -12,4 +12,10 @@
     <artifactId>tiad-examples</artifactId>
 
 
+    <dependencies>
+        <dependency>
+            <groupId>com.clsaa.tiad</groupId>
+            <artifactId>tiad-building-block</artifactId>
+        </dependency>
+    </dependencies>
 </project>

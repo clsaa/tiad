@@ -16,8 +16,7 @@
 
 package com.clsaa.tiad.pmd.lang.java.util;
 
-import net.sourceforge.pmd.lang.java.ast.ASTAnnotation;
-import net.sourceforge.pmd.lang.java.ast.Annotatable;
+import net.sourceforge.pmd.lang.java.ast.*;
 
 import java.lang.annotation.Annotation;
 import java.util.ArrayList;
@@ -69,5 +68,42 @@ public interface ASTUtils {
             }
         }
         return result;
+    }
+
+    static ASTAnnotation findFirstDescendantsAnnotations(Annotatable node, Class<? extends Annotation> targetAnnotation) {
+        for (ASTAnnotation declaredAnnotation : node.findDescendantsOfType(ASTAnnotation.class)) {
+            final Class<?> type = declaredAnnotation.getType();
+            if (type != null && type.getName().equals(targetAnnotation.getName())) {
+                return declaredAnnotation;
+            }
+        }
+        return null;
+    }
+
+    static ASTAnnotation findFirstAnnotationForPackage(ASTPackageDeclaration node, Class<? extends Annotation> targetAnnotation) {
+        final List<ASTAnnotation> astAnnotations = node.findDescendantsOfType(ASTAnnotation.class);
+        for (ASTAnnotation declaredAnnotation : astAnnotations) {
+            final Class<?> type = declaredAnnotation.getType();
+            if (type != null && type.getName().equals(targetAnnotation.getName())) {
+                return declaredAnnotation;
+            }
+            if (type == null) {
+                if (!declaredAnnotation.getAnnotationName().equals(targetAnnotation.getSimpleName())) {
+                    continue;
+                }
+                final ASTCompilationUnit compilationUnit = node.getFirstParentOfAnyType(ASTCompilationUnit.class);
+                if (compilationUnit != null) {
+                    List<ASTImportDeclaration> descendantsOfType = compilationUnit.findDescendantsOfType(ASTImportDeclaration.class);
+                    for (ASTImportDeclaration importDeclaration : descendantsOfType) {
+                        final String importedName = importDeclaration.getImportedName();
+                        if (importedName.equals(targetAnnotation.getName())
+                                || importedName.equals(targetAnnotation.getPackage().getName())) {
+                            return declaredAnnotation;
+                        }
+                    }
+                }
+            }
+        }
+        return null;
     }
 }

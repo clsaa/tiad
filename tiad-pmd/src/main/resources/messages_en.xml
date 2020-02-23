@@ -65,6 +65,24 @@
 ]]>
     </entry>
 
+    <entry key="java.entity.EntityOnlyUseInAggregateExceptForRootRule.rule.msg">
+        <![CDATA[
+    非聚合根实体只能在聚合边界内部相互访问
+]]>
+    </entry>
+    <entry key="java.entity.EntityOnlyUseInAggregateExceptForRootRule.rule.desc">
+        <![CDATA[
+    说明：非聚合根实体只能在聚合边界内部相互访问
+]]>
+    </entry>
+    <entry key="java.entity.EntityOnlyUseInAggregateExceptForRootRule.rule.reference1">
+        <![CDATA[
+    @领域驱动设计：软件核心复杂性应对之道,@P82
+        对AGGREGATE 而言，外部对象只可以引用根，而边界内部的对象之间则可以互相引用。除根以外的其他 ENTITY
+        都有本地标识，但这些标识只在AGGREGATE内部才需要加以区别，因为外部对象除了根ENTITY之 外看不到其他对象。
+]]>
+    </entry>
+
 
     <!--    ValueObjectMessage-->
 
@@ -121,5 +139,66 @@
 ]]>
     </entry>
 
+    <!--AggregateRootMessage-->
+    <entry key="java.aggregateroot.AggregateRootIsAnEntityRule.rule.msg">
+        <![CDATA[
+    聚合根必须是一个实体
+]]>
+    </entry>
+    <entry key="java.aggregateroot.AggregateRootIsAnEntityRule.rule.desc">
+        <![CDATA[
+    说明：聚合根必须是一个实体, 使用@AggregateRoot前先使用@Entity
+]]>
+    </entry>
+    <entry key="java.aggregateroot.AggregateRootIsAnEntityRule.rule.reference1">
+        <![CDATA[
+    @领域驱动设计：软件核心复杂性应对之道,@P82
+    AGGREGATE就是一组相关对象的集合，我 们把它作为数据修改的单元。每个AGGREGATE都有一个根（root）
+    和一个边界（boundary）。边界 定义了AGGREGATE的内部都有什么。根则是AGGREGATE所包含的一个特定ENTITY。
+]]>
+    </entry>
+
+    <!--Aggregate-->
+    <entry key="java.aggregate.AggregateShouldHaveOneRootRule.rule.msg">
+        <![CDATA[
+    聚合必须有一个根实体
+]]>
+    </entry>
+    <entry key="java.aggregate.AggregateShouldHaveOneRootRule.rule.desc">
+        <![CDATA[
+    说明：聚合必须有一个根实体
+]]>
+    </entry>
+    <entry key="java.aggregate.AggregateShouldHaveOneRootRule.rule.reference1">
+        <![CDATA[
+    @领域驱动设计：软件核心复杂性应对之道,@82;
+    AGGREGATE就是一组相关对象的集合，我 们把它作为数据修改的单元。每个AGGREGATE都有一个根（root）和一个边界（boundary）。
+]]>
+    </entry>
+
+    <entry key="java.aggregate.AggregateShouldHaveOneRootRule.rule.reference2">
+        <![CDATA[
+    @实现领域驱动设计,@P116
+    如果一个或多个技术服务端点，比如 R E S T 资 源 、S O A P 接口或消息类型被用于决定限界上下文的大小，那么上述情况是有可能
+    发生的，结果是将导致许多非常小的限界上下文和领域模型，这样的模型中很有 可能只包含一个实体对象，并且该实体作为某个单一聚合的根对象而存在。
+]]>
+    </entry>
+
+    <entry key="java.aggregate.AggregateShouldHaveOneRootRule.rule.msg">
+        <![CDATA[
+    聚合必须包含在一个限界上下文中
+]]>
+    </entry>
+    <entry key="java.aggregate.AggregateShouldHaveOneRootRule.rule.desc">
+        <![CDATA[
+    说明：聚合必须包含在一个限界上下文中
+]]>
+    </entry>
+    <entry key="java.aggregate.AggregateShouldHaveOneRootRule.rule.reference1">
+        <![CDATA[
+    @领域驱动设计精粹,@P86
+    这两个限界上下文中你看到的每一个被圈起来的概念都是一个聚合 。
+]]>
+    </entry>
 
 </properties>

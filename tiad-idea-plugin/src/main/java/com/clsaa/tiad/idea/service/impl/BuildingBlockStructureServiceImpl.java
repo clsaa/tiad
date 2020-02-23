@@ -68,6 +68,11 @@ public class BuildingBlockStructureServiceImpl implements BuildingBlockStructure
     }
 
     @Override
+    public void remove(String fileId) {
+        this.buildingBlockStructure.removeByFileId(fileId);
+    }
+
+    @Override
     public BuildingBlockStructure get() {
         this.tryRefresh();
         return this.buildingBlockStructure;

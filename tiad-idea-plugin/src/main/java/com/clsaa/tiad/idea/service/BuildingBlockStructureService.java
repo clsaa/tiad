@@ -19,5 +19,7 @@ public interface BuildingBlockStructureService {
 
     void update(PsiFile psiFile);
 
+    void remove(String fileId);
+
     BuildingBlockStructure get();
 }

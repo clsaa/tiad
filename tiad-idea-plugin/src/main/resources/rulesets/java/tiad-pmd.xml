@@ -7,4 +7,5 @@
     <rule ref="rulesets/java/tiad-entity.xml"/>
     <rule ref="rulesets/java/tiad-value-object.xml"/>
     <rule ref="rulesets/java/tiad-aggregate-root.xml"/>
+    <rule ref="rulesets/java/tiad-aggregate.xml"/>
 </ruleset>
