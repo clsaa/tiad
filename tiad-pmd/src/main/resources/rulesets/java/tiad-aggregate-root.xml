@@ -5,7 +5,7 @@
          xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 http://pmd.sourceforge.net/ruleset_2_0_0.xsd">
     <description>TiadValueObject</description>
 
-    <rule name="AggregateRootIsAnEntityRule" message="java.aggregaterooot.AggregateRootIsAnEntityRule.rule.msg"
+    <rule name="AggregateRootIsAnEntityRule" message="java.aggregateroot.AggregateRootIsAnEntityRule.rule.msg"
           class="com.clsaa.tiad.pmd.lang.java.rule.aggregateroot.AggregateRootIsAnEntityRule">
         <description>java.aggregateroot.AggregateRootIsAnEntityRule.rule.desc</description>
         <priority>1</priority>
