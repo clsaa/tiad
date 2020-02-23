@@ -47,7 +47,7 @@ public class EntityOnlyUseInAggregateExceptForRootRuleTest extends AbstractEntit
     @Test
     public void test() {
         final List<RuleViolation> ruleViolations = getRuleViolations();
-        TestCase.assertEquals(2, ruleViolations.size());
+        TestCase.assertEquals(3, ruleViolations.size());
     }
 
     @Override
