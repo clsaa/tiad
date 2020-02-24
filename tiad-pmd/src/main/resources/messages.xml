@@ -281,4 +281,45 @@
         从而引发意外。你的团队控制着源代码和数据库并定义了官方接口，必须通过这些接ロ才可以调用限界上下文。
 ]]>
     </entry>
+
+
+    <!--SubdomainMessage-->
+    <entry key="java.subdomain.SubdomainOneBoundedContextRule.rule.msg">
+        <![CDATA[
+    子域最好与限界上下文一一对应
+]]>
+    </entry>
+    <entry key="java.subdomain.SubdomainOneBoundedContextRule.rule.desc">
+        <![CDATA[
+    说明：子域最好与限界上下文一一对应
+]]>
+    </entry>
+    <entry key="java.subdomain.SubdomainOneBoundedContextRule.rule.reference1">
+        <![CDATA[
+    @领域驱动设计精粹,P52
+    正是因为采用了 DDD 的战略设计，团队方能实现最佳的建模成果：限界上下文与子域之间一一对应。
+    换句话说，敏捷项目管理核心即一个清晰的限界上下文，也是一个清晰的子域。在某些情况下，一个
+    限界上下文中有可能存在多个子域，但这并非是最理想的建模结果
+]]>
+    </entry>
+
+    <entry key="java.subdomain.SubdomainShouldInBoundedContextRule.rule.msg">
+        <![CDATA[
+    子域应该包含于限界上下文中
+]]>
+    </entry>
+    <entry key="java.subdomain.SubdomainShouldInBoundedContextRule.rule.desc">
+        <![CDATA[
+    说明：子域应该包含于限界上下文中
+]]>
+    </entry>
+    <entry key="java.subdomain.SubdomainShouldInBoundedContextRule.rule.reference1">
+        <![CDATA[
+    @领域驱动设计精粹,P52
+    正是因为采用了 DDD 的战略设计，团队方能实现最佳的建模成果：限界上下文与子域之间一一对应。
+    换句话说，敏捷项目管理核心即一个清晰的限界上下文，也是一个清晰的子域。在某些情况下，一个
+    限界上下文中有可能存在多个子域，但这并非是最理想的建模结果
+]]>
+    </entry>
+
 </properties>

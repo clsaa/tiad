@@ -9,4 +9,5 @@
     <rule ref="rulesets/java/tiad-aggregate-root.xml"/>
     <rule ref="rulesets/java/tiad-aggregate.xml"/>
     <rule ref="rulesets/java/tiad-bounded-context.xml"/>
+    <rule ref="rulesets/java/tiad-subdomain.xml"/>
 </ruleset>
