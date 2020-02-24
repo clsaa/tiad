@@ -1,10 +1,10 @@
 package com.clsaa.tiad.pmd.lang.java.context;
 
 import com.clsaa.tiad.buidlingblock.entity.structure.BuildingBlockStructure;
+import com.clsaa.tiad.buidlingblock.entity.structure.ProjectDescriptor;
 import lombok.Builder;
 import lombok.Data;
 import net.sourceforge.pmd.Rule;
-import net.sourceforge.pmd.RuleContext;
 
 import java.io.Reader;
 
@@ -14,6 +14,7 @@ import java.io.Reader;
 @Data
 @Builder
 public class TiadRuleContext {
+    private ProjectDescriptor projectDescriptor;
     private BuildingBlockStructure buildingBlockStructure;
     private String currentFileName;
     private Reader sourceCode;

@@ -23,6 +23,8 @@
         <postStartupActivity implementation="com.clsaa.tiad.idea.activity.StartUpActivity"/>
 
         <inspectionToolProvider implementation="com.clsaa.tiad.idea.inspection.TiadPmdInspectionProvider"/>
+        <projectService serviceInterface="com.clsaa.tiad.idea.service.ProjectDescriptorService"
+                        serviceImplementation="com.clsaa.tiad.idea.service.impl.ProjectDescriptorServiceImpl"/>
     </extensions>
     <actions>
         <!-- Add your actions here -->

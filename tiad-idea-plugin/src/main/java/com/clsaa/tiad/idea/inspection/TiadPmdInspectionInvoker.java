@@ -17,7 +17,9 @@
 package com.clsaa.tiad.idea.inspection;
 
 import com.clsaa.tiad.buidlingblock.entity.structure.BuildingBlockStructure;
+import com.clsaa.tiad.buidlingblock.entity.structure.ProjectDescriptor;
 import com.clsaa.tiad.idea.service.BuildingBlockStructureService;
+import com.clsaa.tiad.idea.service.ProjectDescriptorService;
 import com.clsaa.tiad.pmd.lang.java.context.TiadRuleContext;
 import com.clsaa.tiad.pmd.lang.java.processor.TiadPmdProcessor;
 import com.google.common.base.Throwables;
@@ -59,8 +61,17 @@ public class TiadPmdInspectionInvoker {
 
         final String nickFileName = virtualFile.getCanonicalPath();
 
-        final TiadRuleContext tiadRuleContext = TiadRuleContext.builder().sourceCode(new StringReader(document.getText()))
-                .currentFileName(nickFileName).rule(context.getRule()).buildingBlockStructure(buildingBlockStructure).build();
+
+        final ProjectDescriptorService projectDescriptorService = ProjectDescriptorService.getInstance(project);
+        final ProjectDescriptor projectDescriptor = projectDescriptorService.get();
+
+        final TiadRuleContext tiadRuleContext = TiadRuleContext.builder()
+                .sourceCode(new StringReader(document.getText()))
+                .currentFileName(nickFileName)
+                .rule(context.getRule())
+                .buildingBlockStructure(buildingBlockStructure)
+                .projectDescriptor(projectDescriptor)
+                .build();
 
         try {
             Report report = new TiadPmdProcessor().process(tiadRuleContext);

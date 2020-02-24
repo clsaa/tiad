@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+
+<ruleset name="TiadEntityRuleSet" xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 http://pmd.sourceforge.net/ruleset_2_0_0.xsd">
+    <description>TiadAggregate</description>
+
+    <rule name="BoundedContextNonOverlapRule"
+          message="java.boundedcontext.BoundedContextNonOverlapRule.rule.msg"
+          class="com.clsaa.tiad.pmd.lang.java.rule.boundedcontext.BoundedContextNonOverlapRule">
+        <description>java.boundedcontext.BoundedContextNonOverlapRule.rule.desc</description>
+        <priority>1</priority>
+        <example>java.boundedcontext.BoundedContextNonOverlapRule.rule.reference1</example>
+    </rule>
+
+
+    <rule name="BoundedContextOneApplicationRule"
+          message="java.boundedcontext.BoundedContextOneApplicationRule.rule.msg"
+          class="com.clsaa.tiad.pmd.lang.java.rule.boundedcontext.BoundedContextOneApplicationRule">
+        <description>java.boundedcontext.BoundedContextOneApplicationRule.rule.desc</description>
+        <priority>2</priority>
+        <example>java.boundedcontext.BoundedContextOneApplicationRule.rule.reference1</example>
+    </rule>
+
+
+    <rule name="BoundedContextOnlyOneCodeRepositoryRule"
+          message="java.boundedcontext.BoundedContextOnlyOneCodeRepositoryRule.rule.msg"
+          class="com.clsaa.tiad.pmd.lang.java.rule.boundedcontext.BoundedContextOnlyOneCodeRepositoryRule">
+        <description>java.boundedcontext.BoundedContextOnlyOneCodeRepositoryRule.rule.desc</description>
+        <priority>2</priority>
+        <example>java.boundedcontext.BoundedContextOnlyOneCodeRepositoryRule.rule.reference1</example>
+    </rule>
+</ruleset>

@@ -17,6 +17,7 @@ public class TiadPmdProcessor {
 
         RuleContext ruleContext = new RuleContext();
         ruleContext.setAttribute(DataKeys.BUILDING_BLOCK_STRUCTURE_DATA_KEY.getName(), context.getBuildingBlockStructure());
+        ruleContext.setAttribute(DataKeys.PROJECT_DESCRIPTOR_DATA_KEY.getName(), context.getProjectDescriptor());
 
         final RuleSet ruleSet = ruleSetFactory.createSingleRuleRuleSet(context.getRule());
         final RuleSets ruleSets = new RuleSets(ruleSet);
