@@ -303,17 +303,17 @@
 ]]>
     </entry>
 
-    <entry key="java.subdomain.SubdomainShouldInBoundedContextRule.rule.msg">
+    <entry key="java.subdomain.SubdomainShouldInABoundedContextRule.rule.msg">
         <![CDATA[
     子域应该包含于限界上下文中
 ]]>
     </entry>
-    <entry key="java.subdomain.SubdomainShouldInBoundedContextRule.rule.desc">
+    <entry key="java.subdomain.SubdomainShouldInABoundedContextRule.rule.desc">
         <![CDATA[
     说明：子域应该包含于限界上下文中
 ]]>
     </entry>
-    <entry key="java.subdomain.SubdomainShouldInBoundedContextRule.rule.reference1">
+    <entry key="java.subdomain.SubdomainShouldInABoundedContextRule.rule.reference1">
         <![CDATA[
     @领域驱动设计精粹,P52
     正是因为采用了 DDD 的战略设计，团队方能实现最佳的建模成果：限界上下文与子域之间一一对应。
@@ -322,4 +322,26 @@
 ]]>
     </entry>
 
+    <!--    ContextMappingMessage-->
+    <entry key="java.contextmapping.ContextMappingShouldInABoundedContextRule.rule.msg">
+        <![CDATA[
+    上下文映射应起始或结束于某个限界上下文
+]]>
+    </entry>
+    <entry key="java.contextmapping.ContextMappingShouldInABoundedContextRule.rule.desc">
+        <![CDATA[
+    说明：上下文映射应起始或结束于某个限界上下文
+]]>
+    </entry>
+    <entry key="java.contextmapping.ContextMappingShouldInABoundedContextRule.rule.reference1">
+        <![CDATA[
+    @领域驱动设计精粹,P58
+        敏捷项目管理核心域必须和其他限界上下文进行集成。这种集成关系在 DDD 中称为上下文映射（Context Mapping）。
+        你可以在上面的上下文映射图（Context Map 中看到，Discussion 同时存在于两个限界上下文（Bounded Context）之中。
+        回忆一下，这是因为协作上下文是 Discussion 的来源，而敏捷项目管理上下文是 Discussion 的消费者。
+        上图中，上下文映射用虚线框里的线段表示（虚线框不是上下文映射的一部分，只是用于强调中间的线段）。
+        实际上，连接两个限界上下文之间的这条线段就代表了上下文映射。换句话说，这条线段表示这两个限界上下文之间存在着某种形式的映射，
+        包括两个限界上下文之间的集成关系以及团队间的动态关系。
+]]>
+    </entry>
 </properties>

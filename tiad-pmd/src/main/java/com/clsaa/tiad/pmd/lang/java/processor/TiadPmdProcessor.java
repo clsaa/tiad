@@ -14,7 +14,6 @@ public class TiadPmdProcessor {
     private static RuleSetFactory ruleSetFactory = new RuleSetFactory();
 
     public Report process(TiadRuleContext context) {
-        configuration.setClassLoader(Thread.currentThread().getContextClassLoader());
         RuleContext ruleContext = new RuleContext();
         ruleContext.setAttribute(DataKeys.BUILDING_BLOCK_STRUCTURE_DATA_KEY.getName(), context.getBuildingBlockStructure());
         ruleContext.setAttribute(DataKeys.PROJECT_DESCRIPTOR_DATA_KEY.getName(), context.getProjectDescriptor());

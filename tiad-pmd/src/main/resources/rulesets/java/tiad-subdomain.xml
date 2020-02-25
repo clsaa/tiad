@@ -13,11 +13,11 @@
     </rule>
 
 
-    <rule name="SubdomainShouldInBoundedContextRule"
-          message="java.subdomain.SubdomainShouldInBoundedContextRule.rule.msg"
-          class="com.clsaa.tiad.pmd.lang.java.rule.subdomain.SubdomainShouldInBoundedContextRule">
-        <description>java.subdomain.SubdomainShouldInBoundedContextRule.rule.desc</description>
+    <rule name="SubdomainShouldInABoundedContextRule"
+          message="java.subdomain.SubdomainShouldInABoundedContextRule.rule.msg"
+          class="com.clsaa.tiad.pmd.lang.java.rule.subdomain.SubdomainShouldInABoundedContextRule">
+        <description>java.subdomain.SubdomainShouldInABoundedContextRule.rule.desc</description>
         <priority>1</priority>
-        <example>java.subdomain.SubdomainShouldInBoundedContextRule.rule.reference1</example>
+        <example>java.subdomain.SubdomainShouldInABoundedContextRule.rule.reference1</example>
     </rule>
 </ruleset>

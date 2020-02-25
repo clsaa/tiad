@@ -106,4 +106,14 @@ public interface ASTUtils {
         }
         return null;
     }
+
+    static ASTPackageDeclaration getPackageDeclaration(JavaNode node) {
+        final ASTCompilationUnit compilationUnit = node.getFirstParentOfType(ASTCompilationUnit.class);
+        final List<ASTPackageDeclaration> packageDeclarations = compilationUnit.findDescendantsOfType(ASTPackageDeclaration.class);
+        for (ASTPackageDeclaration packageDeclaration : packageDeclarations) {
+            return packageDeclaration;
+        }
+        return null;
+    }
+
 }
