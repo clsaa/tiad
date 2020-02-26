@@ -14,4 +14,11 @@
     </rule>
 
 
+    <rule name="ContextMappingPackageNameRule"
+          message="java.contextmapping.ContextMappingPackageNameRule.rule.msg"
+          class="com.clsaa.tiad.pmd.lang.java.rule.contextmapping.ContextMappingPackageNameRule">
+        <description>java.contextmapping.ContextMappingPackageNameRule.rule.desc</description>
+        <priority>5</priority>
+        <example>java.contextmapping.ContextMappingPackageNameRule.rule.reference1</example>
+    </rule>
 </ruleset>

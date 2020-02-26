@@ -35,17 +35,17 @@ public abstract class AbstractShouldInRule extends AbstractAnnotatableRule {
         final String packageNameImage = Objects.requireNonNull(ASTUtils.getPackageDeclaration(node)).getPackageNameImage();
         final BuildingBlockStructure buildBlockStructure = BuildBlockUtils.getBuildBlockStructure(data);
         if (buildBlockStructure == null) {
-            return super.visit(node, data);
+            return null;
         }
         final List<? extends BuildingBlock> buildingBlocks = buildBlockStructure.getByClass(this.getTargetScope());
         for (BuildingBlock buildingBlock : buildingBlocks) {
             final String bcPackageName = buildingBlock.getLocation().getPackageName();
             if (packageNameImage.startsWith(bcPackageName)) {
-                return super.visit(node, data);
+                return null;
             }
         }
         ViolationUtils.addViolationWithPrecisePosition(this, node, data);
-        return super.visit(node, data);
+        return null;
     }
 
     abstract Class<? extends BuildingBlock> getTargetScope();

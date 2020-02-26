@@ -27,4 +27,5 @@ public interface PackageNames {
     String ENTITY = Entity.class.getSimpleName().toLowerCase();
     String AGGREGATE = Aggregate.class.getSimpleName().toLowerCase();
     String AGGREGATE_SUFFIX = "domain.model";
+    String CONTEXT_MAPPING = "contextmapping";
 }

@@ -24,10 +24,10 @@ public abstract class AbstractPackageNameRule extends AbstractAnnotatableRule {
             packageNameImage = packageNameImage.substring(0, lastIndexOf);
         }
         if (packageNameImage.endsWith(getPackageSuffix())) {
-            return super.visit(node, data);
+            return null;
         }
         ViolationUtils.addViolationWithPrecisePosition(this, node, data);
-        return super.visit(node, data);
+        return null;
     }
 
     abstract public String getPackageSuffix();

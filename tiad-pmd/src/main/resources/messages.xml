@@ -394,6 +394,22 @@
 ]]>
     </entry>
 
+    <entry key="java.contextmapping.ContextMappingPackageNameRule.rule.msg">
+        <![CDATA[
+    上下文映射所在包名建议为contextmapping
+]]>
+    </entry>
+    <entry key="java.contextmapping.ContextMappingPackageNameRule.rule.desc">
+        <![CDATA[
+    说明：上下文映射所在包名建议为contextmapping
+]]>
+    </entry>
+    <entry key="java.contextmapping.ContextMappingPackageNameRule.rule.reference1">
+        <![CDATA[
+    上下文映射所在包名建议为contextmapping
+]]>
+    </entry>
+
     <!--    RepositoryMessage-->
     <entry key="java.repository.RepositoryShouldInABoundedContextRule.rule.msg">
         <![CDATA[
@@ -408,6 +424,55 @@
     <entry key="java.repository.RepositoryShouldInABoundedContextRule.rule.reference1">
         <![CDATA[
     资源库应包含于限界上下文中
+]]>
+    </entry>
+
+    <entry key="java.repository.RepositoryOneAggregateRule.rule.msg">
+        <![CDATA[
+    资源库通常与聚合一一对应
+]]>
+    </entry>
+    <entry key="java.repository.RepositoryOneAggregateRule.rule.desc">
+        <![CDATA[
+    说明：资源库通常与聚合一一对应
+]]>
+    </entry>
+    <entry key="java.repository.RepositoryOneAggregateRule.rule.reference1">
+        <![CDATA[
+    资源库通常与聚合一一对应
+]]>
+    </entry>
+
+
+    <entry key="java.repository.RepositoryShouldInAggregateRule.rule.msg">
+        <![CDATA[
+    资源库最好包含于聚合中,可保证aggregate间自由拆分组合,利于架构演进
+]]>
+    </entry>
+    <entry key="java.repository.RepositoryShouldInAggregateRule.rule.desc">
+        <![CDATA[
+    说明：资源库最好包含于聚合中,可保证aggregate间自由拆分组合,利于架构演进
+]]>
+    </entry>
+    <entry key="java.repository.RepositoryShouldInAggregateRule.rule.reference1">
+        <![CDATA[
+    资源库最好包含于聚合中,可保证aggregate间自由拆分组合,利于架构演进
+]]>
+    </entry>
+
+    <entry key="java.repository.RepositoryShouldReturnDomainObjectRule.rule.msg">
+        <![CDATA[
+    资源库接口返回类型应为领域对象, 在资源库实现中完成持久层对象PO到领域对象DO的转换
+]]>
+    </entry>
+    <entry key="java.repository.RepositoryShouldReturnDomainObjectRule.rule.desc">
+        <![CDATA[
+    说明：资源库接口返回类型应为领域对象, 在资源库实现中完成持久层对象PO到领域对象DO的转换
+]]>
+    </entry>
+    <entry key="java.repository.RepositoryShouldReturnDomainObjectRule.rule.reference1">
+        <![CDATA[
+    资源库接口返回类型应为领域对象, 在资源库实现中完成持久层对象PO到领域对象DO的转换
 ]]>
     </entry>
 </properties>

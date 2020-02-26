@@ -12,4 +12,28 @@
         <priority>1</priority>
         <example>java.repository.RepositoryShouldInABoundedContextRule.rule.reference1</example>
     </rule>
+
+    <rule name="RepositoryOneAggregateRule"
+          message="java.repository.RepositoryOneAggregateRule.rule.msg"
+          class="com.clsaa.tiad.pmd.lang.java.rule.repository.RepositoryOneAggregateRule">
+        <description>java.repository.RepositoryOneAggregateRule.rule.desc</description>
+        <priority>2</priority>
+        <example>java.repository.RepositoryOneAggregateRule.rule.reference1</example>
+    </rule>
+
+    <rule name="RepositoryShouldInAggregateRule"
+          message="java.repository.RepositoryShouldInAggregateRule.rule.msg"
+          class="com.clsaa.tiad.pmd.lang.java.rule.repository.RepositoryShouldInAggregateRule">
+        <description>java.repository.RepositoryShouldInAggregateRule.rule.desc</description>
+        <priority>2</priority>
+        <example>java.repository.RepositoryShouldInAggregateRule.rule.reference1</example>
+    </rule>
+
+    <rule name="RepositoryShouldReturnDomainObjectRule"
+          message="java.repository.RepositoryShouldReturnDomainObjectRule.rule.msg"
+          class="com.clsaa.tiad.pmd.lang.java.rule.repository.RepositoryShouldReturnDomainObjectRule">
+        <description>java.repository.RepositoryShouldReturnDomainObjectRule.rule.desc</description>
+        <priority>3</priority>
+        <example>java.repository.RepositoryShouldReturnDomainObjectRule.rule.reference1</example>
+    </rule>
 </ruleset>

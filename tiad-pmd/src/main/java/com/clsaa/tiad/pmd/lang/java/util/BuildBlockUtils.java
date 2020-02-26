@@ -16,10 +16,14 @@
 
 package com.clsaa.tiad.pmd.lang.java.util;
 
+import com.clsaa.tiad.buidlingblock.entity.buildingblock.BuildingBlock;
+import com.clsaa.tiad.buidlingblock.entity.descriptor.Location;
 import com.clsaa.tiad.buidlingblock.entity.structure.BuildingBlockStructure;
 import com.clsaa.tiad.common.data.DataKey;
 import com.clsaa.tiad.pmd.DataKeys;
 import net.sourceforge.pmd.RuleContext;
+
+import java.util.List;
 
 public interface BuildBlockUtils {
     static BuildingBlockStructure getBuildBlockStructure(Object data) {
@@ -31,5 +35,23 @@ public interface BuildBlockUtils {
         }
         final BuildingBlockStructure buildingBlockStructure = dataKey.cast(attribute);
         return buildingBlockStructure;
+    }
+
+    static <T extends BuildingBlock> T findParent(BuildingBlockStructure structure, Class<T> parentClass, BuildingBlock subBuildingBlock) {
+        final Location targetLocation = subBuildingBlock.getLocation();
+        final String targetPackageName = targetLocation.getPackageName();
+        return findParent(structure, parentClass, targetPackageName);
+    }
+
+    static <T extends BuildingBlock> T findParent(BuildingBlockStructure structure, Class<T> parentClass, String subPackage) {
+        final List<T> buildingBlocks = structure.getByClass(parentClass);
+        for (BuildingBlock block : buildingBlocks) {
+            final Location location = block.getLocation();
+            final String packageName = location.getPackageName();
+            if (subPackage.startsWith(packageName)) {
+                return parentClass.cast(block);
+            }
+        }
+        return null;
     }
 }

@@ -16,7 +16,11 @@
 
 package com.clsaa.tiad.pmd.lang.java.util;
 
+import com.clsaa.tiad.buidlingblock.entity.buildingblock.BuildingBlock;
+import com.clsaa.tiad.buidlingblock.entity.descriptor.Location;
+import com.clsaa.tiad.buidlingblock.entity.structure.BuildingBlockStructure;
 import net.sourceforge.pmd.lang.java.ast.*;
+import net.sourceforge.pmd.lang.java.typeresolution.typedefinition.JavaTypeDefinition;
 
 import java.lang.annotation.Annotation;
 import java.util.ArrayList;
@@ -131,5 +135,38 @@ public interface ASTUtils {
         }
         return null;
     }
+
+    static <T extends BuildingBlock> T findInStructure(BuildingBlockStructure structure, Class<T> target, JavaNode node) {
+        final List<ASTType> resultTypes = node.findChildrenOfType(ASTType.class);
+        if (!resultTypes.isEmpty()) {
+            final ASTType type = resultTypes.get(0);
+            final JavaTypeDefinition typeDefinition = type.getTypeDefinition();
+            final List<T> buildingBlocks = structure.getByClass(target);
+            for (BuildingBlock buildingBlock : buildingBlocks) {
+                final Location location = buildingBlock.getLocation();
+                final String packageName = location.getPackageName();
+                final String simpleClassName = location.getSimpleClassName();
+                final String fullClassName = location.getFullClassName();
+                if (typeDefinition != null) {
+                    if (fullClassName != null && fullClassName.equals(typeDefinition.getType().getName())) {
+                        return target.cast(buildingBlock);
+                    }
+                } else {
+                    final String className = type.getTypeImage();
+                    if (simpleClassName != null && simpleClassName.equals(className)) {
+                        final ASTCompilationUnit compilationUnit = node.getFirstParentOfType(ASTCompilationUnit.class);
+                        final List<ASTImportDeclaration> importDeclarations = compilationUnit.findDescendantsOfType(ASTImportDeclaration.class);
+                        for (ASTImportDeclaration importDeclaration : importDeclarations) {
+                            if (importDeclaration != null && importDeclaration.getPackageName().equals(packageName)) {
+                                return target.cast(buildingBlock);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
 
 }

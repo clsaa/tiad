@@ -30,11 +30,14 @@ public abstract class AbstractAnnotatableRule extends AbstractTiadRule {
     public abstract Class<? extends Annotation> getTargetAnnotation();
 
     @Override
+    public abstract Object visit(ASTAnnotation node, Object data);
+
+    @Override
     public Object visit(ASTCompilationUnit node, Object data) {
         final List<ASTAnnotation> annotations = ASTUtils.findDescendantsAnnotations(node, this.getTargetAnnotation());
         for (ASTAnnotation annotation : annotations) {
             return annotation.jjtAccept(this, data);
         }
-        return null;
+        return data;
     }
 }

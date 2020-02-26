@@ -30,4 +30,5 @@
         <priority>2</priority>
         <example>java.boundedcontext.BoundedContextOnlyOneCodeRepositoryRule.rule.reference1</example>
     </rule>
+
 </ruleset>
