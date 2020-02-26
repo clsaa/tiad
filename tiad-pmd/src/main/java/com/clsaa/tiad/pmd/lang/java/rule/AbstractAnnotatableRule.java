@@ -18,8 +18,7 @@ package com.clsaa.tiad.pmd.lang.java.rule;
 
 import com.clsaa.tiad.pmd.lang.java.util.ASTUtils;
 import net.sourceforge.pmd.lang.java.ast.ASTAnnotation;
-import net.sourceforge.pmd.lang.java.ast.Annotatable;
-import net.sourceforge.pmd.lang.java.ast.JavaNode;
+import net.sourceforge.pmd.lang.java.ast.ASTCompilationUnit;
 
 import java.lang.annotation.Annotation;
 import java.util.List;
@@ -31,19 +30,11 @@ public abstract class AbstractAnnotatableRule extends AbstractTiadRule {
     public abstract Class<? extends Annotation> getTargetAnnotation();
 
     @Override
-    public Object visit(JavaNode node, Object data) {
-        final List<Annotatable> annotatables = node.findDescendantsOfType(Annotatable.class);
-        int annotationCount = 0;
-        for (Annotatable annotatable : annotatables) {
-            final ASTAnnotation annotation = ASTUtils.findFirstAnnotation(annotatable, this.getTargetAnnotation());
-            if (annotation != null) {
-                annotationCount++;
-            }
+    public Object visit(ASTCompilationUnit node, Object data) {
+        final List<ASTAnnotation> annotations = ASTUtils.findDescendantsAnnotations(node, this.getTargetAnnotation());
+        for (ASTAnnotation annotation : annotations) {
+            return annotation.jjtAccept(this, data);
         }
-        if (annotationCount == 0) {
-            return null;
-        }
-        node.childrenAccept(this, data);
         return null;
     }
 }

@@ -59,30 +59,40 @@ public interface ASTUtils {
         return false;
     }
 
-    static List<ASTAnnotation> findDescendantsAnnotations(Annotatable node, Class<? extends Annotation> targetAnnotation) {
+    static List<ASTAnnotation> findDescendantsAnnotations(JavaNode node, Class<? extends Annotation> targetAnnotation) {
         List<ASTAnnotation> result = new ArrayList<>(8);
         for (ASTAnnotation declaredAnnotation : node.findDescendantsOfType(ASTAnnotation.class)) {
             final Class<?> type = declaredAnnotation.getType();
             if (type != null && type.getName().equals(targetAnnotation.getName())) {
                 result.add(declaredAnnotation);
             }
+            if (type == null) {
+                if (!declaredAnnotation.getAnnotationName().equals(targetAnnotation.getSimpleName())) {
+                    continue;
+                }
+                ASTCompilationUnit compilationUnit;
+                if (node instanceof ASTCompilationUnit) {
+                    compilationUnit = (ASTCompilationUnit) node;
+                } else {
+                    compilationUnit = node.getFirstParentOfAnyType(ASTCompilationUnit.class);
+                }
+                if (compilationUnit != null) {
+                    List<ASTImportDeclaration> descendantsOfType = compilationUnit.findDescendantsOfType(ASTImportDeclaration.class);
+                    for (ASTImportDeclaration importDeclaration : descendantsOfType) {
+                        final String importedName = importDeclaration.getImportedName();
+                        if (importedName.equals(targetAnnotation.getName())
+                                || importedName.equals(targetAnnotation.getPackage().getName())) {
+                            result.add(declaredAnnotation);
+                        }
+                    }
+                }
+            }
         }
         return result;
     }
 
-    static ASTAnnotation findFirstDescendantsAnnotations(Annotatable node, Class<? extends Annotation> targetAnnotation) {
+    static ASTAnnotation findFirstDescendantsAnnotation(JavaNode node, Class<? extends Annotation> targetAnnotation) {
         for (ASTAnnotation declaredAnnotation : node.findDescendantsOfType(ASTAnnotation.class)) {
-            final Class<?> type = declaredAnnotation.getType();
-            if (type != null && type.getName().equals(targetAnnotation.getName())) {
-                return declaredAnnotation;
-            }
-        }
-        return null;
-    }
-
-    static ASTAnnotation findFirstAnnotationForPackage(ASTPackageDeclaration node, Class<? extends Annotation> targetAnnotation) {
-        final List<ASTAnnotation> astAnnotations = node.findDescendantsOfType(ASTAnnotation.class);
-        for (ASTAnnotation declaredAnnotation : astAnnotations) {
             final Class<?> type = declaredAnnotation.getType();
             if (type != null && type.getName().equals(targetAnnotation.getName())) {
                 return declaredAnnotation;
@@ -91,7 +101,12 @@ public interface ASTUtils {
                 if (!declaredAnnotation.getAnnotationName().equals(targetAnnotation.getSimpleName())) {
                     continue;
                 }
-                final ASTCompilationUnit compilationUnit = node.getFirstParentOfAnyType(ASTCompilationUnit.class);
+                ASTCompilationUnit compilationUnit;
+                if (node instanceof ASTCompilationUnit) {
+                    compilationUnit = (ASTCompilationUnit) node;
+                } else {
+                    compilationUnit = node.getFirstParentOfAnyType(ASTCompilationUnit.class);
+                }
                 if (compilationUnit != null) {
                     List<ASTImportDeclaration> descendantsOfType = compilationUnit.findDescendantsOfType(ASTImportDeclaration.class);
                     for (ASTImportDeclaration importDeclaration : descendantsOfType) {
@@ -103,6 +118,7 @@ public interface ASTUtils {
                     }
                 }
             }
+
         }
         return null;
     }

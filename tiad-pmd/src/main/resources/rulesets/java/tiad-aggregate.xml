@@ -30,4 +30,12 @@
         <example>java.aggregate.AggregateBounderNonOverlapRule.rule.reference1</example>
     </rule>
 
+
+    <rule name="AggregatePackageNameRule"
+          message="java.aggregate.AggregatePackageNameRule.rule.msg"
+          class="com.clsaa.tiad.pmd.lang.java.rule.aggregate.AggregatePackageNameRule">
+        <description>java.aggregate.AggregatePackageNameRule.rule.desc</description>
+        <priority>5</priority>
+        <example>java.aggregate.AggregatePackageNameRule.rule.reference1</example>
+    </rule>
 </ruleset>

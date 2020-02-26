@@ -33,7 +33,7 @@ public class RulePriorityHighlightLevelMappings {
                 RulePriority.HIGH, HighlightDisplayLevels.ERROR,
                 RulePriority.MEDIUM_HIGH, HighlightDisplayLevels.WARNING,
                 RulePriority.MEDIUM, HighlightDisplayLevels.WARNING,
-                RulePriority.MEDIUM_LOW, HighlightDisplayLevels.SUGGESTION,
+                RulePriority.MEDIUM_LOW, HighlightDisplayLevels.WEAK_WARNING,
                 RulePriority.LOW, HighlightDisplayLevels.SUGGESTION
         );
     }

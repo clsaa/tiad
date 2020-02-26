@@ -19,7 +19,7 @@ import java.util.List;
 public class AggregateBounderNonOverlapRule extends AbstractTiadRule {
     @Override
     public Object visit(ASTPackageDeclaration node, Object data) {
-        final ASTAnnotation aggregateAnnotation = ASTUtils.findFirstAnnotationForPackage(node, com.clsaa.tiad.buidlingblock.annotation.Aggregate.class);
+        final ASTAnnotation aggregateAnnotation = ASTUtils.findFirstDescendantsAnnotation(node, com.clsaa.tiad.buidlingblock.annotation.Aggregate.class);
         if (aggregateAnnotation == null) {
             return super.visit(node, data);
         }

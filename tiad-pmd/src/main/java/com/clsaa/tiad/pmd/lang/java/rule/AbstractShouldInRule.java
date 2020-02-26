@@ -16,36 +16,37 @@
 
 package com.clsaa.tiad.pmd.lang.java.rule;
 
-import com.clsaa.tiad.buidlingblock.entity.buildingblock.BoundedContext;
+import com.clsaa.tiad.buidlingblock.entity.buildingblock.BuildingBlock;
 import com.clsaa.tiad.buidlingblock.entity.structure.BuildingBlockStructure;
 import com.clsaa.tiad.pmd.lang.java.util.ASTUtils;
 import com.clsaa.tiad.pmd.lang.java.util.BuildBlockUtils;
 import com.clsaa.tiad.pmd.lang.java.util.ViolationUtils;
 import net.sourceforge.pmd.lang.java.ast.ASTAnnotation;
-import net.sourceforge.pmd.lang.java.ast.ASTPackageDeclaration;
 
 import java.util.List;
+import java.util.Objects;
 
-public abstract class AbstractShouldInBoundedContext extends AbstractAnnotatableRule {
+/**
+ * @author clsaa
+ */
+public abstract class AbstractShouldInRule extends AbstractAnnotatableRule {
     @Override
-    public Object visit(ASTPackageDeclaration node, Object data) {
-        final ASTAnnotation annotation = ASTUtils.findFirstAnnotation(node, this.getTargetAnnotation());
-        if (annotation == null) {
-            return super.visit(node, data);
-        }
-        final String packageNameImage = node.getPackageNameImage();
+    public Object visit(ASTAnnotation node, Object data) {
+        final String packageNameImage = Objects.requireNonNull(ASTUtils.getPackageDeclaration(node)).getPackageNameImage();
         final BuildingBlockStructure buildBlockStructure = BuildBlockUtils.getBuildBlockStructure(data);
         if (buildBlockStructure == null) {
             return super.visit(node, data);
         }
-        final List<BoundedContext> boundedContexts = buildBlockStructure.getByClass(BoundedContext.class);
-        for (BoundedContext boundedContext : boundedContexts) {
-            final String bcPackageName = boundedContext.getLocation().getPackageName();
+        final List<? extends BuildingBlock> buildingBlocks = buildBlockStructure.getByClass(this.getTargetScope());
+        for (BuildingBlock buildingBlock : buildingBlocks) {
+            final String bcPackageName = buildingBlock.getLocation().getPackageName();
             if (packageNameImage.startsWith(bcPackageName)) {
                 return super.visit(node, data);
             }
         }
-        ViolationUtils.addViolationWithPrecisePosition(this, annotation, data);
+        ViolationUtils.addViolationWithPrecisePosition(this, node, data);
         return super.visit(node, data);
     }
+
+    abstract Class<? extends BuildingBlock> getTargetScope();
 }

@@ -14,17 +14,17 @@
  *    limitations under the License.
  */
 
-package com.clsaa.tiad.pmd.lang.java.constances;
+package com.clsaa.tiad.pmd.lang.java.rule;
 
-
-import com.clsaa.tiad.buidlingblock.entity.buildingblock.Aggregate;
-import com.clsaa.tiad.buidlingblock.entity.buildingblock.Entity;
+import com.clsaa.tiad.buidlingblock.entity.buildingblock.BoundedContext;
+import com.clsaa.tiad.buidlingblock.entity.buildingblock.BuildingBlock;
 
 /**
  * @author clsaa
  */
-public interface PackageNames {
-    String ENTITY = Entity.class.getSimpleName().toLowerCase();
-    String AGGREGATE = Aggregate.class.getSimpleName().toLowerCase();
-    String AGGREGATE_SUFFIX = "domain.model";
+public abstract class AbstractShouldInBoundedContextRule extends AbstractShouldInRule {
+    @Override
+    Class<? extends BuildingBlock> getTargetScope() {
+        return BoundedContext.class;
+    }
 }

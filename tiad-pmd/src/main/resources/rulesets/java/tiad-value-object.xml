@@ -5,6 +5,13 @@
          xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 http://pmd.sourceforge.net/ruleset_2_0_0.xsd">
     <description>TiadValueObject</description>
 
+    <rule name="ValueObjectShouldInABoundedContextRule" message="java.valueobject.ValueObjectShouldInABoundedContextRule.rule.msg"
+          class="com.clsaa.tiad.pmd.lang.java.rule.valueobject.ValueObjectShouldInABoundedContextRule">
+        <description>java.valueobject.ValueObjectShouldInABoundedContextRule.rule.desc</description>
+        <priority>1</priority>
+        <example>java.valueobject.ValueObjectShouldInABoundedContextRule.rule.reference1</example>
+    </rule>
+
     <rule name="ValueObjectEqualsByAttributesRule" message="java.valueobject.ValueObjectEqualsByAttributesRule.rule.msg"
           class="com.clsaa.tiad.pmd.lang.java.rule.valueobject.ValueObjectEqualsByAttributesRule">
         <description>java.valueobject.ValueObjectEqualsByAttributesRule.rule.desc</description>

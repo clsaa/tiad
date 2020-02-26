@@ -5,6 +5,14 @@
          xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 http://pmd.sourceforge.net/ruleset_2_0_0.xsd">
     <description>TiadEntity</description>
 
+    <rule name="EntityShouldInABoundedContextRule" message="java.entity.EntityShouldInABoundedContextRule.rule.msg"
+          class="com.clsaa.tiad.pmd.lang.java.rule.entity.EntityShouldInABoundedContextRule">
+        <description>java.entity.EntityShouldInABoundedContextRule.rule.desc</description>
+        <priority>1</priority>
+        <example>java.entity.EntityShouldInABoundedContextRule.rule.reference1</example>
+    </rule>
+
+
     <rule name="EntityMustHaveOneIdentifierRule" message="java.entity.EntityMustHaveOneIdentifierRule.rule.msg"
           class="com.clsaa.tiad.pmd.lang.java.rule.entity.EntityMustHaveOneIdentifierRule">
         <description>java.entity.EntityMustHaveOneIdentifierRule.rule.desc</description>

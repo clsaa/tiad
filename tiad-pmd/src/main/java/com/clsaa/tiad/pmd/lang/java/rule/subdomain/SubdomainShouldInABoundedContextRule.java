@@ -20,7 +20,7 @@ import java.util.List;
 public class SubdomainShouldInABoundedContextRule extends AbstractTiadRule {
     @Override
     public Object visit(ASTPackageDeclaration node, Object data) {
-        final ASTAnnotation subdomain = ASTUtils.findFirstAnnotationForPackage(node, Subdomain.class);
+        final ASTAnnotation subdomain = ASTUtils.findFirstDescendantsAnnotation(node, Subdomain.class);
         if (subdomain == null) {
             return super.visit(node, data);
         }

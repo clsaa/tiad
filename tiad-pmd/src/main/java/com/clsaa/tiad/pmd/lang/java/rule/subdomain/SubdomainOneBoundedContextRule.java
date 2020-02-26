@@ -20,7 +20,7 @@ import java.util.List;
 public class SubdomainOneBoundedContextRule extends AbstractTiadRule {
     @Override
     public Object visit(ASTPackageDeclaration node, Object data) {
-        final ASTAnnotation subdomain = ASTUtils.findFirstAnnotationForPackage(node, com.clsaa.tiad.buidlingblock.annotation.Subdomain.class);
+        final ASTAnnotation subdomain = ASTUtils.findFirstDescendantsAnnotation(node, com.clsaa.tiad.buidlingblock.annotation.Subdomain.class);
         if (subdomain == null) {
             return super.visit(node, data);
         }

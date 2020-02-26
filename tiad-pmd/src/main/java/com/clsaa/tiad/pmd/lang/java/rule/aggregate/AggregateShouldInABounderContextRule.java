@@ -20,7 +20,7 @@ import java.util.List;
 public class AggregateShouldInABounderContextRule extends AbstractTiadRule {
     @Override
     public Object visit(ASTPackageDeclaration node, Object data) {
-        final ASTAnnotation aggregateAnnotation = ASTUtils.findFirstAnnotationForPackage(node, Aggregate.class);
+        final ASTAnnotation aggregateAnnotation = ASTUtils.findFirstDescendantsAnnotation(node, Aggregate.class);
         if (aggregateAnnotation == null) {
             return super.visit(node, data);
         }

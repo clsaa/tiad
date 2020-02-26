@@ -19,7 +19,7 @@ import java.util.List;
 public class BoundedContextOneApplicationRule extends AbstractTiadRule {
     @Override
     public Object visit(ASTPackageDeclaration node, Object data) {
-        final ASTAnnotation bcAnnotation = ASTUtils.findFirstAnnotationForPackage(node, com.clsaa.tiad.buidlingblock.annotation.BoundedContext.class);
+        final ASTAnnotation bcAnnotation = ASTUtils.findFirstDescendantsAnnotation(node, com.clsaa.tiad.buidlingblock.annotation.BoundedContext.class);
         if (bcAnnotation == null) {
             return super.visit(node, data);
         }
