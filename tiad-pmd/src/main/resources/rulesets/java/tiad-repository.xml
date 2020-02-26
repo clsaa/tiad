@@ -7,7 +7,7 @@
 
     <rule name="RepositoryShouldInABoundedContextRule"
           message="java.repository.RepositoryShouldInABoundedContextRule.rule.msg"
-          class="com.clsaa.tiad.pmd.lang.java.rule.repository.RepositoryShouldInABoundedContextRule">
+          class="com.clsaa.tiad.pmd.lang.java.rule.repository.RepositoryABoundedContextRule">
         <description>java.repository.RepositoryShouldInABoundedContextRule.rule.desc</description>
         <priority>1</priority>
         <example>java.repository.RepositoryShouldInABoundedContextRule.rule.reference1</example>
@@ -23,7 +23,7 @@
 
     <rule name="RepositoryShouldInAggregateRule"
           message="java.repository.RepositoryShouldInAggregateRule.rule.msg"
-          class="com.clsaa.tiad.pmd.lang.java.rule.repository.RepositoryShouldInAggregateRule">
+          class="com.clsaa.tiad.pmd.lang.java.rule.repository.RepositoryInAggregateRule">
         <description>java.repository.RepositoryShouldInAggregateRule.rule.desc</description>
         <priority>2</priority>
         <example>java.repository.RepositoryShouldInAggregateRule.rule.reference1</example>
@@ -35,5 +35,29 @@
         <description>java.repository.RepositoryShouldReturnDomainObjectRule.rule.desc</description>
         <priority>3</priority>
         <example>java.repository.RepositoryShouldReturnDomainObjectRule.rule.reference1</example>
+    </rule>
+
+    <rule name="RepositoryHasNoOtherStereotypesRule"
+          message="java.repository.RepositoryHasNoOtherStereotypesRule.rule.msg"
+          class="com.clsaa.tiad.pmd.lang.java.rule.repository.RepositoryHasNoOtherStereotypesRule">
+        <description>java.repository.RepositoryHasNoOtherStereotypesRule.rule.desc</description>
+        <priority>2</priority>
+        <example>java.repository.RepositoryHasNoOtherStereotypesRule.rule.reference1</example>
+    </rule>
+
+    <rule name="RepositoryHasAtLeastOneMethodRule"
+          message="java.repository.RepositoryHasAtLeastOneMethodRule.rule.msg"
+          class="com.clsaa.tiad.pmd.lang.java.rule.repository.RepositoryHasAtLeastOneMethodRule">
+        <description>java.repository.RepositoryHasAtLeastOneMethodRule.rule.desc</description>
+        <priority>2</priority>
+        <example>java.repository.RepositoryHasAtLeastOneMethodRule.rule.reference1</example>
+    </rule>
+
+    <rule name="RepositoryShouldIsInterfaceRule"
+          message="java.repository.RepositoryShouldIsInterfaceRule.rule.msg"
+          class="com.clsaa.tiad.pmd.lang.java.rule.repository.RepositoryShouldIsInterfaceRule">
+        <description>java.repository.RepositoryShouldIsInterfaceRule.rule.desc</description>
+        <priority>2</priority>
+        <example>java.repository.RepositoryShouldIsInterfaceRule.rule.reference1</example>
     </rule>
 </ruleset>

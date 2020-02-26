@@ -17,6 +17,7 @@
 package com.clsaa.tiad.pmd.lang.java.constances;
 
 
+import com.clsaa.tiad.buidlingblock.annotation.BoundedContext;
 import com.clsaa.tiad.buidlingblock.entity.buildingblock.Aggregate;
 import com.clsaa.tiad.buidlingblock.entity.buildingblock.Entity;
 
@@ -28,4 +29,5 @@ public interface PackageNames {
     String AGGREGATE = Aggregate.class.getSimpleName().toLowerCase();
     String AGGREGATE_SUFFIX = "domain.model";
     String CONTEXT_MAPPING = "contextmapping";
+    String ANNOTATION_PACKAGE = BoundedContext.class.getPackage().getName();
 }

@@ -6,7 +6,7 @@
     <description>TiadValueObject</description>
 
     <rule name="ValueObjectShouldInABoundedContextRule" message="java.valueobject.ValueObjectShouldInABoundedContextRule.rule.msg"
-          class="com.clsaa.tiad.pmd.lang.java.rule.valueobject.ValueObjectShouldInABoundedContextRule">
+          class="com.clsaa.tiad.pmd.lang.java.rule.valueobject.ValueObjectABoundedContextRule">
         <description>java.valueobject.ValueObjectShouldInABoundedContextRule.rule.desc</description>
         <priority>1</priority>
         <example>java.valueobject.ValueObjectShouldInABoundedContextRule.rule.reference1</example>

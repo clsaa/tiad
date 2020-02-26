@@ -14,10 +14,11 @@
  *    limitations under the License.
  */
 
-package com.clsaa.tiad.pmd.lang.java.rule;
+package com.clsaa.tiad.pmd.lang.java.rule.abstractrule.scope;
 
 import com.clsaa.tiad.buidlingblock.entity.buildingblock.BuildingBlock;
 import com.clsaa.tiad.buidlingblock.entity.structure.BuildingBlockStructure;
+import com.clsaa.tiad.pmd.lang.java.rule.AbstractAnnotatableRule;
 import com.clsaa.tiad.pmd.lang.java.util.ASTUtils;
 import com.clsaa.tiad.pmd.lang.java.util.BuildBlockUtils;
 import com.clsaa.tiad.pmd.lang.java.util.ViolationUtils;
@@ -29,7 +30,7 @@ import java.util.Objects;
 /**
  * @author clsaa
  */
-public abstract class AbstractShouldInRule extends AbstractAnnotatableRule {
+public abstract class AbstractInScopeRule extends AbstractAnnotatableRule {
     @Override
     public Object visit(ASTAnnotation node, Object data) {
         final String packageNameImage = Objects.requireNonNull(ASTUtils.getPackageDeclaration(node)).getPackageNameImage();

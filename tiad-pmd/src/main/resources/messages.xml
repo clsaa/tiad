@@ -475,4 +475,58 @@
     资源库接口返回类型应为领域对象, 在资源库实现中完成持久层对象PO到领域对象DO的转换
 ]]>
     </entry>
+
+    <entry key="java.repository.RepositoryHasNoOtherStereotypesRule.rule.msg">
+        <![CDATA[
+    资源库不应该有其他构造型
+]]>
+    </entry>
+    <entry key="java.repository.RepositoryHasNoOtherStereotypesRule.rule.desc">
+        <![CDATA[
+    说明：资源库不应该有其他构造型
+]]>
+    </entry>
+    <entry key="java.repository.RepositoryHasNoOtherStereotypesRule.rule.reference1">
+        <![CDATA[
+    资源库不应该有其他构造型
+]]>
+    </entry>
+
+
+    <entry key="java.repository.RepositoryHasAtLeastOneMethodRule.rule.msg">
+        <![CDATA[
+    资源库至少包含一个方法
+]]>
+    </entry>
+    <entry key="java.repository.RepositoryHasAtLeastOneMethodRule.rule.desc">
+        <![CDATA[
+    说明：资源库至少包含一个方法
+]]>
+    </entry>
+    <entry key="java.repository.RepositoryHasAtLeastOneMethodRule.rule.reference1">
+        <![CDATA[
+    资源库至少包含一个方法
+]]>
+    </entry>
+
+    <entry key="java.repository.RepositoryShouldIsInterfaceRule.rule.msg">
+        <![CDATA[
+    资源库最好是一个接口,而非具体实现
+]]>
+    </entry>
+    <entry key="java.repository.RepositoryShouldIsInterfaceRule.rule.desc">
+        <![CDATA[
+    说明：资源库最好是一个接口,而非具体实现
+]]>
+    </entry>
+    <entry key="java.repository.RepositoryShouldIsInterfaceRule.rule.reference1">
+        <![CDATA[
+    @实现领域驱动设计,P364
+        我 们 可 以 将面向集合的资源库看成是一种传统的方式，因为它体现了原生 D D D 资源库模式的基本思想。
+        这种资源库模拟了一个集合，或者至少模拟了集合 上的标准接口。此时，从资源库的接口来看，我们根本看不
+        出其背后还存在着持久 化机制，也感觉不到我们是在向存储区域中保存数据。
+]]>
+    </entry>
+
+
 </properties>

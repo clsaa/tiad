@@ -7,7 +7,7 @@
 
     <rule name="ContextMappingShouldInABoundedContextRule"
           message="java.contextmapping.ContextMappingShouldInABoundedContextRule.rule.msg"
-          class="com.clsaa.tiad.pmd.lang.java.rule.contextmapping.ContextMappingShouldInABoundedContextRule">
+          class="com.clsaa.tiad.pmd.lang.java.rule.contextmapping.ContextMappingABoundedContextRule">
         <description>java.contextmapping.ContextMappingShouldInABoundedContextRule.rule.desc</description>
         <priority>1</priority>
         <example>java.contextmapping.ContextMappingShouldInABoundedContextRule.rule.reference1</example>

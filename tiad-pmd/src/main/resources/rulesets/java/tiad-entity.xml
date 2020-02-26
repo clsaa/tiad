@@ -6,7 +6,7 @@
     <description>TiadEntity</description>
 
     <rule name="EntityShouldInABoundedContextRule" message="java.entity.EntityShouldInABoundedContextRule.rule.msg"
-          class="com.clsaa.tiad.pmd.lang.java.rule.entity.EntityShouldInABoundedContextRule">
+          class="com.clsaa.tiad.pmd.lang.java.rule.entity.EntityABoundedContextRule">
         <description>java.entity.EntityShouldInABoundedContextRule.rule.desc</description>
         <priority>1</priority>
         <example>java.entity.EntityShouldInABoundedContextRule.rule.reference1</example>

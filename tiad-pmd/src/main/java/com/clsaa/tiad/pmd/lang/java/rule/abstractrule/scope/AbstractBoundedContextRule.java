@@ -14,17 +14,17 @@
  *    limitations under the License.
  */
 
-package com.clsaa.tiad.pmd.lang.java.rule;
+package com.clsaa.tiad.pmd.lang.java.rule.abstractrule.scope;
 
-import com.clsaa.tiad.buidlingblock.entity.buildingblock.Aggregate;
+import com.clsaa.tiad.buidlingblock.entity.buildingblock.BoundedContext;
 import com.clsaa.tiad.buidlingblock.entity.buildingblock.BuildingBlock;
 
 /**
  * @author clsaa
  */
-public abstract class AbstractShouldInAggregateRule extends AbstractShouldInRule {
+public abstract class AbstractBoundedContextRule extends AbstractInScopeRule {
     @Override
     Class<? extends BuildingBlock> getTargetScope() {
-        return Aggregate.class;
+        return BoundedContext.class;
     }
 }
