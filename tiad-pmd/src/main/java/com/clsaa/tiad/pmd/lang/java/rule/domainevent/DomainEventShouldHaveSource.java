@@ -51,9 +51,8 @@ public class DomainEventShouldHaveSource extends AbstractAnnotatableRule {
             }
         }
         final ASTClassOrInterfaceType superClassTypeNode = classOrInterfaceDeclaration.getSuperClassTypeNode();
-        final List<ASTClassOrInterfaceDeclaration> declarations = superClassTypeNode.findChildrenOfType(ASTClassOrInterfaceDeclaration.class);
-        for (ASTClassOrInterfaceDeclaration declaration : declarations) {
-            if (declaration.getType().getName().equals(EventObject.class.getName())) {
+        if (superClassTypeNode != null) {
+            if (EventObject.class.getName().equals(superClassTypeNode.getType().getName())) {
                 return data;
             }
         }

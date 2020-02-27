@@ -582,7 +582,7 @@
 
 
     <!--SpecificationMessage-->
-    <entry key="java.specification.DomainServiceHasAtLeastOneMethodRule.rule.msg">
+    <entry key="java.specification.SpecificationShouldInBoundedContextRule.rule.msg">
         <![CDATA[
     规范应包含于限界上下文中
 ]]>
@@ -650,17 +650,17 @@
     </entry>
 
     <!--DomainEventMessage-->
-    <entry key="java.domainevent.SpecificationShouldInBoundedContextRule.rule.msg">
+    <entry key="java.domainevent.DomainEventShouldInBoundedContextRule.rule.msg">
         <![CDATA[
     领域事件应包含于限界上下文中
 ]]>
     </entry>
-    <entry key="java.domainevent.SpecificationShouldInBoundedContextRule.rule.desc">
+    <entry key="java.domainevent.DomainEventShouldInBoundedContextRule.rule.desc">
         <![CDATA[
     说明：领域事件应包含于限界上下文中
 ]]>
     </entry>
-    <entry key="java.domainevent.SpecificationShouldInBoundedContextRule.rule.reference1">
+    <entry key="java.domainevent.DomainEventShouldInBoundedContextRule.rule.reference1">
         <![CDATA[
     领域事件应包含于限界上下文中
 ]]>
