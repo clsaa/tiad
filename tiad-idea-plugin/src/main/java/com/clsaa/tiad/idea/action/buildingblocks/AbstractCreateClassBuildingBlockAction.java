@@ -14,63 +14,45 @@
  *    limitations under the License.
  */
 
-package com.clsaa.tiad.idea.action.creator.java;
+package com.clsaa.tiad.idea.action.buildingblocks;
 
+import com.clsaa.tiad.idea.i18n.TiadBundle;
 import com.intellij.ide.IdeBundle;
 import com.intellij.ide.actions.CreateFileFromTemplateDialog;
-import com.intellij.ide.fileTemplates.FileTemplate;
-import com.intellij.ide.fileTemplates.FileTemplateManager;
-import com.intellij.ide.fileTemplates.JavaCreateFromTemplateHandler;
-import com.intellij.ide.fileTemplates.JavaTemplateUtil;
-import com.intellij.ide.highlighter.JavaFileType;
+import com.intellij.ide.actions.JavaCreateTemplateInPackageAction;
 import com.intellij.openapi.project.DumbAware;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.InputValidatorEx;
 import com.intellij.openapi.util.text.StringUtil;
-import com.intellij.pom.java.LanguageLevel;
 import com.intellij.psi.*;
-import com.intellij.psi.util.PsiUtil;
 import com.intellij.util.IncorrectOperationException;
 import com.intellij.util.PlatformIcons;
+import lombok.extern.slf4j.Slf4j;
 import org.jetbrains.annotations.NotNull;
 
+import javax.swing.*;
+import java.util.HashMap;
 import java.util.Map;
 
 /**
- * The standard "New Class" action.
+ * @author clsaa
  */
-public class TiadCreateClassAction extends TiadJavaCreateTemplateInPackageAction<PsiClass> implements DumbAware {
-    public TiadCreateClassAction() {
+@Slf4j
+public abstract class AbstractCreateClassBuildingBlockAction extends JavaCreateTemplateInPackageAction<PsiClass> implements DumbAware {
+    public AbstractCreateClassBuildingBlockAction() {
         super("", IdeBundle.message("action.create.new.class.description"), PlatformIcons.CLASS_ICON, true);
     }
 
     @Override
     protected void buildDialog(final Project project, PsiDirectory directory, CreateFileFromTemplateDialog.Builder builder) {
-        builder
-                .setTitle(IdeBundle.message("action.create.new.class"))
-                .addKind("Class", PlatformIcons.CLASS_ICON, JavaTemplateUtil.INTERNAL_CLASS_TEMPLATE_NAME)
-                .addKind("Interface", PlatformIcons.INTERFACE_ICON, JavaTemplateUtil.INTERNAL_INTERFACE_TEMPLATE_NAME);
-        LanguageLevel level = PsiUtil.getLanguageLevel(directory);
-        if (level.isAtLeast(LanguageLevel.JDK_1_5)) {
-            builder.addKind("Enum", PlatformIcons.ENUM_ICON, JavaTemplateUtil.INTERNAL_ENUM_TEMPLATE_NAME);
-            builder.addKind("Annotation", PlatformIcons.ANNOTATION_TYPE_ICON, JavaTemplateUtil.INTERNAL_ANNOTATION_TYPE_TEMPLATE_NAME);
-        }
-
-        for (FileTemplate template : FileTemplateManager.getInstance(project).getAllTemplates()) {
-            final JavaCreateFromTemplateHandler handler = new JavaCreateFromTemplateHandler();
-            if (handler.handlesTemplate(template) && JavaCreateFromTemplateHandler.canCreate(directory)) {
-                builder.addKind(template.getName(), JavaFileType.INSTANCE.getIcon(), template.getName());
-            }
-        }
+        builder.setTitle(TiadBundle.message(this.getTitleKey()))
+                .addKind(this.getKind(), this.getIcon(), this.getTemplateName());
 
         builder.setValidator(new InputValidatorEx() {
             @Override
             public String getErrorText(String inputString) {
                 if (inputString.length() > 0 && !PsiNameHelper.getInstance(project).isQualifiedName(inputString)) {
                     return "This is not a valid Java qualified name";
-                }
-                if (level.isAtLeast(LanguageLevel.JDK_10) && PsiKeyword.VAR.equals(StringUtil.getShortName(inputString))) {
-                    return "var cannot be used for type declarations";
                 }
                 return null;
             }
@@ -86,6 +68,7 @@ public class TiadCreateClassAction extends TiadJavaCreateTemplateInPackageAction
             }
         });
     }
+
 
     @Override
     protected String removeExtension(String templateName, String className) {
@@ -111,6 +94,9 @@ public class TiadCreateClassAction extends TiadJavaCreateTemplateInPackageAction
 
     @Override
     protected PsiClass doCreate(PsiDirectory dir, String className, String templateName) throws IncorrectOperationException {
+        final Map<String, String> properties = new HashMap<>(4);
+        properties.put("TIAD_IMPORT_PACKAGES", this.getImportPackages());
+        properties.put("TIAD_ANNOTATIONS", this.getAnnotations());
         return JavaDirectoryService.getInstance().createClass(dir, className, templateName, true, properties);
     }
 
@@ -124,5 +110,32 @@ public class TiadCreateClassAction extends TiadJavaCreateTemplateInPackageAction
         super.postProcess(createdElement, templateName, customProperties);
 
         moveCaretAfterNameIdentifier(createdElement);
+    }
+
+    abstract public Class getBuildingBlockClass();
+
+
+    public String getKind() {
+        return this.getBuildingBlockClass().getSimpleName();
+    }
+
+    public Icon getIcon() {
+        return PlatformIcons.CLASS_ICON;
+    }
+
+    public String getTemplateName() {
+        return this.getBuildingBlockClass().getSimpleName();
+    }
+
+    public String getTitleKey() {
+        return "action.create.new." + this.getBuildingBlockClass().getSimpleName().toLowerCase();
+    }
+
+    public String getImportPackages() {
+        return "import " + this.getBuildingBlockClass().getName() + ";";
+    }
+
+    public String getAnnotations() {
+        return "@ " + this.getBuildingBlockClass().getName();
     }
 }

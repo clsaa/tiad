@@ -14,10 +14,16 @@
  *    limitations under the License.
  */
 
-package com.clsaa.tiad.idea.action.creator.buildingblocks;
+package com.clsaa.tiad.idea.action.buildingblocks;
 
-import com.intellij.openapi.actionSystem.AnAction;
+import com.clsaa.tiad.buidlingblock.annotation.Entity;
 
-public abstract class AbstractNewBuildingBlockAction extends AnAction {
-
+/**
+ * @author clsaa
+ */
+public class CreateEntityAction extends AbstractCreateClassBuildingBlockAction {
+    @Override
+    public Class<Entity> getBuildingBlockClass() {
+        return Entity.class;
+    }
 }

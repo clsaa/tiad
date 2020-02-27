@@ -1,0 +1,5 @@
+#parse("File Header.java")
+${TIAD_ANNOTATIONS}
+#if (${PACKAGE_NAME} && ${PACKAGE_NAME} != "")package ${PACKAGE_NAME};#end
+
+${TIAD_IMPORT_PACKAGES}

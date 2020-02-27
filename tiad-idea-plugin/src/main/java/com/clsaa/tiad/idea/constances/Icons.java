@@ -1,6 +1,5 @@
 package com.clsaa.tiad.idea.constances;
 
-import com.intellij.icons.AllIcons;
 import com.intellij.ui.IconManager;
 
 import javax.swing.*;
@@ -10,7 +9,7 @@ import javax.swing.*;
  */
 public interface Icons {
     static Icon load(String path) {
-        return IconManager.getInstance().getIcon(path, AllIcons.class);
+        return IconManager.getInstance().getIcon(path, Icons.class);
     }
 
     Icon AGGREGATE = load("/icon/buildingblocks/aggregate.png");

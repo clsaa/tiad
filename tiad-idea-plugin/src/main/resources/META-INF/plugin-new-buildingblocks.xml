@@ -4,16 +4,13 @@
                icon="/icon/buildingblocks/buildingblocks.png"
                description="NewBuildingBlock" popup="true">
             <add-to-group group-id="NewGroup1" anchor="last"/>
-            <action id="TiadPlugin.NewBuildingBlock.Aggregate"
-                    class="com.clsaa.tiad.idea.action.creator.buildingblocks.NewAggregateAction"
-                    text="Aggregate"
-                    icon="/icon/buildingblocks/aggregate.png"
-                    description="Aggregate">
-            </action>
+            <action id="TiadPlugin.NewBuildingBlock.CreateEntityAction"
+                    class="com.clsaa.tiad.idea.action.buildingblocks.CreateEntityAction"
+                    text="Entity"/>
+            <action id="TiadPlugin.NewBuildingBlock.CreateAggregateAction"
+                    class="com.clsaa.tiad.idea.action.buildingblocks.CreateAggregateAction"
+                    text="CreateAggregateAction"/>
         </group>
 
     </actions>
-    <extensions defaultExtensionNs="com.intellij">
-        <internalFileTemplate name="Aggregate"/>
-    </extensions>
 </idea-plugin>
