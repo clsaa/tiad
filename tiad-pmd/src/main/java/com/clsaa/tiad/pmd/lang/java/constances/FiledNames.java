@@ -23,4 +23,5 @@ public interface FiledNames {
     String ID = "id";
     String IDENTIFIER = "identifier";
     String UNIQUE_CODE = "uniqueCode";
+    String SOURCE = "source";
 }

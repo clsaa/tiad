@@ -22,7 +22,7 @@ import com.clsaa.tiad.buidlingblock.entity.buildingblock.BuildingBlock;
 /**
  * @author clsaa
  */
-public abstract class AbstractBoundedContextRule extends AbstractInScopeRule {
+public abstract class AbstractInBoundedContextRule extends AbstractInScopeRule {
     @Override
     Class<? extends BuildingBlock> getTargetScope() {
         return BoundedContext.class;

@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+
+<ruleset name="TiadEntityRuleSet" xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 http://pmd.sourceforge.net/ruleset_2_0_0.xsd">
+    <description>TiadAggregate</description>
+
+    <rule name="SpecificationShouldInBoundedContextRule"
+          message="java.domainevent.SpecificationShouldInBoundedContextRule.rule.msg"
+          class="com.clsaa.tiad.pmd.lang.java.rule.domainevent.SpecificationShouldInBoundedContextRule">
+        <description>java.domainevent.SpecificationShouldInBoundedContextRule.rule.desc</description>
+        <priority>1</priority>
+        <example>java.domainevent.SpecificationShouldInBoundedContextRule.rule.reference1</example>
+    </rule>
+
+    <rule name="DomainEventShouldHaveSource"
+          message="java.domainevent.DomainEventShouldHaveSource.rule.msg"
+          class="com.clsaa.tiad.pmd.lang.java.rule.domainevent.DomainEventShouldHaveSource">
+        <description>java.domainevent.DomainEventShouldHaveSource.rule.desc</description>
+        <priority>2</priority>
+        <example>java.domainevent.DomainEventShouldHaveSource.rule.reference1</example>
+    </rule>
+
+    <rule name="DomainEventNameShouldBeVerbRule"
+          message="java.domainevent.DomainEventNameShouldBeVerbRule.rule.msg"
+          class="com.clsaa.tiad.pmd.lang.java.rule.domainevent.DomainEventNameShouldBeVerbRule">
+        <description>java.domainevent.DomainEventNameShouldBeVerbRule.rule.desc</description>
+        <priority>1</priority>
+        <example>java.domainevent.DomainEventNameShouldBeVerbRule.rule.reference1</example>
+    </rule>
+
+    <rule name="DomainEventMustHaveOneIdentifierRule"
+          message="java.domainevent.DomainEventMustHaveOneIdentifierRule.rule.msg"
+          class="com.clsaa.tiad.pmd.lang.java.rule.domainevent.DomainEventMustHaveOneIdentifierRule">
+        <description>java.domainevent.DomainEventMustHaveOneIdentifierRule.rule.desc</description>
+        <priority>1</priority>
+        <example>java.domainevent.DomainEventMustHaveOneIdentifierRule.rule.reference1</example>
+    </rule>
+</ruleset>

@@ -169,7 +169,10 @@ public interface ASTUtils {
     }
 
     static ASTClassOrInterfaceDeclaration findASTClassOrInterfaceDeclarationInParent(JavaNode node) {
-        final JavaNode parent = node.getParent();
+        JavaNode parent = node.getParent();
+        if (parent == null) {
+            parent = node;
+        }
         final List<ASTClassOrInterfaceDeclaration> declarations = parent.findChildrenOfType(ASTClassOrInterfaceDeclaration.class);
         if (declarations.size() == 1) {
             return declarations.get(0);

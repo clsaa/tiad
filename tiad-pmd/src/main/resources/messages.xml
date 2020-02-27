@@ -529,4 +529,208 @@
     </entry>
 
 
+    <!--DomainServiceMessage-->
+    <entry key="java.domainservice.DomainServiceShouldInBoundedContextRule.rule.msg">
+        <![CDATA[
+    领域服务应该包含于限界上下文中
+]]>
+    </entry>
+    <entry key="java.domainservice.DomainServiceShouldInBoundedContextRule.rule.desc">
+        <![CDATA[
+    说明：领域服务应该包含于限界上下文中
+]]>
+    </entry>
+    <entry key="java.domainservice.DomainServiceShouldInBoundedContextRule.rule.reference1">
+        <![CDATA[
+    领域服务应该包含于限界上下文中
+]]>
+    </entry>
+
+
+    <entry key="java.domainservice.DomainServiceHasNoOtherStereotypesRule.rule.msg">
+        <![CDATA[
+    领域服务不应该有其他构造型
+]]>
+    </entry>
+    <entry key="java.domainservice.DomainServiceHasNoOtherStereotypesRule.rule.desc">
+        <![CDATA[
+    说明：领域服务不应该有其他构造型
+]]>
+    </entry>
+    <entry key="java.domainservice.DomainServiceHasNoOtherStereotypesRule.rule.reference1">
+        <![CDATA[
+    领域服务不应该有其他构造型
+]]>
+    </entry>
+
+
+    <entry key="java.domainservice.DomainServiceHasAtLeastOneMethodRule.rule.msg">
+        <![CDATA[
+    领域服务至少包含一个方法
+]]>
+    </entry>
+    <entry key="java.domainservice.DomainServiceHasAtLeastOneMethodRule.rule.desc">
+        <![CDATA[
+    说明：领域服务至少包含一个方法
+]]>
+    </entry>
+    <entry key="java.domainservice.DomainServiceHasAtLeastOneMethodRule.rule.reference1">
+        <![CDATA[
+    领域服务至少包含一个方法
+]]>
+    </entry>
+
+
+    <!--SpecificationMessage-->
+    <entry key="java.specification.DomainServiceHasAtLeastOneMethodRule.rule.msg">
+        <![CDATA[
+    规范应包含于限界上下文中
+]]>
+    </entry>
+    <entry key="java.specification.SpecificationShouldInBoundedContextRule.rule.desc">
+        <![CDATA[
+    说明：规范应包含于限界上下文中
+]]>
+    </entry>
+    <entry key="java.specification.SpecificationShouldInBoundedContextRule.rule.reference1">
+        <![CDATA[
+    规范应包含于限界上下文中
+]]>
+    </entry>
+
+    <entry key="java.specification.SpecificationHasNoOtherStereotypesRule.rule.msg">
+        <![CDATA[
+    规范不应该有其他构造型
+]]>
+    </entry>
+    <entry key="java.specification.SpecificationHasNoOtherStereotypesRule.rule.desc">
+        <![CDATA[
+    说明：规范不应该有其他构造型
+]]>
+    </entry>
+    <entry key="java.specification.SpecificationHasNoOtherStereotypesRule.rule.reference1">
+        <![CDATA[
+    规范不应该有其他构造型
+]]>
+    </entry>
+
+
+    <entry key="java.specification.SpecificationHasAtLeastOneMethodRule.rule.msg">
+        <![CDATA[
+    规范至少包含一个方法
+]]>
+    </entry>
+    <entry key="java.specification.SpecificationHasAtLeastOneMethodRule.rule.desc">
+        <![CDATA[
+    说明：规范至少包含一个方法
+]]>
+    </entry>
+    <entry key="java.specification.SpecificationHasAtLeastOneMethodRule.rule.reference1">
+        <![CDATA[
+    规范至少包含一个方法
+]]>
+    </entry>
+
+
+    <!--FactoryMessage-->
+    <entry key="java.factory.FactoryShouldInBoundedContextRule.rule.msg">
+        <![CDATA[
+    工厂应该包含于限界上下文中
+]]>
+    </entry>
+    <entry key="java.factory.FactoryShouldInBoundedContextRule.rule.desc">
+        <![CDATA[
+    说明：工厂应该包含于限界上下文中
+]]>
+    </entry>
+    <entry key="java.factory.FactoryShouldInBoundedContextRule.rule.reference1">
+        <![CDATA[
+    工厂应该包含于限界上下文中
+]]>
+    </entry>
+
+    <!--DomainEventMessage-->
+    <entry key="java.domainevent.SpecificationShouldInBoundedContextRule.rule.msg">
+        <![CDATA[
+    领域事件应包含于限界上下文中
+]]>
+    </entry>
+    <entry key="java.domainevent.SpecificationShouldInBoundedContextRule.rule.desc">
+        <![CDATA[
+    说明：领域事件应包含于限界上下文中
+]]>
+    </entry>
+    <entry key="java.domainevent.SpecificationShouldInBoundedContextRule.rule.reference1">
+        <![CDATA[
+    领域事件应包含于限界上下文中
+]]>
+    </entry>
+
+
+    <entry key="java.domainevent.DomainEventShouldHaveSource.rule.msg">
+        <![CDATA[
+    领域事件中应记录事件来源
+]]>
+    </entry>
+    <entry key="java.domainevent.DomainEventShouldHaveSource.rule.desc">
+        <![CDATA[
+    说明：领域事件中应记录事件来源
+]]>
+    </entry>
+    <entry key="java.domainevent.DomainEventShouldHaveSource.rule.reference1">
+        <![CDATA[
+    领域事件中应记录事件来源
+]]>
+    </entry>
+
+
+    <entry key="java.domainevent.DomainEventNameShouldBeVerbRule.rule.msg">
+        <![CDATA[
+    领域事件一般命名为过去时
+]]>
+    </entry>
+    <entry key="java.domainevent.DomainEventNameShouldBeVerbRule.rule.desc">
+        <![CDATA[
+    说明：领域事件一般命名为过去时
+]]>
+    </entry>
+    <entry key="java.domainevent.DomainEventNameShouldBeVerbRule.rule.reference1">
+        <![CDATA[
+    @领域驱动设计精粹,@P114
+        领域事件类型的名称应该是对过去发生的事情的陈述，即动词的过去式 。
+]]>
+    </entry>
+
+
+    <entry key="java.domainevent.DomainEventMustHaveOneIdentifierRule.rule.msg">
+        <![CDATA[
+    领域事件需要唯一标识
+]]>
+    </entry>
+    <entry key="java.domainevent.DomainEventMustHaveOneIdentifierRule.rule.desc">
+        <![CDATA[
+    说明：领域事件需要唯一标识
+]]>
+    </entry>
+    <entry key="java.domainevent.DomainEventMustHaveOneIdentifierRule.rule.reference1">
+        <![CDATA[
+    @实现领域驱动设计,P264
+    这里 ，我们再讨论一下领域事件为什么需要唯一标识。有时，我们需要对不同 的事件进行区分。在创建、发布事件
+    的限界上下文中，我们几乎没有理由对不同事 件进行比较。但 是 ，如果我们的确需要对不同的事件进行比较，我们
+    应该怎么办 呢？再者，如果此时的事件被设计成了聚合，我们又该怎么办呢？
+
+    对于领域事件来说，使用属性来表示唯一标识似乎已经足够了，就像值对象 一样。使用事件的名字、产生事件的聚合
+    标识和事件时间戳已经足以对不同的事 件进行区分了。当领域事件被建模成了聚合 ; 或者我们需要对不同的事件进
+    行比较，但是事件 的属性又不足以区分事件时，我们便需要为事件创建唯一标识。当然，还有其他的原 因。
+
+    当我们需要将领域事件发布到外部限界上下文中时，为事件创建唯一标识也 是有必要的。在有些情况下，单条消息可
+    能会被多次分发，比如，在消息设施确定 消息发出之前，消息发布器便瘫痪了。不管是什么原因导致了对消息的重新
+    分发，消息订阅方都需要检查出重复的 消息，并且将其忽略掉。为了达到这样的目的，有些消息设施在消息头中加人
+    了唯 一性的消息标识，此时我们自己的领域模型是不能生成这样的标识的。即便消息 设施不会自动地向消息中加人
+    唯一标识，消息的发送方也会向事件本身或者消息 中加人这样的标识信息。不管采用哪种方法，远程的订阅方都有
+    机会知道一条消 息是否是重复发送的。
+]]>
+    </entry>
+
+
 </properties>

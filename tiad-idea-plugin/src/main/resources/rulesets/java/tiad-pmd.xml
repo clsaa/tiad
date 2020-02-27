@@ -12,4 +12,7 @@
     <rule ref="rulesets/java/tiad-subdomain.xml"/>
     <rule ref="rulesets/java/tiad-context-mapping.xml"/>
     <rule ref="rulesets/java/tiad-repository.xml"/>
+    <rule ref="rulesets/java/tiad-domain-service.xml"/>
+    <rule ref="rulesets/java/tiad-specification.xml"/>
+    <rule ref="rulesets/java/tiad-factory.xml"/>
 </ruleset>
