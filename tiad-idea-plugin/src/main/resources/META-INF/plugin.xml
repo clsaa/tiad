@@ -34,4 +34,6 @@
                     description="A test menu item"/>
         </group>
     </actions>
+
+    <depends optional="true" config-file="plugin-new-buildingblocks.xml">com.intellij.modules.java</depends>
 </idea-plugin>

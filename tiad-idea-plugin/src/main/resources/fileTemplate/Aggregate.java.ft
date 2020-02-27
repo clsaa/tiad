@@ -1,0 +1,7 @@
+#if (${PACKAGE_NAME} && ${PACKAGE_NAME} != "")package ${PACKAGE_NAME};#end
+#parse("File Header.java")
+${TIAD_IMPORT_PACKAGES}
+
+${TIAD_ANNOTATIONS}
+public class ${NAME} {
+}

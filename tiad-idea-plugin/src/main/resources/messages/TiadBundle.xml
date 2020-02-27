@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties>
-
+    <entry key="action.create.new.aggregate">Create Aggregate</entry>
+    <entry key="action.create.new.aggregate.description">Create Aggregate</entry>
+    <entry key="action.create.new.aggregate.tooltip">Aggregate</entry>
 </properties>
