@@ -182,6 +182,6 @@ public abstract class AbstractCreatePackageBuildingBlockAction extends TiadCreat
     }
 
     public String getAnnotations() {
-        return "@ " + this.getBuildingBlockClass().getName();
+        return "@" + this.getBuildingBlockClass().getName();
     }
 }

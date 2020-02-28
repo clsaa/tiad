@@ -7,15 +7,64 @@
             <action id="TiadPlugin.NewBuildingBlock.CreateEntityAction"
                     class="com.clsaa.tiad.idea.action.buildingblocks.CreateEntityAction"
                     text="Entity"/>
+            <action id="TiadPlugin.NewBuildingBlock.CreateValueObjectAction"
+                    class="com.clsaa.tiad.idea.action.buildingblocks.CreateValueObjectAction"
+                    text="ValueObject"/>
+            <action id="TiadPlugin.NewBuildingBlock.CreateDomainEventAction"
+                    class="com.clsaa.tiad.idea.action.buildingblocks.CreateDomainEventAction"
+                    text="DomainEvent"/>
+            <separator/>
             <action id="TiadPlugin.NewBuildingBlock.CreateAggregateAction"
                     class="com.clsaa.tiad.idea.action.buildingblocks.CreateAggregateAction"
-                    text="CreateAggregateAction"/>
+                    text="Aggregate"/>
+            <action id="TiadPlugin.NewBuildingBlock.CreateAggregateRootAction"
+                    class="com.clsaa.tiad.idea.action.buildingblocks.CreateAggregateRootAction"
+                    text="AggregateRoot"/>
+            <action id="TiadPlugin.NewBuildingBlock.CreateFactoryAction"
+                    class="com.clsaa.tiad.idea.action.buildingblocks.CreateFactoryAction"
+                    text="Factory"/>
+            <action id="TiadPlugin.NewBuildingBlock.CreateRepositoryAction"
+                    class="com.clsaa.tiad.idea.action.buildingblocks.CreateRepositoryAction"
+                    text="Repository"/>
+            <action id="TiadPlugin.NewBuildingBlock.CreateSpecificationAction"
+                    class="com.clsaa.tiad.idea.action.buildingblocks.CreateSpecificationAction"
+                    text="Specification"/>
+            <separator/>
+            <action id="TiadPlugin.NewBuildingBlock.DomainService"
+                    class="com.clsaa.tiad.idea.action.buildingblocks.CreateDomainServiceAction"
+                    text="DomainService"/>
+            <action id="TiadPlugin.NewBuildingBlock.ApplicationService"
+                    class="com.clsaa.tiad.idea.action.buildingblocks.CreateApplicationServiceAction"
+                    text="ApplicationService"/>
+            <separator/>
+            <action id="TiadPlugin.NewBuildingBlock.BoundedContext"
+                    class="com.clsaa.tiad.idea.action.buildingblocks.CreateBoundedContextAction"
+                    text="BoundedContext"/>
+            <action id="TiadPlugin.NewBuildingBlock.Subdomain"
+                    class="com.clsaa.tiad.idea.action.buildingblocks.CreateSubdomainAction"
+                    text="Subdomain"/>
+            <action id="TiadPlugin.NewBuildingBlock.ContextMapping"
+                    class="com.clsaa.tiad.idea.action.buildingblocks.CreateContextMappingAction"
+                    text="ContextMapping"/>
         </group>
 
     </actions>
 
     <extensions defaultExtensionNs="com.intellij">
+        <!--        tactic-->
         <internalFileTemplate name="TiadEntity"/>
+        <internalFileTemplate name="TiadValueObject"/>
+        <internalFileTemplate name="TiadDomainEvent"/>
         <internalFileTemplate name="TiadAggregate"/>
+        <internalFileTemplate name="TiadAggregateRoot"/>
+        <internalFileTemplate name="TiadFactory"/>
+        <internalFileTemplate name="TiadRepository"/>
+        <internalFileTemplate name="TiadSpecification"/>
+        <internalFileTemplate name="TiadDomainService"/>
+        <internalFileTemplate name="TiadApplicationService"/>
+        <!--        strategy-->
+        <internalFileTemplate name="TiadBoundedContext"/>
+        <internalFileTemplate name="TiadSubdomain"/>
+        <internalFileTemplate name="TiadContextMapping"/>
     </extensions>
 </idea-plugin>

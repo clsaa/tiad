@@ -16,23 +16,23 @@
 
 package com.clsaa.tiad.idea.action.buildingblocks;
 
-import com.clsaa.tiad.buidlingblock.annotation.Entity;
-import com.clsaa.tiad.buidlingblock.annotation.Identifier;
+import com.clsaa.tiad.buidlingblock.annotation.ValueObject;
+import lombok.Data;
 
 /**
  * @author clsaa
  */
-public class CreateEntityAction extends AbstractCreateClassBuildingBlockAction {
+public class CreateValueObjectAction extends AbstractCreateClassBuildingBlockAction {
     @Override
-    public Class<Entity> getBuildingBlockClass() {
-        return Entity.class;
+    public Class<ValueObject> getBuildingBlockClass() {
+        return ValueObject.class;
     }
 
     @Override
     public String getImportPackages() {
-        String result = "import " + Entity.class.getName() + ";";
+        String result = "import " + Data.class.getName() + ";";
         result += "\n";
-        result += "import " + Identifier.class.getName() + ";";
+        result += "import " + ValueObject.class.getName() + ";";
         return result;
     }
 }

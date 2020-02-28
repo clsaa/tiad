@@ -16,23 +16,34 @@
 
 package com.clsaa.tiad.idea.action.buildingblocks;
 
+import com.clsaa.tiad.buidlingblock.annotation.AggregateRoot;
 import com.clsaa.tiad.buidlingblock.annotation.Entity;
 import com.clsaa.tiad.buidlingblock.annotation.Identifier;
 
 /**
  * @author clsaa
  */
-public class CreateEntityAction extends AbstractCreateClassBuildingBlockAction {
+public class CreateAggregateRootAction extends AbstractCreateClassBuildingBlockAction {
     @Override
-    public Class<Entity> getBuildingBlockClass() {
-        return Entity.class;
+    public Class<AggregateRoot> getBuildingBlockClass() {
+        return AggregateRoot.class;
     }
 
     @Override
     public String getImportPackages() {
-        String result = "import " + Entity.class.getName() + ";";
+        String result = "import " + AggregateRoot.class.getName() + ";";
+        result += "\n";
+        result += "import " + Entity.class.getName() + ";";
         result += "\n";
         result += "import " + Identifier.class.getName() + ";";
+        return result;
+    }
+
+    @Override
+    public String getAnnotations() {
+        String result = "@" + AggregateRoot.class.getSimpleName();
+        result += "\n";
+        result += "@" + Entity.class.getSimpleName();
         return result;
     }
 }

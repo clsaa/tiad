@@ -4,6 +4,4 @@ ${TIAD_IMPORT_PACKAGES}
 
 ${TIAD_ANNOTATIONS}
 public class ${NAME} {
-    @Identifier
-    private String identifier;
 }

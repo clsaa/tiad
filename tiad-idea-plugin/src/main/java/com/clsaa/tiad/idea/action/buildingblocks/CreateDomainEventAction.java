@@ -16,21 +16,21 @@
 
 package com.clsaa.tiad.idea.action.buildingblocks;
 
-import com.clsaa.tiad.buidlingblock.annotation.Entity;
+import com.clsaa.tiad.buidlingblock.annotation.DomainEvent;
 import com.clsaa.tiad.buidlingblock.annotation.Identifier;
 
 /**
  * @author clsaa
  */
-public class CreateEntityAction extends AbstractCreateClassBuildingBlockAction {
+public class CreateDomainEventAction extends AbstractCreateClassBuildingBlockAction {
     @Override
-    public Class<Entity> getBuildingBlockClass() {
-        return Entity.class;
+    public Class<DomainEvent> getBuildingBlockClass() {
+        return DomainEvent.class;
     }
 
     @Override
     public String getImportPackages() {
-        String result = "import " + Entity.class.getName() + ";";
+        String result = "import " + DomainEvent.class.getName() + ";";
         result += "\n";
         result += "import " + Identifier.class.getName() + ";";
         return result;

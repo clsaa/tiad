@@ -21,6 +21,8 @@ import com.clsaa.tiad.pmd.lang.java.constances.MethodNames;
 import com.clsaa.tiad.pmd.lang.java.rule.AbstractTiadRule;
 import com.clsaa.tiad.pmd.lang.java.util.ASTUtils;
 import com.clsaa.tiad.pmd.lang.java.util.ViolationUtils;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.extern.slf4j.Slf4j;
 import net.sourceforge.pmd.lang.java.ast.ASTAnnotation;
 import net.sourceforge.pmd.lang.java.ast.ASTClassOrInterfaceDeclaration;
@@ -51,6 +53,14 @@ public class ValueObjectEqualsByAttributesRule extends AbstractTiadRule {
                 hasHashCode = true;
             }
         }
+
+        final ASTAnnotation lombokDataAnnotation = ASTUtils.findFirstAnnotation(node, Data.class);
+        final ASTAnnotation lombokEqualsAndHashCodeAnnotation = ASTUtils.findFirstAnnotation(node, EqualsAndHashCode.class);
+        if (lombokDataAnnotation != null || lombokEqualsAndHashCodeAnnotation != null) {
+            hasHashCode = true;
+            hasEquals = true;
+        }
+
 
         if (!hasHashCode || !hasEquals) {
             ViolationUtils.addViolationWithPrecisePosition(this, valueObjectAnnotation, data);

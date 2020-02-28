@@ -3,7 +3,6 @@
 ${TIAD_IMPORT_PACKAGES}
 
 ${TIAD_ANNOTATIONS}
+@Data
 public class ${NAME} {
-    @Identifier
-    private String identifier;
 }

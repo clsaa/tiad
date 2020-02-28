@@ -16,23 +16,17 @@
 
 package com.clsaa.tiad.idea.action.buildingblocks;
 
-import com.clsaa.tiad.buidlingblock.annotation.Entity;
-import com.clsaa.tiad.buidlingblock.annotation.Identifier;
+import com.clsaa.tiad.buidlingblock.annotation.BoundedContext;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author clsaa
  */
-public class CreateEntityAction extends AbstractCreateClassBuildingBlockAction {
-    @Override
-    public Class<Entity> getBuildingBlockClass() {
-        return Entity.class;
-    }
+@Slf4j
+public class CreateBoundedContextAction extends AbstractCreatePackageBuildingBlockAction {
 
     @Override
-    public String getImportPackages() {
-        String result = "import " + Entity.class.getName() + ";";
-        result += "\n";
-        result += "import " + Identifier.class.getName() + ";";
-        return result;
+    public Class<BoundedContext> getBuildingBlockClass() {
+        return BoundedContext.class;
     }
 }

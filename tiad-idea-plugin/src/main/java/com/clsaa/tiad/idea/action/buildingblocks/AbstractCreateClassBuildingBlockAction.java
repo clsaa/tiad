@@ -136,6 +136,6 @@ public abstract class AbstractCreateClassBuildingBlockAction extends JavaCreateT
     }
 
     public String getAnnotations() {
-        return "@ " + this.getBuildingBlockClass().getName();
+        return "@" + this.getBuildingBlockClass().getName();
     }
 }

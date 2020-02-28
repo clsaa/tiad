@@ -16,23 +16,14 @@
 
 package com.clsaa.tiad.idea.action.buildingblocks;
 
-import com.clsaa.tiad.buidlingblock.annotation.Entity;
-import com.clsaa.tiad.buidlingblock.annotation.Identifier;
+import com.clsaa.tiad.buidlingblock.annotation.Factory;
 
 /**
  * @author clsaa
  */
-public class CreateEntityAction extends AbstractCreateClassBuildingBlockAction {
+public class CreateFactoryAction extends AbstractCreateClassBuildingBlockAction {
     @Override
-    public Class<Entity> getBuildingBlockClass() {
-        return Entity.class;
-    }
-
-    @Override
-    public String getImportPackages() {
-        String result = "import " + Entity.class.getName() + ";";
-        result += "\n";
-        result += "import " + Identifier.class.getName() + ";";
-        return result;
+    public Class<Factory> getBuildingBlockClass() {
+        return Factory.class;
     }
 }
