@@ -16,14 +16,14 @@
 
 package com.clsaa.tiad.idea.action.buildingblocks;
 
-import com.clsaa.tiad.buidlingblock.annotation.DomainService;
+import com.clsaa.tiad.buidlingblock.annotation.Specification;
 
 /**
  * @author clsaa
  */
 public class CreateSpecificationAction extends AbstractCreateClassBuildingBlockAction {
     @Override
-    public Class<DomainService> getBuildingBlockClass() {
-        return DomainService.class;
+    public Class<Specification> getBuildingBlockClass() {
+        return Specification.class;
     }
 }

@@ -16,14 +16,14 @@
 
 package com.clsaa.tiad.idea.action.buildingblocks;
 
-import com.clsaa.tiad.buidlingblock.annotation.ApplicationService;
+import com.clsaa.tiad.buidlingblock.annotation.ContextMapping;
 
 /**
  * @author clsaa
  */
 public class CreateContextMappingAction extends AbstractCreateClassBuildingBlockAction {
     @Override
-    public Class<ApplicationService> getBuildingBlockClass() {
-        return ApplicationService.class;
+    public Class<ContextMapping> getBuildingBlockClass() {
+        return ContextMapping.class;
     }
 }

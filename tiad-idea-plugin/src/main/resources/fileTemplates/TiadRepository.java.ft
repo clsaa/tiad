@@ -3,5 +3,5 @@
 ${TIAD_IMPORT_PACKAGES}
 
 ${TIAD_ANNOTATIONS}
-public class ${NAME} {
+public interface ${NAME} {
 }

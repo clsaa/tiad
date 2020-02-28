@@ -4,4 +4,56 @@
     <entry key="action.create.new.aggregate">Create Aggregate</entry>
     <entry key="action.create.new.aggregate.description">Create Aggregate</entry>
     <entry key="action.create.new.aggregate.tooltip">Aggregate</entry>
+
+    <entry key="action.create.new.boundedcontext">Create BoundedContext</entry>
+    <entry key="action.create.new.boundedcontext.description">Create BoundedContext</entry>
+    <entry key="action.create.new.boundedcontext.tooltip">BoundedContext</entry>
+
+    <entry key="action.create.new.subdomain">Create Subdomain</entry>
+    <entry key="action.create.new.subdomain.description">Create Subdomain</entry>
+    <entry key="action.create.new.subdomain.tooltip">Subdomain</entry>
+
+    <entry key="action.create.new.entity">Create Entity</entry>
+    <entry key="action.create.new.entity.description">Create Entity</entry>
+    <entry key="action.create.new.entity.tooltip">Entity</entry>
+
+    <entry key="action.create.new.aggregateroot">Create AggregateRoot</entry>
+    <entry key="action.create.new.aggregateroot.description">Create AggregateRoot</entry>
+    <entry key="action.create.new.aggregateroot.tooltip">AggregateRoot</entry>
+
+    <entry key="action.create.new.applicationservice">Create ApplicationService</entry>
+    <entry key="action.create.new.applicationservice.description">Create ApplicationService</entry>
+    <entry key="action.create.new.applicationservice.tooltip">ApplicationService</entry>
+
+
+    <entry key="action.create.new.contextmapping">Create ContextMapping</entry>
+    <entry key="action.create.new.contextmapping.description">Create ContextMapping</entry>
+    <entry key="action.create.new.contextmapping.tooltip">ContextMapping</entry>
+
+
+    <entry key="action.create.new.domainevent">Create DomainEvent</entry>
+    <entry key="action.create.new.domainevent.description">Create DomainEvent</entry>
+    <entry key="action.create.new.domainevent.tooltip">DomainEvent</entry>
+
+
+    <entry key="action.create.new.domainservice">Create DomainService</entry>
+    <entry key="action.create.new.domainservice.description">Create DomainService</entry>
+    <entry key="action.create.new.domainservice.tooltip">DomainService</entry>
+
+    <entry key="action.create.new.factory">Create Factory</entry>
+    <entry key="action.create.new.factory.description">Create Factory</entry>
+    <entry key="action.create.new.factory.tooltip">Factory</entry>
+
+    <entry key="action.create.new.repository">Create Repository</entry>
+    <entry key="action.create.new.repository.description">Create Repository</entry>
+    <entry key="action.create.new.repository.tooltip">Repository</entry>
+
+    <entry key="action.create.new.specification">Create Specification</entry>
+    <entry key="action.create.new.specification.description">Create Specification</entry>
+    <entry key="action.create.new.specification.tooltip">Specification</entry>
+
+    <entry key="action.create.new.valueobject">Create ValueObject</entry>
+    <entry key="action.create.new.valueobject.description">Create ValueObject</entry>
+    <entry key="action.create.new.valueobject.tooltip">ValueObject</entry>
+
 </properties>

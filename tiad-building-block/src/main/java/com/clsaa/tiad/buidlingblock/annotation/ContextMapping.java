@@ -19,12 +19,12 @@ public @interface ContextMapping {
     /**
      * @return type of context mapping
      */
-    ContextMappingType type();
+    ContextMappingType type() default ContextMappingType.BIG_BALL_OF_MUD;
 
     /**
      * @return role of current
      */
-    ContextMappingRole role();
+    ContextMappingRole role() default ContextMappingRole.PARTNER;
 
     /**
      * if use default code, it will be replaced by name of be annotated class/package
