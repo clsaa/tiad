@@ -22,7 +22,6 @@ import com.intellij.ide.IdeBundle;
 import com.intellij.ide.IdeView;
 import com.intellij.ide.fileTemplates.FileTemplate;
 import com.intellij.ide.fileTemplates.FileTemplateManager;
-import com.intellij.ide.fileTemplates.JavaCreateFromTemplateHandler;
 import com.intellij.ide.fileTemplates.actions.AttributesDefaults;
 import com.intellij.openapi.actionSystem.*;
 import com.intellij.openapi.project.Project;
@@ -36,9 +35,6 @@ import com.intellij.psi.PsiNameHelper;
 import com.intellij.psi.PsiPackage;
 import com.intellij.psi.util.PsiUtil;
 import com.intellij.util.PlatformIcons;
-import javassist.ClassPool;
-import javassist.CtClass;
-import javassist.CtMethod;
 import lombok.extern.slf4j.Slf4j;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -54,30 +50,12 @@ import static com.intellij.ide.fileTemplates.JavaTemplateUtil.INTERNAL_PACKAGE_I
 @Slf4j
 public abstract class AbstractCreatePackageBuildingBlockAction extends TiadCreateFromTemplateActionBase {
 
-    static {
-        fixJavaTemplateUtilFinalField();
-    }
-
     public AbstractCreatePackageBuildingBlockAction() {
         super("package-info.java", "Create new package-info.java", PlatformIcons.PACKAGE_ICON);
         final Presentation templatePresentation = this.getTemplatePresentation();
         templatePresentation.setText(TiadBundle.message(this.getTitleKey()));
         templatePresentation.setDescription(TiadBundle.message(this.getDescriptionKey()));
         templatePresentation.setIcon(this.getIcon());
-    }
-
-
-    private static void fixJavaTemplateUtilFinalField() {
-        try {
-            ClassPool pool = ClassPool.getDefault();
-            CtClass cc = pool.get(JavaCreateFromTemplateHandler.class.getName());
-            final CtMethod handlesTemplate = cc.getDeclaredMethod("handlesTemplate");
-            handlesTemplate.insertBefore("if (template.getName().startsWith(\"Tiad\")) return java.lang.Boolean.FALSE;");
-            cc.toBytecode();
-        } catch (Exception e) {
-            log.error("fixJavaTemplateUtilFinalField failed, ", e);
-        }
-
     }
 
     @Nullable
