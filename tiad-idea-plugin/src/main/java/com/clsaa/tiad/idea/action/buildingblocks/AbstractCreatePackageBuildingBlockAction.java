@@ -15,14 +15,16 @@
  */
 package com.clsaa.tiad.idea.action.buildingblocks;
 
-import com.clsaa.tiad.idea.action.base.TiadCreateFromTemplateActionBase;
+import com.clsaa.tiad.common.utils.UnsafeUtil;
 import com.clsaa.tiad.idea.i18n.TiadBundle;
 import com.intellij.CommonBundle;
 import com.intellij.ide.IdeBundle;
 import com.intellij.ide.IdeView;
 import com.intellij.ide.fileTemplates.FileTemplate;
 import com.intellij.ide.fileTemplates.FileTemplateManager;
+import com.intellij.ide.fileTemplates.JavaTemplateUtil;
 import com.intellij.ide.fileTemplates.actions.AttributesDefaults;
+import com.intellij.ide.fileTemplates.actions.CreateFromTemplateActionBase;
 import com.intellij.openapi.actionSystem.*;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.roots.ProjectFileIndex;
@@ -41,6 +43,10 @@ import org.jetbrains.annotations.Nullable;
 import org.jetbrains.jps.model.java.JavaModuleSourceRootTypes;
 
 import javax.swing.*;
+import java.lang.reflect.Field;
+import java.util.Arrays;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import static com.intellij.ide.fileTemplates.JavaTemplateUtil.INTERNAL_PACKAGE_INFO_TEMPLATE_NAME;
 
@@ -48,7 +54,9 @@ import static com.intellij.ide.fileTemplates.JavaTemplateUtil.INTERNAL_PACKAGE_I
  * @author Bas Leijdekkers
  */
 @Slf4j
-public abstract class AbstractCreatePackageBuildingBlockAction extends TiadCreateFromTemplateActionBase {
+public abstract class AbstractCreatePackageBuildingBlockAction extends CreateFromTemplateActionBase {
+
+    private static Map<String, String> templateNameMap = new ConcurrentHashMap<>();
 
     public AbstractCreatePackageBuildingBlockAction() {
         super("package-info.java", "Create new package-info.java", PlatformIcons.PACKAGE_ICON);
@@ -56,7 +64,32 @@ public abstract class AbstractCreatePackageBuildingBlockAction extends TiadCreat
         templatePresentation.setText(TiadBundle.message(this.getTitleKey()));
         templatePresentation.setDescription(TiadBundle.message(this.getDescriptionKey()));
         templatePresentation.setIcon(this.getIcon());
+
+        final String templateName = this.getTemplateName();
+        String s = templateNameMap.get(templateName);
+        if (s == null) {
+            synchronized (AbstractCreatePackageBuildingBlockAction.class) {
+                s = templateNameMap.get(templateName);
+                if (s == null) {
+                    templateNameMap.put(templateName, this.getClass().getName());
+                    try {
+                        final String[] templateFileNames = JavaTemplateUtil.INTERNAL_FILE_TEMPLATES;
+                        final String[] newArr = Arrays.copyOf(templateFileNames, templateFileNames.length + 1);
+                        newArr[templateFileNames.length] = this.getTemplateName();
+                        final Field field = JavaTemplateUtil.class.getDeclaredField("INTERNAL_FILE_TEMPLATES");
+//                        Field modifiersField = Field.class.getDeclaredField("modifiers");
+//                        modifiersField.setAccessible(true);
+//                        modifiersField.setInt(field, field.getModifiers() & ~Modifier.FINAL);
+//                        field.set(null, newArr);
+                        UnsafeUtil.putStaticObject(field, newArr);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
     }
+
 
     @Nullable
     @Override
