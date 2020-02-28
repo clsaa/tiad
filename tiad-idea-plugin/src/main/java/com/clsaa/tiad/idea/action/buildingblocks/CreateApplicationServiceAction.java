@@ -17,6 +17,9 @@
 package com.clsaa.tiad.idea.action.buildingblocks;
 
 import com.clsaa.tiad.buidlingblock.annotation.ApplicationService;
+import com.clsaa.tiad.idea.constances.Icons;
+
+import javax.swing.*;
 
 /**
  * @author clsaa
@@ -25,5 +28,10 @@ public class CreateApplicationServiceAction extends AbstractCreateClassBuildingB
     @Override
     public Class<ApplicationService> getBuildingBlockClass() {
         return ApplicationService.class;
+    }
+
+    @Override
+    public Icon getIcon() {
+        return Icons.APPLICATION_SERVICE;
     }
 }

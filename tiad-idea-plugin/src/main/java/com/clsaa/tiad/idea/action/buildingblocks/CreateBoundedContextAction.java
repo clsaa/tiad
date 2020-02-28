@@ -17,7 +17,10 @@
 package com.clsaa.tiad.idea.action.buildingblocks;
 
 import com.clsaa.tiad.buidlingblock.annotation.BoundedContext;
+import com.clsaa.tiad.idea.constances.Icons;
 import lombok.extern.slf4j.Slf4j;
+
+import javax.swing.*;
 
 /**
  * @author clsaa
@@ -28,5 +31,10 @@ public class CreateBoundedContextAction extends AbstractCreatePackageBuildingBlo
     @Override
     public Class<BoundedContext> getBuildingBlockClass() {
         return BoundedContext.class;
+    }
+
+    @Override
+    public Icon getIcon() {
+        return Icons.BOUNDED_CONTEXT;
     }
 }

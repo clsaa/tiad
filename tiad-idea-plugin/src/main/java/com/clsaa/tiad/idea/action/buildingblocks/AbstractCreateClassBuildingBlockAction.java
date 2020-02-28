@@ -20,6 +20,7 @@ import com.clsaa.tiad.idea.i18n.TiadBundle;
 import com.intellij.ide.IdeBundle;
 import com.intellij.ide.actions.CreateFileFromTemplateDialog;
 import com.intellij.ide.actions.JavaCreateTemplateInPackageAction;
+import com.intellij.openapi.actionSystem.Presentation;
 import com.intellij.openapi.project.DumbAware;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.InputValidatorEx;
@@ -41,6 +42,10 @@ import java.util.Map;
 public abstract class AbstractCreateClassBuildingBlockAction extends JavaCreateTemplateInPackageAction<PsiClass> implements DumbAware {
     public AbstractCreateClassBuildingBlockAction() {
         super("", IdeBundle.message("action.create.new.class.description"), PlatformIcons.CLASS_ICON, true);
+        final Presentation templatePresentation = this.getTemplatePresentation();
+        templatePresentation.setText(TiadBundle.message(this.getTooltipKey()));
+        templatePresentation.setDescription(TiadBundle.message(this.getDescriptionKey()));
+        templatePresentation.setIcon(this.getIcon());
     }
 
     @Override
@@ -127,8 +132,20 @@ public abstract class AbstractCreateClassBuildingBlockAction extends JavaCreateT
         return "Tiad" + this.getBuildingBlockClass().getSimpleName();
     }
 
+    public String getKey() {
+        return this.getBuildingBlockClass().getSimpleName().toLowerCase();
+    }
+
     public String getTitleKey() {
-        return "action.create.new." + this.getBuildingBlockClass().getSimpleName().toLowerCase();
+        return "action.create.new." + this.getKey();
+    }
+
+    public String getDescriptionKey() {
+        return "action.create.new." + this.getKey() + ".description";
+    }
+
+    public String getTooltipKey() {
+        return "action.create.new." + this.getKey() + ".tooltip";
     }
 
     public String getImportPackages() {

@@ -17,6 +17,9 @@
 package com.clsaa.tiad.idea.action.buildingblocks;
 
 import com.clsaa.tiad.buidlingblock.annotation.DomainService;
+import com.clsaa.tiad.idea.constances.Icons;
+
+import javax.swing.*;
 
 /**
  * @author clsaa
@@ -25,5 +28,9 @@ public class CreateDomainServiceAction extends AbstractCreateClassBuildingBlockA
     @Override
     public Class<DomainService> getBuildingBlockClass() {
         return DomainService.class;
+    }
+    @Override
+    public Icon getIcon() {
+        return Icons.DOMAIN_SERVICE;
     }
 }

@@ -17,7 +17,10 @@
 package com.clsaa.tiad.idea.action.buildingblocks;
 
 import com.clsaa.tiad.buidlingblock.annotation.Subdomain;
+import com.clsaa.tiad.idea.constances.Icons;
 import lombok.extern.slf4j.Slf4j;
+
+import javax.swing.*;
 
 /**
  * @author clsaa
@@ -28,5 +31,10 @@ public class CreateSubdomainAction extends AbstractCreatePackageBuildingBlockAct
     @Override
     public Class<Subdomain> getBuildingBlockClass() {
         return Subdomain.class;
+    }
+
+    @Override
+    public Icon getIcon() {
+        return Icons.SUBDOMAIN;
     }
 }

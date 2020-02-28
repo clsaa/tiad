@@ -17,6 +17,9 @@
 package com.clsaa.tiad.idea.action.buildingblocks;
 
 import com.clsaa.tiad.buidlingblock.annotation.Factory;
+import com.clsaa.tiad.idea.constances.Icons;
+
+import javax.swing.*;
 
 /**
  * @author clsaa
@@ -25,5 +28,9 @@ public class CreateFactoryAction extends AbstractCreateClassBuildingBlockAction 
     @Override
     public Class<Factory> getBuildingBlockClass() {
         return Factory.class;
+    }
+    @Override
+    public Icon getIcon() {
+        return Icons.FACTORY;
     }
 }

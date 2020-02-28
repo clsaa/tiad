@@ -18,6 +18,9 @@ package com.clsaa.tiad.idea.action.buildingblocks;
 
 import com.clsaa.tiad.buidlingblock.annotation.Entity;
 import com.clsaa.tiad.buidlingblock.annotation.Identifier;
+import com.clsaa.tiad.idea.constances.Icons;
+
+import javax.swing.*;
 
 /**
  * @author clsaa
@@ -34,5 +37,10 @@ public class CreateEntityAction extends AbstractCreateClassBuildingBlockAction {
         result += "\n";
         result += "import " + Identifier.class.getName() + ";";
         return result;
+    }
+
+    @Override
+    public Icon getIcon() {
+        return Icons.ENTITY;
     }
 }

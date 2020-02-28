@@ -17,7 +17,10 @@
 package com.clsaa.tiad.idea.action.buildingblocks;
 
 import com.clsaa.tiad.buidlingblock.annotation.Aggregate;
+import com.clsaa.tiad.idea.constances.Icons;
 import lombok.extern.slf4j.Slf4j;
+
+import javax.swing.*;
 
 /**
  * @author clsaa
@@ -28,5 +31,10 @@ public class CreateAggregateAction extends AbstractCreatePackageBuildingBlockAct
     @Override
     public Class<Aggregate> getBuildingBlockClass() {
         return Aggregate.class;
+    }
+
+    @Override
+    public Icon getIcon() {
+        return Icons.AGGREGATE;
     }
 }

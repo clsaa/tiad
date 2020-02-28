@@ -17,6 +17,9 @@
 package com.clsaa.tiad.idea.action.buildingblocks;
 
 import com.clsaa.tiad.buidlingblock.annotation.Repository;
+import com.clsaa.tiad.idea.constances.Icons;
+
+import javax.swing.*;
 
 /**
  * @author clsaa
@@ -25,5 +28,10 @@ public class CreateRepositoryAction extends AbstractCreateClassBuildingBlockActi
     @Override
     public Class<Repository> getBuildingBlockClass() {
         return Repository.class;
+    }
+
+    @Override
+    public Icon getIcon() {
+        return Icons.REPOSITORY;
     }
 }

@@ -17,6 +17,9 @@
 package com.clsaa.tiad.idea.action.buildingblocks;
 
 import com.clsaa.tiad.buidlingblock.annotation.Specification;
+import com.clsaa.tiad.idea.constances.Icons;
+
+import javax.swing.*;
 
 /**
  * @author clsaa
@@ -25,5 +28,10 @@ public class CreateSpecificationAction extends AbstractCreateClassBuildingBlockA
     @Override
     public Class<Specification> getBuildingBlockClass() {
         return Specification.class;
+    }
+
+    @Override
+    public Icon getIcon() {
+        return Icons.SPECIFICATION;
     }
 }

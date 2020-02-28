@@ -19,6 +19,9 @@ package com.clsaa.tiad.idea.action.buildingblocks;
 import com.clsaa.tiad.buidlingblock.annotation.AggregateRoot;
 import com.clsaa.tiad.buidlingblock.annotation.Entity;
 import com.clsaa.tiad.buidlingblock.annotation.Identifier;
+import com.clsaa.tiad.idea.constances.Icons;
+
+import javax.swing.*;
 
 /**
  * @author clsaa
@@ -45,5 +48,10 @@ public class CreateAggregateRootAction extends AbstractCreateClassBuildingBlockA
         result += "\n";
         result += "@" + Entity.class.getSimpleName();
         return result;
+    }
+
+    @Override
+    public Icon getIcon() {
+        return Icons.AGGREGATE_ROOT;
     }
 }

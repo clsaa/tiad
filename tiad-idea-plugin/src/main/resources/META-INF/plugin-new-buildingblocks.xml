@@ -1,7 +1,7 @@
 <idea-plugin>
     <actions>
         <group id="TiadPlugin.NewBuildingBlock.Group" text="DDD BuildingBlock"
-               icon="/icon/buildingblocks/buildingblocks.png"
+               icon="/icon/buildingblocks/buildingblocks.svg"
                description="NewBuildingBlock" popup="true">
             <add-to-group group-id="NewGroup1" anchor="last"/>
             <action id="TiadPlugin.NewBuildingBlock.CreateEntityAction"
@@ -49,22 +49,4 @@
         </group>
 
     </actions>
-
-    <extensions defaultExtensionNs="com.intellij">
-        <!--        tactic-->
-        <internalFileTemplate name="TiadEntity"/>
-        <internalFileTemplate name="TiadValueObject"/>
-        <internalFileTemplate name="TiadDomainEvent"/>
-        <internalFileTemplate name="TiadAggregate"/>
-        <internalFileTemplate name="TiadAggregateRoot"/>
-        <internalFileTemplate name="TiadFactory"/>
-        <internalFileTemplate name="TiadRepository"/>
-        <internalFileTemplate name="TiadSpecification"/>
-        <internalFileTemplate name="TiadDomainService"/>
-        <internalFileTemplate name="TiadApplicationService"/>
-        <!--        strategy-->
-        <internalFileTemplate name="TiadBoundedContext"/>
-        <internalFileTemplate name="TiadSubdomain"/>
-        <internalFileTemplate name="TiadContextMapping"/>
-    </extensions>
 </idea-plugin>

@@ -17,6 +17,9 @@
 package com.clsaa.tiad.idea.action.buildingblocks;
 
 import com.clsaa.tiad.buidlingblock.annotation.ContextMapping;
+import com.clsaa.tiad.idea.constances.Icons;
+
+import javax.swing.*;
 
 /**
  * @author clsaa
@@ -25,5 +28,10 @@ public class CreateContextMappingAction extends AbstractCreateClassBuildingBlock
     @Override
     public Class<ContextMapping> getBuildingBlockClass() {
         return ContextMapping.class;
+    }
+
+    @Override
+    public Icon getIcon() {
+        return Icons.CONTEXT_MAPPING;
     }
 }

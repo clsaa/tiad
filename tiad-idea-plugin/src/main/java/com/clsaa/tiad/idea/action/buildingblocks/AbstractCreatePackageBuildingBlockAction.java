@@ -61,7 +61,7 @@ public abstract class AbstractCreatePackageBuildingBlockAction extends CreateFro
     public AbstractCreatePackageBuildingBlockAction() {
         super("package-info.java", "Create new package-info.java", PlatformIcons.PACKAGE_ICON);
         final Presentation templatePresentation = this.getTemplatePresentation();
-        templatePresentation.setText(TiadBundle.message(this.getTitleKey()));
+        templatePresentation.setText(TiadBundle.message(this.getTooltipKey()));
         templatePresentation.setDescription(TiadBundle.message(this.getDescriptionKey()));
         templatePresentation.setIcon(this.getIcon());
 
@@ -77,10 +77,6 @@ public abstract class AbstractCreatePackageBuildingBlockAction extends CreateFro
                         final String[] newArr = Arrays.copyOf(templateFileNames, templateFileNames.length + 1);
                         newArr[templateFileNames.length] = this.getTemplateName();
                         final Field field = JavaTemplateUtil.class.getDeclaredField("INTERNAL_FILE_TEMPLATES");
-//                        Field modifiersField = Field.class.getDeclaredField("modifiers");
-//                        modifiersField.setAccessible(true);
-//                        modifiersField.setInt(field, field.getModifiers() & ~Modifier.FINAL);
-//                        field.set(null, newArr);
                         UnsafeUtil.putStaticObject(field, newArr);
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -182,6 +178,10 @@ public abstract class AbstractCreatePackageBuildingBlockAction extends CreateFro
 
     public String getDescriptionKey() {
         return "action.create.new." + this.getKey() + ".description";
+    }
+
+    public String getTooltipKey() {
+        return "action.create.new." + this.getKey() + ".tooltip";
     }
 
     public Icon getIcon() {

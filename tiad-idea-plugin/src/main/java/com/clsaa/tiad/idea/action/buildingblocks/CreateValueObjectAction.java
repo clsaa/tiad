@@ -17,7 +17,10 @@
 package com.clsaa.tiad.idea.action.buildingblocks;
 
 import com.clsaa.tiad.buidlingblock.annotation.ValueObject;
+import com.clsaa.tiad.idea.constances.Icons;
 import lombok.Data;
+
+import javax.swing.*;
 
 /**
  * @author clsaa
@@ -34,5 +37,10 @@ public class CreateValueObjectAction extends AbstractCreateClassBuildingBlockAct
         result += "\n";
         result += "import " + ValueObject.class.getName() + ";";
         return result;
+    }
+
+    @Override
+    public Icon getIcon() {
+        return Icons.VALUE_OBJECT;
     }
 }
