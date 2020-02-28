@@ -18,6 +18,7 @@ package com.clsaa.tiad.idea.i18n;
 
 import com.clsaa.tiad.idea.config.TiadConfig;
 import com.clsaa.tiad.pmd.I18nResources;
+import com.intellij.BundleBase;
 import com.intellij.CommonBundle;
 import com.intellij.openapi.components.ServiceManager;
 
@@ -32,8 +33,12 @@ public class TiadBundle {
     private static ResourceBundle resourceBundle = ResourceBundle.getBundle("messages.TiadBundle",
             new Locale(tiadConfig.getLocale()), new I18nResources.XmlControl());
 
+    static {
+        BundleBase.assertOnMissedKeys(false);
+    }
+
     public static String message(String key) {
-        return resourceBundle.getString(key).trim();
+        return CommonBundle.message(resourceBundle, key);
     }
 
     public static String message(String key, Object... params) {

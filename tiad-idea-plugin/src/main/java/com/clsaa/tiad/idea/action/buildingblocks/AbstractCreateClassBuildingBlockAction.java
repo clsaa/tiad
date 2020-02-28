@@ -124,7 +124,7 @@ public abstract class AbstractCreateClassBuildingBlockAction extends JavaCreateT
     }
 
     public String getTemplateName() {
-        return this.getBuildingBlockClass().getSimpleName();
+        return "Tiad" + this.getBuildingBlockClass().getSimpleName();
     }
 
     public String getTitleKey() {

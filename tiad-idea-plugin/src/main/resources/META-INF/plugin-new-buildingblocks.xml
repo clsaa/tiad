@@ -13,4 +13,9 @@
         </group>
 
     </actions>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <internalFileTemplate name="TiadEntity"/>
+        <internalFileTemplate name="TiadAggregate"/>
+    </extensions>
 </idea-plugin>

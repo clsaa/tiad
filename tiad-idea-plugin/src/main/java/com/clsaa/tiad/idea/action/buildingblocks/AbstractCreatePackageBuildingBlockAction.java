@@ -15,14 +15,15 @@
  */
 package com.clsaa.tiad.idea.action.buildingblocks;
 
+import com.clsaa.tiad.idea.action.base.TiadCreateFromTemplateActionBase;
 import com.clsaa.tiad.idea.i18n.TiadBundle;
 import com.intellij.CommonBundle;
 import com.intellij.ide.IdeBundle;
 import com.intellij.ide.IdeView;
 import com.intellij.ide.fileTemplates.FileTemplate;
 import com.intellij.ide.fileTemplates.FileTemplateManager;
+import com.intellij.ide.fileTemplates.JavaCreateFromTemplateHandler;
 import com.intellij.ide.fileTemplates.actions.AttributesDefaults;
-import com.intellij.ide.fileTemplates.actions.CreateFromTemplateActionBase;
 import com.intellij.openapi.actionSystem.*;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.roots.ProjectFileIndex;
@@ -35,6 +36,10 @@ import com.intellij.psi.PsiNameHelper;
 import com.intellij.psi.PsiPackage;
 import com.intellij.psi.util.PsiUtil;
 import com.intellij.util.PlatformIcons;
+import javassist.ClassPool;
+import javassist.CtClass;
+import javassist.CtMethod;
+import lombok.extern.slf4j.Slf4j;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.jetbrains.jps.model.java.JavaModuleSourceRootTypes;
@@ -46,13 +51,33 @@ import static com.intellij.ide.fileTemplates.JavaTemplateUtil.INTERNAL_PACKAGE_I
 /**
  * @author Bas Leijdekkers
  */
-public abstract class AbstractCreatePackageBuildingBlockAction extends CreateFromTemplateActionBase {
+@Slf4j
+public abstract class AbstractCreatePackageBuildingBlockAction extends TiadCreateFromTemplateActionBase {
+
+    static {
+        fixJavaTemplateUtilFinalField();
+    }
+
     public AbstractCreatePackageBuildingBlockAction() {
         super("package-info.java", "Create new package-info.java", PlatformIcons.PACKAGE_ICON);
         final Presentation templatePresentation = this.getTemplatePresentation();
         templatePresentation.setText(TiadBundle.message(this.getTitleKey()));
         templatePresentation.setDescription(TiadBundle.message(this.getDescriptionKey()));
         templatePresentation.setIcon(this.getIcon());
+    }
+
+
+    private static void fixJavaTemplateUtilFinalField() {
+        try {
+            ClassPool pool = ClassPool.getDefault();
+            CtClass cc = pool.get(JavaCreateFromTemplateHandler.class.getName());
+            final CtMethod handlesTemplate = cc.getDeclaredMethod("handlesTemplate");
+            handlesTemplate.insertBefore("if (template.getName().startsWith(\"Tiad\")) return java.lang.Boolean.FALSE;");
+            cc.toBytecode();
+        } catch (Exception e) {
+            log.error("fixJavaTemplateUtilFinalField failed, ", e);
+        }
+
     }
 
     @Nullable
@@ -119,8 +144,8 @@ public abstract class AbstractCreatePackageBuildingBlockAction extends CreateFro
     @Override
     public AttributesDefaults getAttributesDefaults(DataContext dataContext) {
         final AttributesDefaults attributesDefaults = new AttributesDefaults(INTERNAL_PACKAGE_INFO_TEMPLATE_NAME).withFixedName(true);
-        attributesDefaults.add("TIAD_IMPORT_PACKAGES", this.getImportPackages());
-        attributesDefaults.add("TIAD_ANNOTATIONS", this.getAnnotations());
+        attributesDefaults.addPredefined("TIAD_IMPORT_PACKAGES", this.getImportPackages());
+        attributesDefaults.addPredefined("TIAD_ANNOTATIONS", this.getAnnotations());
         return attributesDefaults;
     }
 
@@ -133,7 +158,7 @@ public abstract class AbstractCreatePackageBuildingBlockAction extends CreateFro
     abstract public Class getBuildingBlockClass();
 
     public String getTemplateName() {
-        return this.getBuildingBlockClass().getSimpleName();
+        return "Tiad" + this.getBuildingBlockClass().getSimpleName();
     }
 
     public String getKey() {
