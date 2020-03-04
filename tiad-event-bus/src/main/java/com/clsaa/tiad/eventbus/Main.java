@@ -18,10 +18,21 @@ package com.clsaa.tiad.eventbus;
 
 import io.vertx.core.Vertx;
 import io.vertx.core.VertxOptions;
+import io.vertx.core.eventbus.EventBus;
 
 public class Main {
     public static void main(String[] args) {
         final VertxOptions vertxOptions = new VertxOptions();
         Vertx vertx = Vertx.vertx(vertxOptions);
+        MyVerticle myVerticle = new MyVerticle();
+        vertx.deployVerticle(myVerticle);
+        EventBus eventBus = vertx.eventBus();
+        eventBus.consumer("news.uk.sport", message -> {
+            System.out.println("I have received a message: " + message.body());
+            message.reply("213");
+        });
+        eventBus.send("news.uk.sport", "Yay! Someone kicked a ball", event -> {
+            System.out.println("reply" + event.result().body());
+        });
     }
 }
