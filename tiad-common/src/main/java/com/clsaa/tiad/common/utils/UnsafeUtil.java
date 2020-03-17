@@ -19,7 +19,6 @@ package com.clsaa.tiad.common.utils;
 import sun.misc.Unsafe;
 
 import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
 
 /**
  * @author clsaa
@@ -41,24 +40,5 @@ public class UnsafeUtil {
         final Object fieldBase = unsafe.staticFieldBase(field);
         final long fieldOffset = unsafe.staticFieldOffset(field);
         unsafe.putObject(fieldBase, fieldOffset, value);
-    }
-
-    private static final String[] arr = {"a", "b"};
-
-    public static void main(String[] args) throws Exception {
-        final Field field = UnsafeUtil.class.getDeclaredField("arr");
-        //unsafe
-        System.out.println(arr.length);
-        String[] newArr = {"a", "b", "c"};
-        putStaticObject(field, newArr);
-        System.out.println(arr.length);
-
-        //ref
-        String[] newArr2 = {"a", "b", "c", "d"};
-        Field modifiersField = Field.class.getDeclaredField("modifiers");
-        modifiersField.setAccessible(true);
-        modifiersField.setInt(field, field.getModifiers() & ~Modifier.FINAL);
-        field.set(null, newArr2);
-        System.out.println(arr.length);
     }
 }

@@ -22,7 +22,7 @@ import io.vertx.core.eventbus.EventBus;
 import io.vertx.core.spi.cluster.ClusterManager;
 import io.vertx.spi.cluster.hazelcast.HazelcastClusterManager;
 
-public class Main {
+public class Main2 {
     public static void main(String[] args) {
         ClusterManager mgr = new HazelcastClusterManager();
         VertxOptions options = new VertxOptions()
@@ -33,13 +33,11 @@ public class Main {
                 Vertx vertx = res.result();
                 EventBus eventBus = vertx.eventBus();
                 System.out.println("We now have a clustered event bus: " + eventBus);
-                eventBus.consumer("topic", event -> {
-                    final Object body = event.body();
-                    System.out.println(body);
-                    event.reply("Main1 reci");
-                });
-                eventBus.consumer("topic2", msg -> {
-                    System.out.println("topic2 message:" + msg.body());
+//                eventBus.consumer("topic", m -> {
+//                    System.out.println("I have received a message: " + m.body());
+//                });
+                eventBus.send("topic", "message", msg -> {
+                    System.out.println(msg.result().body());
                 });
             } else {
                 System.out.println("Failed: " + res.cause());
