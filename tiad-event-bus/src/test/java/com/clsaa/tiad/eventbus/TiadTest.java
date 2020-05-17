@@ -38,11 +38,13 @@ public class TiadTest {
                 //注册事件订阅者
                 .consumer("tiad-topic", "group", event -> {
                     System.out.println("I'm consumer, I consumed:" + event.body());
+                    //回复事件
                     event.reply("Hi, I know the task has finished. -- from consumer");
                 })
                 //注册事件发送者
-                .send("tiad-topic", "group", "task finished", eventOptions, replyEvent -> {
-                    System.out.println("I'm producer, I consumed: " + replyEvent.result().body());
-                });
+                .send("tiad-topic", "group", "task finished", eventOptions,
+                        //处理consumer回复的消息
+                        replyEvent -> System.out.println("I'm producer, I consumed: " + replyEvent.result().body())
+                );
     }
 }
