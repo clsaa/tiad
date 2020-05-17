@@ -16,5 +16,20 @@
 
 package com.clsaa.tiad.transaction;
 
-public class Main {
+import com.clsaa.tiad.transaction.agent.TransactionStub;
+
+public class TiadTransactionDriver {
+    private String appName;
+
+    public static TiadTransactionDriver tiad(String appName) {
+        return new TiadTransactionDriver(appName);
+    }
+
+    public TiadTransactionDriver(String appName) {
+        this.appName = appName;
+    }
+
+    public void init(String packagePath) {
+        new TransactionStub().scan(packagePath);
+    }
 }

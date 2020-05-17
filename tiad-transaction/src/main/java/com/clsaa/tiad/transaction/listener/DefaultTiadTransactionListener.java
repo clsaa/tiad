@@ -14,4 +14,21 @@
  *    limitations under the License.
  */
 
-package com.clsaa.tiad.transaction.distribute;
+package com.clsaa.tiad.transaction.listener;
+
+import org.apache.rocketmq.client.producer.LocalTransactionState;
+import org.apache.rocketmq.common.message.Message;
+import org.apache.rocketmq.common.message.MessageExt;
+
+public class DefaultTiadTransactionListener implements TiadTransactionListener {
+
+    @Override
+    public LocalTransactionState executeLocalTransaction(Message msg, Object arg) {
+        return LocalTransactionState.COMMIT_MESSAGE;
+    }
+
+    @Override
+    public LocalTransactionState checkLocalTransaction(MessageExt msg) {
+        return LocalTransactionState.COMMIT_MESSAGE;
+    }
+}

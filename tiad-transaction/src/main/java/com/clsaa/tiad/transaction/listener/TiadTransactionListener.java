@@ -14,21 +14,10 @@
  *    limitations under the License.
  */
 
-package com.clsaa.tiad.eventbus.bus;
+package com.clsaa.tiad.transaction.listener;
 
-import com.clsaa.tiad.eventbus.coder.Coder;
-import com.clsaa.tiad.eventbus.coder.DefaultJsonCoder;
-import io.vertx.core.VertxOptions;
-import io.vertx.core.spi.cluster.ClusterManager;
-import io.vertx.spi.cluster.hazelcast.HazelcastClusterManager;
-import lombok.Data;
+import org.apache.rocketmq.client.producer.TransactionListener;
 
-@Data
-public class EventBusOptions {
-    private ClusterManager clusterManager = new HazelcastClusterManager();
-    private VertxOptions vertxOptions = new VertxOptions();
-    private boolean standalone = false;
-    private String namesrvAddr;
-    private Coder coder = new DefaultJsonCoder();
+public interface TiadTransactionListener extends TransactionListener {
 
 }
