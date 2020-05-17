@@ -14,6 +14,7 @@
         <module>tiad-event-bus</module>
         <module>tiad-example</module>
         <module>tiad-building-block</module>
+        <module>tiad-transaction</module>
     </modules>
 
 
