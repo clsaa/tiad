@@ -47,7 +47,7 @@ public class RouterManager {
 
     public EventBus route(String topic, String group, EventOptions eventOptions) {
         final String tag = threadLocal.get();
-        if (tag == null || tag.startsWith("transaction_tag")) {
+        if (tag != null && tag.startsWith("transaction_tag")) {
             eventOptions.setEventFeatures(EventFeatures.TRANSACTIONAL);
             return this.rocketMQEventBus;
         }
