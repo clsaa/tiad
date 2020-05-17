@@ -41,7 +41,7 @@ public class TiadTest {
                 //初始化event bus示例，进行后续链式调用
                 .eventBus(eventBusOptions)
                 //注册事件订阅者
-                .consumer("tiad-topic", "group", event -> {
+                .consumer("tiad-topic", "group", event -> {//支持函数式编程
                     //consumer处理事件
                     System.out.println("I'm consumer, I consumed:" + event.body());
                     //回复事件
@@ -49,8 +49,9 @@ public class TiadTest {
                 })
                 //注册事件发送者
                 .send("tiad-topic", "group", "task finished", eventOptions,
-                        //处理consumer回复的消息
+                        //处理consumer回复的消息，支持函数式编程
                         replyEvent -> System.out.println("I'm producer, I consumed: " + replyEvent.result().body())
                 );
     }
 }
+
