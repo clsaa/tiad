@@ -24,19 +24,25 @@ import io.vertx.spi.cluster.hazelcast.HazelcastClusterManager;
 
 public class TiadTest {
     public static void main(String[] args) {
-        //配置集群信息
+        //配置EventBus信息
         EventBusOptions eventBusOptions = new EventBusOptions();
+        //配置服务协调组件
         eventBusOptions.setClusterManager(new HazelcastClusterManager());
+        //配置运行模式（单机/集群）
         eventBusOptions.setStandalone(false);
+
         //配置事件特性（可回复、点对点事件）
         EventOptions eventOptions = new EventOptions();
+        //可回复事件
         eventOptions.setEventFeatures(EventFeatures.REPLYABLE);
+        //点对点事件
         eventOptions.setConsumeType(ConsumeType.POINT_TO_POINT);
-
         TiadEventDriver.tiad("tiad-app")
+                //初始化event bus示例，进行后续链式调用
                 .eventBus(eventBusOptions)
                 //注册事件订阅者
                 .consumer("tiad-topic", "group", event -> {
+                    //consumer处理事件
                     System.out.println("I'm consumer, I consumed:" + event.body());
                     //回复事件
                     event.reply("Hi, I know the task has finished. -- from consumer");
