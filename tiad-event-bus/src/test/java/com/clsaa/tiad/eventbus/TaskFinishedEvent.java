@@ -14,16 +14,14 @@
  *    limitations under the License.
  */
 
-package com.clsaa.tiad.eventbus.consumer;
+package com.clsaa.tiad.eventbus;
 
 import lombok.Data;
 
+import java.util.UUID;
+
 @Data
-public class Consumer {
-    private String host;
-    private String port;
-    private String topic;
-    private String appName;
-    private String instanceId;
-    private String basic;
+public class TaskFinishedEvent {
+    private String id = UUID.randomUUID().toString();
+    private long timestamp = System.currentTimeMillis();
 }

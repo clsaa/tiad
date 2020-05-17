@@ -17,6 +17,7 @@
 package com.clsaa.tiad.eventbus.bus.impl;
 
 import com.clsaa.tiad.eventbus.bus.EventBus;
+import com.clsaa.tiad.eventbus.bus.EventBusOptions;
 import com.clsaa.tiad.eventbus.bus.EventOptions;
 import io.vertx.core.AsyncResult;
 import io.vertx.core.Handler;
@@ -37,5 +38,10 @@ public class RocketMQEventBus implements DistributeEventBus {
     @Override
     public <T> EventBus consumer(String topic, String group, Handler<Message<T>> handler) {
         return null;
+    }
+
+    @Override
+    public EventBus init(EventBusOptions eventBusOptions) {
+        return this;
     }
 }

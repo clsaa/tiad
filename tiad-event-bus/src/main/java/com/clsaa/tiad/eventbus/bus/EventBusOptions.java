@@ -18,11 +18,12 @@ package com.clsaa.tiad.eventbus.bus;
 
 import io.vertx.core.VertxOptions;
 import io.vertx.core.spi.cluster.ClusterManager;
+import io.vertx.spi.cluster.hazelcast.HazelcastClusterManager;
 import lombok.Data;
 
 @Data
 public class EventBusOptions {
-    private ClusterManager clusterManager;
-    private VertxOptions vertxOptions;
-    private boolean standalone;
+    private ClusterManager clusterManager = new HazelcastClusterManager();
+    private VertxOptions vertxOptions = new VertxOptions();
+    private boolean standalone = false;
 }

@@ -18,18 +18,19 @@ package com.clsaa.tiad.eventbus;
 
 import com.clsaa.tiad.eventbus.bus.EventBus;
 import com.clsaa.tiad.eventbus.bus.EventBusDelegation;
+import com.clsaa.tiad.eventbus.bus.EventBusOptions;
 import com.clsaa.tiad.eventbus.route.RouterManager;
 import lombok.Getter;
 
 import java.util.UUID;
 
 @Getter
-public class Tiad {
+public class TiadEventDriver {
     private String appName;
     private String instanceId;
     private EventBus eventBus;
 
-    public Tiad(String appName) {
+    public TiadEventDriver(String appName) {
         this.appName = appName;
         this.instanceId = UUID.randomUUID().toString();
     }
@@ -41,7 +42,13 @@ public class Tiad {
         return eventBus;
     }
 
-    public static Tiad tiad(String appName) {
-        return new Tiad(appName);
+    public EventBus eventBus(EventBusOptions eventBusOptions) {
+        RouterManager routerManager = new RouterManager(eventBusOptions);
+        this.eventBus = new EventBusDelegation(routerManager);
+        return eventBus;
+    }
+
+    public static TiadEventDriver tiad(String appName) {
+        return new TiadEventDriver(appName);
     }
 }

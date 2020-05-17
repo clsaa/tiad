@@ -50,4 +50,11 @@ public interface EventBus {
      * @return instance of event bus
      */
     <T> EventBus consumer(String topic, String group, Handler<Message<T>> handler);
+
+    /**
+     * init the event bus
+     *
+     * @param eventBusOptions
+     */
+    EventBus init(EventBusOptions eventBusOptions);
 }

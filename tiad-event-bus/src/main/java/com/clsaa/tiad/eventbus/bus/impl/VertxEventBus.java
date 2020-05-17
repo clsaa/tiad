@@ -37,14 +37,18 @@ public class VertxEventBus implements DistributeEventBus, LocalEventBus {
     private Vertx vertx;
     private VertxOptions options;
     private io.vertx.core.eventbus.EventBus eventBus;
+    private volatile boolean inited = false;
 
-    public void init(EventBusOptions eventBusOptions) {
+    @Override
+    public EventBus init(EventBusOptions eventBusOptions) {
         this.options = eventBusOptions.getVertxOptions();
 
         if (eventBusOptions.isStandalone()) {
             this.vertx = Vertx.vertx();
             this.eventBus = vertx.eventBus();
-            return;
+            inited = true;
+            log.info("vert.x standalone init success");
+            return this;
         }
 
         this.defaultClusterManager = eventBusOptions.getClusterManager();
@@ -53,12 +57,23 @@ public class VertxEventBus implements DistributeEventBus, LocalEventBus {
         Vertx.clusteredVertx(options, res -> {
             if (res.succeeded()) {
                 this.vertx = res.result();
-                this.eventBus = vertx.eventBus();
+                this.eventBus = this.vertx.eventBus();
                 log.info("vert.x cluster init success");
             } else {
                 log.error("vert.x cluster init failed", res.cause());
             }
+            inited = true;
         });
+        int count = 0;
+        while (!inited) {
+            log.info("wait inited " + count++);
+            try {
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        return this;
     }
 
     @Override
@@ -75,6 +90,7 @@ public class VertxEventBus implements DistributeEventBus, LocalEventBus {
 
     @Override
     public <T> EventBus consumer(String topic, String group, Handler<Message<T>> handler) {
+        this.eventBus.consumer(topic, handler);
         return this;
     }
 }

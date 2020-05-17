@@ -16,19 +16,33 @@
 
 package com.clsaa.tiad.eventbus.route;
 
-import com.clsaa.tiad.eventbus.Tiad;
+import com.clsaa.tiad.eventbus.TiadEventDriver;
 import com.clsaa.tiad.eventbus.bus.EventBus;
+import com.clsaa.tiad.eventbus.bus.EventBusOptions;
 import com.clsaa.tiad.eventbus.bus.EventOptions;
+import com.clsaa.tiad.eventbus.bus.impl.RocketMQEventBus;
+import com.clsaa.tiad.eventbus.bus.impl.VertxEventBus;
 import com.clsaa.tiad.eventbus.consumer.Consumer;
 import com.clsaa.tiad.eventbus.enums.EventFeatures;
+import io.vertx.core.Handler;
+import io.vertx.core.eventbus.Message;
 
 import java.util.List;
 
 public class RouterManager {
-    private Tiad tiad;
+    private TiadEventDriver tiadEventDriver;
     private EventBus rocketMQEventBus;
     private EventBus vertxEventBus;
     private List<Consumer> consumers;
+
+    public RouterManager() {
+        this(new EventBusOptions());
+    }
+
+    public RouterManager(EventBusOptions eventBusOptions) {
+        rocketMQEventBus = new RocketMQEventBus().init(eventBusOptions);
+        vertxEventBus = new VertxEventBus().init(eventBusOptions);
+    }
 
     public EventBus route(String topic, String group, EventOptions eventOptions) {
         if (eventOptions.getEventFeatures().equals(EventFeatures.ORDINAL)) {
@@ -52,4 +66,10 @@ public class RouterManager {
 //        }
         return vertxEventBus;
     }
+
+    public <T> void consumer(String topic, String group, Handler<Message<T>> handler) {
+        this.rocketMQEventBus.consumer(topic, group, handler);
+        this.vertxEventBus.consumer(topic, group, handler);
+    }
+
 }

@@ -35,16 +35,27 @@ public class EventBusDelegation implements EventBus {
 
     @Override
     public EventBus send(String topic, String group, Object event, EventOptions options) {
-        return null;
+        final EventBus eventBus = routerManager.route(topic, group, options);
+        eventBus.send(topic, group, event, options);
+        return this;
     }
 
     @Override
     public <T> EventBus send(String topic, String group, Object event, EventOptions options, Handler<AsyncResult<Message<T>>> replyHandler) {
-        return null;
+        final EventBus eventBus = routerManager.route(topic, group, options);
+        eventBus.send(topic, group, event, options, replyHandler);
+        return this;
     }
 
     @Override
     public <T> EventBus consumer(String topic, String group, Handler<Message<T>> handler) {
-        return null;
+        routerManager.consumer(topic, group, handler);
+        return this;
+    }
+
+    @Override
+    public EventBus init(EventBusOptions eventBusOptions) {
+        //do nothing
+        return this;
     }
 }
